@@ -11,12 +11,6 @@ SPEC_BEGIN(GummiSpec)
 
         describe(@"Gummi", ^{
 
-            it(@"fails", ^{
-
-                [[[NSObject alloc] init] shouldBeNil];
-
-            });
-
         });
 
         SPEC_END
