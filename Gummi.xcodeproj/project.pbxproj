@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06967CEC156E42D5ACD56CB1 /* libPods-GummiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02642FAB33214282BD7EA24B /* libPods-GummiTests.a */; settings = {}; };
+		4CC1E75D6AA641FE8F8F71EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD9DA614FA41A8949E243A /* libPods.a */; settings = {}; };
+		8D4DF016516C727E4C73BD56 /* GummiSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFEED8F82893CA830AB09 /* GummiSpec.m */; };
 		CB3941581667A06100D45843 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3941571667A06100D45843 /* UIKit.framework */; };
 		CB39415A1667A06100D45843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3941591667A06100D45843 /* Foundation.framework */; };
 		CB39415C1667A06100D45843 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB39415B1667A06100D45843 /* CoreGraphics.framework */; };
@@ -20,7 +23,6 @@
 		CB3941771667A06100D45843 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3941571667A06100D45843 /* UIKit.framework */; };
 		CB3941781667A06100D45843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3941591667A06100D45843 /* Foundation.framework */; };
 		CB3941801667A06100D45843 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB39417E1667A06100D45843 /* InfoPlist.strings */; };
-		CB3941831667A06100D45843 /* GummiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3941821667A06100D45843 /* GummiTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02642FAB33214282BD7EA24B /* libPods-GummiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-GummiTests.a"; path = "libPods-GummiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D4DFEED8F82893CA830AB09 /* GummiSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiSpec.m; sourceTree = "<group>"; };
+		AE1475A927A640C7A96A4BEF /* Pods-GummiTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GummiTests.xcconfig"; path = "Pods/Pods-GummiTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		BBFB37191C6A4E1F8D59B60B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		CB3941531667A06100D45843 /* Gummi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gummi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3941571667A06100D45843 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB3941591667A06100D45843 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,8 +57,7 @@
 		CB3941751667A06100D45843 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CB39417D1667A06100D45843 /* GummiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GummiTests-Info.plist"; sourceTree = "<group>"; };
 		CB39417F1667A06100D45843 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CB3941811667A06100D45843 /* GummiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GummiTests.h; sourceTree = "<group>"; };
-		CB3941821667A06100D45843 /* GummiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GummiTests.m; sourceTree = "<group>"; };
+		E7FD9DA614FA41A8949E243A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPods.a; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 				CB3941581667A06100D45843 /* UIKit.framework in Frameworks */,
 				CB39415A1667A06100D45843 /* Foundation.framework in Frameworks */,
 				CB39415C1667A06100D45843 /* CoreGraphics.framework in Frameworks */,
+				4CC1E75D6AA641FE8F8F71EF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +79,7 @@
 				CB3941761667A06100D45843 /* SenTestingKit.framework in Frameworks */,
 				CB3941771667A06100D45843 /* UIKit.framework in Frameworks */,
 				CB3941781667A06100D45843 /* Foundation.framework in Frameworks */,
+				06967CEC156E42D5ACD56CB1 /* libPods-GummiTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,8 @@
 				CB39417B1667A06100D45843 /* GummiTests */,
 				CB3941561667A06100D45843 /* Frameworks */,
 				CB3941541667A06100D45843 /* Products */,
+				BBFB37191C6A4E1F8D59B60B /* Pods.xcconfig */,
+				AE1475A927A640C7A96A4BEF /* Pods-GummiTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +114,8 @@
 				CB3941591667A06100D45843 /* Foundation.framework */,
 				CB39415B1667A06100D45843 /* CoreGraphics.framework */,
 				CB3941751667A06100D45843 /* SenTestingKit.framework */,
+				E7FD9DA614FA41A8949E243A /* libPods.a */,
+				02642FAB33214282BD7EA24B /* libPods-GummiTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -136,9 +147,8 @@
 		CB39417B1667A06100D45843 /* GummiTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB3941811667A06100D45843 /* GummiTests.h */,
-				CB3941821667A06100D45843 /* GummiTests.m */,
 				CB39417C1667A06100D45843 /* Supporting Files */,
+				8D4DFEED8F82893CA830AB09 /* GummiSpec.m */,
 			);
 			path = GummiTests;
 			sourceTree = "<group>";
@@ -162,6 +172,7 @@
 				CB39414F1667A06100D45843 /* Sources */,
 				CB3941501667A06100D45843 /* Frameworks */,
 				CB3941511667A06100D45843 /* Resources */,
+				E22A934157DF4F3598B70C4C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -180,6 +191,7 @@
 				CB3941701667A06100D45843 /* Frameworks */,
 				CB3941711667A06100D45843 /* Resources */,
 				CB3941721667A06100D45843 /* ShellScript */,
+				68DDCC1C7D5743348B238CE5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +222,8 @@
 			mainGroup = CB3941481667A06100D45843;
 			productRefGroup = CB3941541667A06100D45843 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				CB3941521667A06100D45843 /* Gummi */,
@@ -241,6 +255,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		68DDCC1C7D5743348B238CE5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-GummiTests-resources.sh\"\n";
+			showEnvVarsInLog = 1;
+		};
 		CB3941721667A06100D45843 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +282,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		E22A934157DF4F3598B70C4C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -270,7 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3941831667A06100D45843 /* GummiTests.m in Sources */,
+				8D4DF016516C727E4C73BD56 /* GummiSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +402,7 @@
 		};
 		CB3941871667A06100D45843 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBFB37191C6A4E1F8D59B60B /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gummi/Gummi-Prefix.pch";
@@ -369,6 +414,7 @@
 		};
 		CB3941881667A06100D45843 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBFB37191C6A4E1F8D59B60B /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gummi/Gummi-Prefix.pch";
@@ -380,6 +426,7 @@
 		};
 		CB39418A1667A06100D45843 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE1475A927A640C7A96A4BEF /* Pods-GummiTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gummi.app/Gummi";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -397,6 +444,7 @@
 		};
 		CB39418B1667A06100D45843 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE1475A927A640C7A96A4BEF /* Pods-GummiTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gummi.app/Gummi";
 				FRAMEWORK_SEARCH_PATHS = (
