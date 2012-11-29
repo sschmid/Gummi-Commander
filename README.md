@@ -45,10 +45,10 @@ CommandMap supports:
 and more...
 ```
 
-Commands are short lived objects.
-Commands get created and executed when posting an event.
-Commands can inject the corresponding event, models and more...
-Commands get destroyed immediately after execution.
+* Commands are short lived objects.
+* Commands get created and executed when posting an event.
+* Commands can inject the corresponding event, models and more...
+* Commands get destroyed immediately after execution.
 
 Gummi uses SDObjection for Dependency Injection.
 
