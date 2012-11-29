@@ -61,6 +61,8 @@ You find the source files you need in Gummi/Classes
 Create a Podfile and put it into your root folder of your project
 Podfile
 ```
+platform :ios, '5.0'
+
 pod 'Gummi'
 ```
 
