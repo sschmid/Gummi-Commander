@@ -14,8 +14,8 @@
 
 @implementation GreetingsModule
 
-- (void)configure:(JSObjectionInjector *)injector {
-    [super configure:injector];
+- (void)configure {
+    [super configure];
 
     [self mapEventClass:[GreetingEvent class] toCommandClass:[GreetingCommand class]];
 }

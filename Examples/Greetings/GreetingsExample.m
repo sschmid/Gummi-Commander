@@ -32,7 +32,6 @@
         // Does not greet anymore
         [injector removeModuleClass:[GreetingsModule class]];
         [GreetingEvent greet:@"No one hears me :("];
-
     }
 
     return self;

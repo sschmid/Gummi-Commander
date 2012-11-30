@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ServiceExample.h"
 #import "GreetingsExample.h"
 
 @implementation AppDelegate
@@ -16,6 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     [[GreetingsExample alloc] init];
+    [[ServiceExample alloc] init];
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

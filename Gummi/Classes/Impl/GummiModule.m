@@ -12,12 +12,14 @@
 
 @implementation GummiModule
 
-- (void)configure:(JSObjectionInjector *)injector {
-    [super configure:injector];
+- (void)configure {
+    [super configure];
 
-    [self bind:injector toClass:[JSObjectionInjector class]];
+    [self bind:self.injector toClass:[JSObjectionInjector class]];
     [self bindClass:[SDDefaultEventBus class] toProtocol:@protocol(SDEventBus) asSingleton:YES];
     [self bindClass:[SDObjectionCommandMap class] toProtocol:@protocol(SDCommandMap) asSingleton:NO];
+
+    NSLog(@"Gummi initialized.");
 }
 
 
