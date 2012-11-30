@@ -4,7 +4,9 @@ Event Command Mapping System for Objective-C
 
 How to use:
 ====
-See examples.
+See examples:
+* Greetings
+* Service
 
 
 Set up Gummi
@@ -28,8 +30,8 @@ JSObjectionInjector *injector = [JSObjection createInjector];
 GreetingModule
 ```objective-c
 
-- (void)configure:(JSObjectionInjector *)injector {
-    [super configure:injector];
+- (void)configure {
+    [super configure];
 
     [self mapEventClass:[GreetingEvent class] toCommandClass:[GreetingCommand class]];
 }

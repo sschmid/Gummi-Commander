@@ -14,8 +14,8 @@
 @implementation SDModule
 @synthesize commandMap = _commandMap;
 
-- (void)configure:(JSObjectionInjector *)injector {
-    self.commandMap = [injector getObject:@protocol(SDCommandMap)];
+- (void)configure {
+    self.commandMap = [self.injector getObject:@protocol(SDCommandMap)];
 }
 
 - (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass {
