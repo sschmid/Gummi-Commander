@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         NSLog(@"Service init");
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(fakeServerChange) userInfo:nil repeats:YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2f target:self selector:@selector(fakeServerChange) userInfo:nil repeats:YES];
     }
 
     return self;

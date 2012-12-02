@@ -14,4 +14,5 @@
 
 @property(nonatomic) JSObjectionInjector *injector;
 @property(nonatomic) id <SDEventBus> eventBus;
+
 @end
