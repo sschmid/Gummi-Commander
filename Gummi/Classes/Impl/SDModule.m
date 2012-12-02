@@ -6,6 +6,7 @@
 
 
 #import "SDModule.h"
+#import "SDEventCommandMapping.h"
 
 @interface SDModule ()
 @property(nonatomic, strong) id <SDCommandMap> commandMap;
@@ -18,20 +19,24 @@
     self.commandMap = [self.injector getObject:@protocol(SDCommandMap)];
 }
 
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass {
-    [self.commandMap mapEventClass:eventClass toCommandClass:commandClass];
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass {
+    return [self.commandMap mapEventClass:eventClass toCommandClass:commandClass];
 }
 
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority {
-    [self.commandMap mapEventClass:eventClass toCommandClass:commandClass priority:priority];
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority {
+    return [self.commandMap mapEventClass:eventClass toCommandClass:commandClass priority:priority];
 }
 
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass removeMappingAfterExecution:(BOOL)remove {
-    [self.commandMap mapEventClass:eventClass toCommandClass:commandClass removeMappingAfterExecution:remove];
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass removeMappingAfterExecution:(BOOL)remove {
+    return [self.commandMap mapEventClass:eventClass toCommandClass:commandClass removeMappingAfterExecution:remove];
 }
 
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    [self.commandMap mapEventClass:eventClass toCommandClass:commandClass priority:priority removeMappingAfterExecution:remove];
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
+    return [self.commandMap mapEventClass:eventClass toCommandClass:commandClass priority:priority removeMappingAfterExecution:remove];
+}
+
+- (SDEventCommandMapping *)mappingForEventClass:(Class)eventClass commandClass:(Class)commandClass {
+    return [self.commandMap mappingForEventClass:eventClass commandClass:commandClass];
 }
 
 - (void)unMapEventClass:(Class)eventClass fromCommandClass:(Class)commandClass {

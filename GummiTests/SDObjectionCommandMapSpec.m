@@ -14,6 +14,11 @@
 #import "SomeOtherCommand.h"
 #import "SDObjectionCommandMap.h"
 #import "SDEventBus.h"
+#import "SomeGuard.h"
+#import "SDEventCommandMapping.h"
+#import "NoGuard.h"
+#import "YesGuard.h"
+#import "DependencyGuard.h"
 
 
 SPEC_BEGIN(SDObjectionCommandMapSpec)
@@ -24,6 +29,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             __block SDObjectionCommandMap *commandMap = nil;
             beforeEach(^{
                 injector = [JSObjection createInjector];
+                [JSObjection setDefaultInjector:injector];
                 [injector addModule:[[GummiModule alloc] init]];
                 commandMap = [injector getObject:@protocol(SDCommandMap)];
             });
@@ -67,7 +73,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             });
 
             it(@"executes a command", ^{
-                id <SDEventBus>eventBus = [injector getObject:@protocol(SDEventBus)];
+                id <SDEventBus> eventBus = [injector getObject:@protocol(SDEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
                 [commandMap mapEventClass:[SomeEvent class] toCommandClass:[SomeCommand class]];
@@ -77,7 +83,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             });
 
             it(@"executes commands in right order", ^{
-                id <SDEventBus>eventBus = [injector getObject:@protocol(SDEventBus)];
+                id <SDEventBus> eventBus = [injector getObject:@protocol(SDEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
 
@@ -90,7 +96,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             });
 
             it(@"executes commands in right order", ^{
-                id <SDEventBus>eventBus = [injector getObject:@protocol(SDEventBus)];
+                id <SDEventBus> eventBus = [injector getObject:@protocol(SDEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
 
@@ -103,7 +109,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             });
 
             it(@"executes commands in right order", ^{
-                id <SDEventBus>eventBus = [injector getObject:@protocol(SDEventBus)];
+                id <SDEventBus> eventBus = [injector getObject:@protocol(SDEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
 
@@ -116,7 +122,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             });
 
             it(@"executes commands in right order", ^{
-                id <SDEventBus>eventBus = [injector getObject:@protocol(SDEventBus)];
+                id <SDEventBus> eventBus = [injector getObject:@protocol(SDEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
 
@@ -129,7 +135,7 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
             });
 
             it(@"auto removes mapping", ^{
-                id <SDEventBus>eventBus = [injector getObject:@protocol(SDEventBus)];
+                id <SDEventBus> eventBus = [injector getObject:@protocol(SDEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
 
@@ -139,6 +145,90 @@ SPEC_BEGIN(SDObjectionCommandMapSpec)
                 [eventBus postEvent:event];
 
                 [[event.string should] equal:@"1"];
+            });
+
+            context(@"guards", ^{
+
+                it(@"has no mapping", ^{
+                    SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[SomeEvent class] commandClass:[SomeCommand class]];
+
+                    [mapping shouldBeNil];
+                });
+
+                context(@"when added a mapping", ^{
+
+                    beforeEach(^{
+                        [commandMap mapEventClass:[SomeEvent class] toCommandClass:[SomeCommand class]];
+                    });
+
+                    it(@"has mapping", ^{
+                        SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[SomeEvent class] commandClass:[SomeCommand class]];
+
+                        [mapping shouldNotBeNil];
+                        [[mapping should] beKindOfClass:[SDEventCommandMapping class]];
+                    });
+
+                    it(@"has no guards", ^{
+                        SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[SomeEvent class] commandClass:[SomeCommand class]];
+                        BOOL has = [mapping hasGuard:[SomeGuard class]];
+
+                        [[theValue(has) should] beNo];
+                    });
+
+                    context(@"when guards added", ^{
+
+                        __block NSArray *guards = nil;
+                        __block SDEventCommandMapping *mapping = nil;
+                        beforeEach(^{
+                            mapping = [commandMap mappingForEventClass:[SomeEvent class] commandClass:[SomeCommand class]];
+                        });
+
+                        it(@"has guard", ^{
+                            guards = [NSArray arrayWithObject:[SomeGuard class]];
+                            [mapping withGuards:guards];
+                            BOOL has = [mapping hasGuard:[SomeGuard class]];
+
+                            [[theValue(has) should] beYes];
+                        });
+
+                        it(@"prevents command execution when guard does not approve", ^{
+                            [mapping withGuards:[NSArray arrayWithObject:[NoGuard class]]];
+                            SomeEvent *event = [[SomeEvent alloc] init];
+                            event.object = [[SomeObject alloc] init];
+                            [event dispatch];
+
+                            [[theValue(event.object.flag) should] beNo];
+                        });
+
+                        it(@"executes command when guard approves", ^{
+                            [mapping withGuards:[NSArray arrayWithObject:[YesGuard class]]];
+                            SomeEvent *event = [[SomeEvent alloc] init];
+                            event.object = [[SomeObject alloc] init];
+                            [event dispatch];
+
+                            [[theValue(event.object.flag) should] beYes];
+                        });
+
+                        it(@"injects dependencies into guards", ^{
+                            [mapping withGuards:[NSArray arrayWithObject:[DependencyGuard class]]];
+                            SomeEvent *event = [[SomeEvent alloc] init];
+                            event.object = [[SomeObject alloc] init];
+                            [event dispatch];
+
+                            [[theValue(event.object.flag) should] beYes];
+                        });
+
+                    });
+
+                });
+
+                it(@"has guard", ^{
+                    [[commandMap mapEventClass:[SomeEvent class] toCommandClass:[SomeCommand class]] withGuards:[NSArray arrayWithObject:[SomeGuard class]]];
+                    BOOL has = [[commandMap mappingForEventClass:[SomeEvent class] commandClass:[SomeCommand class]] hasGuard:[SomeGuard class]];
+
+                    [[theValue(has) should] beYes];
+                });
+
             });
 
         });

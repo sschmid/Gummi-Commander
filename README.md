@@ -52,7 +52,29 @@ and more...
 * Commands can inject the corresponding event, models and more...
 * Commands get destroyed immediately after execution.
 
-Gummi uses SDObjection for Dependency Injection.
+
+Guards
+======
+Guards do only one thing: approve.
+Only when all guards approve, a command gets executed. You can add guards to event-command-mappings like this:
+
+```objective-c
+// Like so
+[[commandMap mapEventClass:[ServerResponseEvent class] toCommandClass:[ServerResponseCommand class]]
+	withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
+
+
+// Same
+SDEventCommandMapping *mapping = [commandMap mapEventClass:[ServerResponseEvent class] toCommandClass:[ServerResponseCommand class]];
+[mapping withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
+
+// Get mapping
+SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[ServerResponseEvent class] commandClass:[ServerResponseCommand class]];
+[mapping withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
+```
+
+
+Gummi uses [SDObjection] for Dependency Injection.
 
 
 Use Gummi in your project

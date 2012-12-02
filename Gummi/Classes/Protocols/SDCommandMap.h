@@ -5,12 +5,16 @@
 //
 
 
+@class SDEventCommandMapping;
+
 @protocol SDCommandMap <NSObject>
 
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass;
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority;
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass removeMappingAfterExecution:(BOOL)remove;
-- (void)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove;
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass;
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority;
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass removeMappingAfterExecution:(BOOL)remove;
+- (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove;
+
+- (SDEventCommandMapping *)mappingForEventClass:(Class)eventClass commandClass:(Class)commandClass;
 
 - (void)unMapEventClass:(Class)eventClass fromCommandClass:(Class)commandClass;
 - (void)unMapAll;
