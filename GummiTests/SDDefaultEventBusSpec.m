@@ -116,6 +116,17 @@ SPEC_BEGIN(SDDefaultEventBusSpec)
 
             });
 
+            it(@"does not add duplicates", ^{
+                SomeObserver *observer = [[SomeObserver alloc] init];
+                NSString *name = @"testName";
+                [eventBus addObserver:observer selector:@selector(m1:) name:name priority:0];
+                [eventBus addObserver:observer selector:@selector(m1:) name:name priority:1];
+                [eventBus addObserver:observer selector:@selector(m1:) name:name priority:2];
+                [eventBus postEvent:[[SomeEvent alloc] initWithName:name]];
+
+                [[observer.result should] equal:@"1"];
+            });
+
             it(@"removes the specified observer", ^{
                 NSObject *observer = [[SomeObserver alloc] init];
                 NSString *name = @"testName";

@@ -12,9 +12,6 @@
 #import "SDEventCommandMapping.h"
 #import "SDGuard.h"
 
-static NSString *const kMappingModuleName = @"__temp_command_mapping__";
-static NSString *const kGuardModuleName = @"__temp_guard_mapping__";
-
 @interface SDObjectionCommandMap ()
 @property(nonatomic, strong) NSMutableDictionary *map;
 
@@ -51,33 +48,14 @@ objection_requires(@"injector", @"eventBus")
 
 - (SDEventCommandMapping *)mapEventClass:(Class)eventClass toCommandClass:(Class)commandClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
     NSString *key = NSStringFromClass(eventClass);
-    NSMutableArray *mappingsForEvent = [self.map objectForKey:key];
-    if (!mappingsForEvent) {
-        mappingsForEvent = [[NSMutableArray alloc] init];
-        [self.map setObject:mappingsForEvent forKey:key];
-    }
-
-    if (![self.eventBus hasObserver:self selector:@selector(executeCommand:) name:key])
-        [self.eventBus addObserver:self selector:@selector(executeCommand:) name:key priority:priority];
-
-    SDEventCommandMapping *mapping;
-    SDEventCommandMapping *eventCommandMapping;
-    NSUInteger n = mappingsForEvent.count;
-    for (NSUInteger i = 0; i < n; i++) {
-        mapping = [mappingsForEvent objectAtIndex:i];
-        if (mapping.priority < priority) {
-            eventCommandMapping = [[SDEventCommandMapping alloc] initWithEventClass:eventClass commandClass:commandClass priority:priority remove:remove];
-            [mappingsForEvent insertObject:eventCommandMapping atIndex:i];
-            return eventCommandMapping;
-        }
-    }
-    eventCommandMapping = [[SDEventCommandMapping alloc] initWithEventClass:eventClass commandClass:commandClass priority:priority remove:remove];
-    [mappingsForEvent addObject:eventCommandMapping];
+    [self.eventBus addObserver:self selector:@selector(executeCommand:) name:key priority:priority];
+    SDEventCommandMapping *eventCommandMapping = [[SDEventCommandMapping alloc] initWithEventClass:eventClass commandClass:commandClass priority:priority remove:remove];
+    [self insertMapping:eventCommandMapping intoMappingsForEvent:[self getMappingsForEventKey:key] withPriority:priority];
     return eventCommandMapping;
 }
 
 - (SDEventCommandMapping *)mappingForEventClass:(Class)eventClass commandClass:(Class)commandClass {
-    for (SDEventCommandMapping *mapping in [self.map objectForKey:NSStringFromClass(eventClass)])
+    for (SDEventCommandMapping *mapping in [self getMappingsForEventKey:NSStringFromClass(eventClass)])
         if (mapping.commandClass == commandClass)
             return mapping;
 
@@ -86,7 +64,7 @@ objection_requires(@"injector", @"eventBus")
 
 - (void)unMapEventClass:(Class)eventClass fromCommandClass:(Class)commandClass {
     NSString *key = NSStringFromClass(eventClass);
-    NSMutableArray *mappingsForEvent = [self.map objectForKey:key];
+    NSMutableArray *mappingsForEvent = [self getMappingsForEventKey:key];
     for (SDEventCommandMapping *mapping in [mappingsForEvent copy]) {
         if (mapping.commandClass == commandClass) {
             [mappingsForEvent removeObject:mapping];
@@ -102,7 +80,7 @@ objection_requires(@"injector", @"eventBus")
 }
 
 - (BOOL)isEventClass:(Class)eventClass mappedToCommandClass:(Class)commandClass {
-    for (SDEventCommandMapping *mapping in [self.map objectForKey:NSStringFromClass(eventClass)])
+    for (SDEventCommandMapping *mapping in [self getMappingsForEventKey:NSStringFromClass(eventClass)])
         if (mapping.commandClass == commandClass)
             return YES;
 
@@ -112,46 +90,69 @@ objection_requires(@"injector", @"eventBus")
 
 #pragma mark private
 
+- (void)insertMapping:(SDEventCommandMapping *)eventCommandMapping intoMappingsForEvent:(NSMutableArray *)mappingsForEvent withPriority:(int)priority {
+    SDEventCommandMapping *existingMapping;
+    for (NSUInteger i = 0; i < mappingsForEvent.count; i++) {
+        existingMapping = [mappingsForEvent objectAtIndex:i];
+        if (existingMapping.priority < priority) {
+            [mappingsForEvent insertObject:eventCommandMapping atIndex:i];
+            return;
+        }
+    }
+    [mappingsForEvent addObject:eventCommandMapping];
+}
+
+- (NSMutableArray *)getMappingsForEventKey:(NSString *)key {
+    NSMutableArray *mappingsForEvent = [self.map objectForKey:key];
+    if (!mappingsForEvent) {
+        mappingsForEvent = [[NSMutableArray alloc] init];
+        [self.map setObject:mappingsForEvent forKey:key];
+    }
+
+    return mappingsForEvent;
+}
+
 - (void)executeCommand:(NSObject <SDEvent> *)event {
     JSObjectionModule *mappingModule = [[JSObjectionModule alloc] init];
-    NSMutableArray *mappingsForEvent = [self.map objectForKey:NSStringFromClass([event class])];
-    for (SDEventCommandMapping *mapping in [mappingsForEvent copy]) {
-        // Temporarily bind event and command
-        [mappingModule bind:event toClass:[event class]];
-        [mappingModule bindClass:mapping.commandClass toClass:mapping.commandClass asSingleton:NO];
-        [self.injector addModule:mappingModule withName:kMappingModuleName];
-
+    for (SDEventCommandMapping *mapping in [[self getMappingsForEventKey:NSStringFromClass([event class])] copy]) {
+        [self temporarilyBindEvent:event andCommandClass:mapping.commandClass usingModule:mappingModule];
         if ([self allGuardsApprove:mapping.guards]) {
-            // Execute command
             [[self.injector getObject:mapping.commandClass] execute];
             if (mapping.remove)
                 [self unMapEventClass:mapping.eventClass fromCommandClass:mapping.commandClass];
         }
-
-        // Remove temp bindings
-        [self.injector removeModuleWithName:kMappingModuleName];
-        [mappingModule reset];
+        [self removeTempModule:mappingModule];
     }
+}
 
+- (void)temporarilyBindEvent:(NSObject <SDEvent> *)event andCommandClass:(Class)commandClass usingModule:(JSObjectionModule *)module {
+    [module bind:event toClass:[event class]];
+    [module bindClass:commandClass toClass:commandClass asSingleton:NO];
+    [self.injector addModule:module];
+}
+
+- (void)removeTempModule:(JSObjectionModule *)module {
+    [self.injector removeModuleInstance:module];
+    [module reset];
 }
 
 - (BOOL)allGuardsApprove:(NSArray *)guards {
+    BOOL approve;
     JSObjectionModule *guardModule = [[JSObjectionModule alloc] init];
-    BOOL approve = YES;
     for (Class guardClass in guards) {
-        [guardModule bindClass:guardClass toClass:guardClass asSingleton:NO];
-        [self.injector addModule:guardModule withName:kGuardModuleName];
-
+        [self temporarilyBindGuard:guardClass usingModule:guardModule];
         approve = [[self.injector getObject:guardClass] approve];
-
-        [self.injector removeModuleWithName:kGuardModuleName];
-        [guardModule reset];
-
+        [self removeTempModule:guardModule];
         if (!approve)
             return NO;
     }
 
     return YES;
+}
+
+- (void)temporarilyBindGuard:(Class)guardClass usingModule:(JSObjectionModule *)module {
+    [module bindClass:guardClass toClass:guardClass asSingleton:NO];
+    [self.injector addModule:module];
 }
 
 @end
