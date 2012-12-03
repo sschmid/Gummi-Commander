@@ -17,6 +17,7 @@
 @property(nonatomic) int priority;
 
 - (id)initWithObserver:(id)observer selector:(SEL)selector priority:(int)priority;
+
 - (void)execute:(id <SDEvent>)event;
 
 @end
@@ -62,33 +63,20 @@
 }
 
 - (void)addObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName priority:(int)priority {
-    NSMutableArray *observerEntriesForName = [self.observers objectForKey:aName];
-    if (!observerEntriesForName) {
-        observerEntriesForName = [[NSMutableArray alloc] init];
-        [self.observers setObject:observerEntriesForName forKey:aName];
-    }
-    GUObserverEntry *entry;
-    NSUInteger n = observerEntriesForName.count;
-    for (NSUInteger i = 0; i < n; i++) {
-        entry = [observerEntriesForName objectAtIndex:i];
-        if (entry.priority < priority) {
-            [observerEntriesForName insertObject:[[GUObserverEntry alloc] initWithObserver:observer selector:aSelector priority:priority] atIndex:i];
-
-            return;
-        }
-    }
-    [observerEntriesForName addObject:[[GUObserverEntry alloc] initWithObserver:observer selector:aSelector priority:priority]];
+    if (![self hasObserver:observer selector:aSelector name:aName])
+        [self insertObserverEntry:[[GUObserverEntry alloc] initWithObserver:observer selector:aSelector priority:priority]
+              intoObserverEntries:[self getObserverEntriesForName:aName] withPriority:priority];
 }
 
 - (void)removeObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = [self.observers objectForKey:aName];
+    NSMutableArray *observerEntriesForName = [self getObserverEntriesForName:aName];
     for (GUObserverEntry *entry in [observerEntriesForName copy])
         if (entry.observer == observer && aSelector == entry.selector)
             [observerEntriesForName removeObject:entry];
 }
 
 - (void)removeObserver:(id)observer name:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = [self.observers objectForKey:aName];
+    NSMutableArray *observerEntriesForName = [self getObserverEntriesForName:aName];
     for (GUObserverEntry *entry in [observerEntriesForName copy])
         if (entry.observer == observer)
             [observerEntriesForName removeObject:entry];
@@ -104,22 +92,19 @@
 }
 
 - (void)postEvent:(id <SDEvent>)event {
-    NSMutableArray *observerEntriesForName = [self.observers objectForKey:event.name];
-    for (GUObserverEntry *entry in observerEntriesForName)
+    for (GUObserverEntry *entry in [self getObserverEntriesForName:event.name])
         [entry execute:event];
 }
 
 - (BOOL)hasObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = [self.observers objectForKey:aName];
-    for (GUObserverEntry *entry in observerEntriesForName)
+    for (GUObserverEntry *entry in [self getObserverEntriesForName:aName])
         if (entry.observer == observer && entry.selector == aSelector)
             return true;
     return NO;
 }
 
 - (BOOL)hasObserver:(id)observer name:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = [self.observers objectForKey:aName];
-    for (GUObserverEntry *entry in observerEntriesForName)
+    for (GUObserverEntry *entry in [self getObserverEntriesForName:aName])
         if (entry.observer == observer)
             return true;
     return NO;
@@ -132,5 +117,30 @@
     return NO;
 }
 
+
+#pragma mark private
+
+- (void)insertObserverEntry:(GUObserverEntry *)observerEntry intoObserverEntries:(NSMutableArray *)observerEntriesForName withPriority:(int)priority {
+    GUObserverEntry *existingEntry;
+    for (NSUInteger i = 0; i < observerEntriesForName.count; i++) {
+        existingEntry = [observerEntriesForName objectAtIndex:i];
+        if (existingEntry.priority < priority) {
+            [observerEntriesForName insertObject:observerEntry atIndex:i];
+
+            return;
+        }
+    }
+    [observerEntriesForName addObject:observerEntry];
+}
+
+- (NSMutableArray *)getObserverEntriesForName:(NSString *)aName {
+    NSMutableArray *observerEntriesForName = [self.observers objectForKey:aName];
+    if (!observerEntriesForName) {
+        observerEntriesForName = [[NSMutableArray alloc] init];
+        [self.observers setObject:observerEntriesForName forKey:aName];
+    }
+
+    return observerEntriesForName;
+}
 
 @end
