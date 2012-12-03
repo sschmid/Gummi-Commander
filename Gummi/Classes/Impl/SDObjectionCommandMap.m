@@ -137,6 +137,9 @@ objection_requires(@"injector", @"eventBus")
 }
 
 - (BOOL)allGuardsApprove:(NSArray *)guards {
+    if (guards.count == 0)
+        return YES;
+
     BOOL approve;
     JSObjectionModule *guardModule = [[JSObjectionModule alloc] init];
     for (Class guardClass in guards) {
