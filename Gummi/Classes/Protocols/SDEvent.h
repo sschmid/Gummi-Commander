@@ -6,7 +6,9 @@
 
 
 @protocol SDEvent <NSObject>
-@property(nonatomic, strong, readonly) NSString *name;
+@property(nonatomic, copy, readonly) NSString *name;
+
 - (id)initWithName:(NSString *)name;
 - (void)dispatch;
+
 @end

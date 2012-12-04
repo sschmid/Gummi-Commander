@@ -8,7 +8,6 @@
 #pragma mark SDObserverEntry
 
 #import "SDDefaultEventBus.h"
-#import "SDEvent.h"
 
 @interface SDObserverEntry : NSObject
 @property(nonatomic, strong) id observer;
@@ -16,7 +15,6 @@
 @property(nonatomic) int priority;
 
 - (id)initWithObserver:(id)observer selector:(SEL)selector priority:(int)priority;
-
 - (void)execute:(id <SDEvent>)event;
 
 @end
@@ -47,17 +45,17 @@
 #pragma mark SDDefaultEventBus
 
 @interface SDDefaultEventBus ()
-@property(nonatomic, strong) NSMutableDictionary *observers;
+@property(nonatomic, strong) NSMutableDictionary *observerEntries;
 
 @end
 
 @implementation SDDefaultEventBus
-@synthesize observers = _observers;
+@synthesize observerEntries = _observerEntries;
 
 - (id)init {
     self = [super init];
     if (self) {
-        self.observers = [[NSMutableDictionary alloc] init];
+        self.observerEntries = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -83,12 +81,12 @@
 }
 
 - (void)removeObserver:(id)observer {
-    for (NSString *key in self.observers)
+    for (NSString *key in self.observerEntries)
         [self removeObserver:observer name:key];
 }
 
 - (void)removeAllObservers {
-    [self.observers removeAllObjects];
+    [self.observerEntries removeAllObjects];
 }
 
 - (void)postEvent:(id <SDEvent>)event {
@@ -111,7 +109,7 @@
 }
 
 - (BOOL)hasObserver:(id)observer {
-    for (NSString *key in self.observers)
+    for (NSString *key in self.observerEntries)
         if ([self hasObserver:observer name:key])
             return YES;
     return NO;
@@ -134,10 +132,10 @@
 }
 
 - (NSMutableArray *)getObserverEntriesForName:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = self.observers[aName];
+    NSMutableArray *observerEntriesForName = self.observerEntries[aName];
     if (!observerEntriesForName) {
         observerEntriesForName = [[NSMutableArray alloc] init];
-        self.observers[aName] = observerEntriesForName;
+        self.observerEntries[aName] = observerEntriesForName;
     }
 
     return observerEntriesForName;

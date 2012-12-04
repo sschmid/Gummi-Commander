@@ -6,7 +6,6 @@
 
 
 #import "SDModule.h"
-#import "SDEventCommandMapping.h"
 
 @interface SDModule ()
 @property(nonatomic, strong) id <SDCommandMap> commandMap;

@@ -6,7 +6,6 @@
 
 
 @protocol SDCommand <NSObject>
-
 - (void)execute;
 
 @end

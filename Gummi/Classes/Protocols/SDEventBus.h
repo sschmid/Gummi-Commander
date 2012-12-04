@@ -5,7 +5,7 @@
 //
 
 
-@protocol SDEvent;
+#import "SDEvent.h"
 
 @protocol SDEventBus <NSObject>
 

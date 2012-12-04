@@ -5,7 +5,7 @@
 //
 
 
-@class SDEventCommandMapping;
+#import "SDEventCommandMapping.h"
 
 @protocol SDCommandMap <NSObject>
 
@@ -18,6 +18,7 @@
 
 - (void)unMapEventClass:(Class)eventClass fromCommandClass:(Class)commandClass;
 - (void)unMapAll;
+
 - (BOOL)isEventClass:(Class)eventClass mappedToCommandClass:(Class)commandClass;
 
 @end
