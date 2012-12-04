@@ -249,14 +249,14 @@
 				8D4DFD86658F4350466CA724 /* SDBaseEvent.m */,
 				8D4DFD40DC404881488A3F50 /* SDDefaultEventBus.h */,
 				8D4DF019E1CBBBF2BAC05071 /* SDDefaultEventBus.m */,
-				8D4DFF60CC38909738BCA7CB /* GummiModule.h */,
-				8D4DFD4C11948A969D8B7FA2 /* GummiModule.m */,
 				8D4DFA03322810BCB60042B3 /* SDModule.h */,
 				8D4DFA4127E28723520B87CC /* SDModule.m */,
 				8D4DF3E4407935CC44F88A9B /* SDObjectionCommandMap.h */,
 				8D4DF6F4CDE3FA15CE2C516D /* SDObjectionCommandMap.m */,
 				8D4DF50D2F15E7053F53F6FB /* SDEventCommandMapping.m */,
 				8D4DF78965A93C93B0238092 /* SDEventCommandMapping.h */,
+				8D4DFF60CC38909738BCA7CB /* GummiModule.h */,
+				8D4DFD4C11948A969D8B7FA2 /* GummiModule.m */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
