@@ -15,7 +15,7 @@
 @property(nonatomic, readonly) BOOL remove;
 @property(nonatomic, readonly, strong) NSArray *guards;
 
-- (id)initWithEventClass:(Class)eventClass commandClass:(Class)commandClass priority:(int)priority remove:(BOOL)remove1;
+- (id)initWithEventClass:(Class)eventClass commandClass:(Class)commandClass priority:(int)priority remove:(BOOL)remove;
 
 - (void)withGuards:(NSArray *)guards;
 - (BOOL)hasGuard:(Class)guardClass;

@@ -10,7 +10,7 @@
 #import "Objection.h"
 
 @interface SDBaseEvent ()
-@property(nonatomic, strong) NSString *name;
+@property(nonatomic, copy) NSString *name;
 @end
 
 @implementation SDBaseEvent
@@ -37,4 +37,5 @@
 + (void)dispatch {
     [[[self alloc] init] dispatch];
 }
+
 @end

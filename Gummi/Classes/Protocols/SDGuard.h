@@ -6,7 +6,6 @@
 
 
 @protocol SDGuard <NSObject>
-
 - (BOOL)approve;
 
 @end

@@ -30,6 +30,7 @@
 		8D4DF78B9D6BA0E9953A2293 /* ServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF26D4E328E2639355B24 /* ServiceExample.m */; };
 		8D4DF7C136C9E9E90C743CD5 /* SomeOtherCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF1C22DB229F569EECADA /* SomeOtherCommand.m */; };
 		8D4DF90CCF44CBBF43D37FBC /* GreetingsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF2E80184CDAFA872E246 /* GreetingsExample.m */; };
+		8D4DF93121261B81BC80B2C6 /* StressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF461ED521197B8B34E16 /* StressTest.m */; };
 		8D4DFA60816169786BA4AC8E /* SomeGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9C31D3913652930AA56 /* SomeGuard.m */; };
 		8D4DFBC8C830EDCCC0616E56 /* SomeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF6CBDB0782694A629B8E /* SomeCommand.m */; };
 		8D4DFC32308DFBA8DF2886DB /* GummiModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFD4C11948A969D8B7FA2 /* GummiModule.m */; };
@@ -81,6 +82,7 @@
 		8D4DF3E4407935CC44F88A9B /* SDObjectionCommandMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDObjectionCommandMap.h; sourceTree = "<group>"; };
 		8D4DF40A94D00C67C5E9E680 /* ServerResponseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseEvent.h; sourceTree = "<group>"; };
 		8D4DF42E33C1B5AB9F5B0F40 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		8D4DF461ED521197B8B34E16 /* StressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressTest.m; sourceTree = "<group>"; };
 		8D4DF490BF99D45F3323BCC0 /* GreetingsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsModule.h; sourceTree = "<group>"; };
 		8D4DF50D2F15E7053F53F6FB /* SDEventCommandMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEventCommandMapping.m; sourceTree = "<group>"; };
 		8D4DF535FE43419F4F769998 /* DependencyGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DependencyGuard.h; sourceTree = "<group>"; };
@@ -247,14 +249,14 @@
 				8D4DFD86658F4350466CA724 /* SDBaseEvent.m */,
 				8D4DFD40DC404881488A3F50 /* SDDefaultEventBus.h */,
 				8D4DF019E1CBBBF2BAC05071 /* SDDefaultEventBus.m */,
-				8D4DFF60CC38909738BCA7CB /* GummiModule.h */,
-				8D4DFD4C11948A969D8B7FA2 /* GummiModule.m */,
 				8D4DFA03322810BCB60042B3 /* SDModule.h */,
 				8D4DFA4127E28723520B87CC /* SDModule.m */,
 				8D4DF3E4407935CC44F88A9B /* SDObjectionCommandMap.h */,
 				8D4DF6F4CDE3FA15CE2C516D /* SDObjectionCommandMap.m */,
 				8D4DF50D2F15E7053F53F6FB /* SDEventCommandMapping.m */,
 				8D4DF78965A93C93B0238092 /* SDEventCommandMapping.h */,
+				8D4DFF60CC38909738BCA7CB /* GummiModule.h */,
+				8D4DFD4C11948A969D8B7FA2 /* GummiModule.m */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -411,6 +413,7 @@
 				8D4DF58F9E8B32C352F99417 /* SDDefaultEventBusSpec.m */,
 				8D4DFE2782BD62F1AA78B4A0 /* SDObjectionCommandMapSpec.m */,
 				8D4DF735D6405A2F7F97CD08 /* GuardsSpec.m */,
+				8D4DF461ED521197B8B34E16 /* StressTest.m */,
 			);
 			path = GummiTests;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				8D4DF0E505E6F047AC9858C5 /* NoGuard.m in Sources */,
 				8D4DFF3C4AC7D70492A23203 /* YesGuard.m in Sources */,
 				8D4DFD4C4F7CC63E91B2959F /* DependencyGuard.m in Sources */,
+				8D4DF93121261B81BC80B2C6 /* StressTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

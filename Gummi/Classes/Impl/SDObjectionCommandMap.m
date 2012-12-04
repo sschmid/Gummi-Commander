@@ -7,9 +7,7 @@
 
 #import "SDObjectionCommandMap.h"
 #import "Objection.h"
-#import "SDEventBus.h"
 #import "SDCommand.h"
-#import "SDEventCommandMapping.h"
 #import "SDGuard.h"
 
 @interface SDObjectionCommandMap ()
@@ -93,9 +91,10 @@ objection_requires(@"injector", @"eventBus")
 - (void)insertMapping:(SDEventCommandMapping *)eventCommandMapping intoMappingsForEvent:(NSMutableArray *)mappingsForEvent withPriority:(int)priority {
     SDEventCommandMapping *existingMapping;
     for (NSUInteger i = 0; i < mappingsForEvent.count; i++) {
-        existingMapping = [mappingsForEvent objectAtIndex:i];
+        existingMapping = mappingsForEvent[i];
         if (existingMapping.priority < priority) {
             [mappingsForEvent insertObject:eventCommandMapping atIndex:i];
+
             return;
         }
     }
@@ -103,10 +102,10 @@ objection_requires(@"injector", @"eventBus")
 }
 
 - (NSMutableArray *)getMappingsForEventKey:(NSString *)key {
-    NSMutableArray *mappingsForEvent = [self.map objectForKey:key];
+    NSMutableArray *mappingsForEvent = self.map[key];
     if (!mappingsForEvent) {
         mappingsForEvent = [[NSMutableArray alloc] init];
-        [self.map setObject:mappingsForEvent forKey:key];
+        self.map[key] = mappingsForEvent;
     }
 
     return mappingsForEvent;
@@ -137,6 +136,9 @@ objection_requires(@"injector", @"eventBus")
 }
 
 - (BOOL)allGuardsApprove:(NSArray *)guards {
+    if (guards.count == 0)
+        return YES;
+
     BOOL approve;
     JSObjectionModule *guardModule = [[JSObjectionModule alloc] init];
     for (Class guardClass in guards) {

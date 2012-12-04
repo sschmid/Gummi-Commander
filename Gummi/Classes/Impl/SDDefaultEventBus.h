@@ -8,5 +8,4 @@
 #import "SDEventBus.h"
 
 @interface SDDefaultEventBus : NSObject <SDEventBus>
-
 @end

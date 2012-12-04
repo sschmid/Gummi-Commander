@@ -6,12 +6,11 @@
 
 
 #import "SDCommandMap.h"
+#import "JSObjectionInjector.h"
+#import "SDEventBus.h"
 
-@class JSObjectionInjector;
-@protocol SDEventBus;
 
 @interface SDObjectionCommandMap : NSObject <SDCommandMap>
-
 @property(nonatomic) JSObjectionInjector *injector;
 @property(nonatomic) id <SDEventBus> eventBus;
 
