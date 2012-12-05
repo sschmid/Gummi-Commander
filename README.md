@@ -1,6 +1,7 @@
 ## Gummi
 
-Event Command Mapping System for Objective-C
+Gummi is an Event Command Mapping System for Objective-C.
+It uses [SDObjection] for Dependency Injection.
 
 ## How to use:
 
@@ -79,10 +80,6 @@ SDEventCommandMapping *mapping = [commandMap mapEventClass:[ServerResponseEvent 
 SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[ServerResponseEvent class] commandClass:[ServerResponseCommand class]];
 [mapping withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
 ```
-
-
-Gummi uses [SDObjection] for Dependency Injection.
-
 
 ## Use Gummi in your project
 
