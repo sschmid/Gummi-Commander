@@ -1,15 +1,15 @@
-Gummi
-====
+## Gummi
+
 Event Command Mapping System for Objective-C
 
-How to use:
-====
+## How to use:
+
 See examples:
 * Greetings
 * Service
 
+## Set up Gummi
 
-Set up Gummi
 ```objective-c
 // Init Gummi
 JSObjectionInjector *injector = [JSObjection createInjector];
@@ -27,17 +27,21 @@ JSObjectionInjector *injector = [JSObjection createInjector];
 [GreetingEvent greet:@"No one hears me :("];
 ```
 
-GreetingModule
+#### GreetingModule
+
 ```objective-c
 
 - (void)configure {
     [super configure];
 
     [self mapEventClass:[GreetingEvent class] toCommandClass:[GreetingCommand class]];
+    
+    // Mappings get automatically unmapped, when module gets removed.
 }
 ```
 
-CommandMap supports:
+#### CommandMap supports:
+
 ```objective-c
 [commandMap mapEventClass:[MyEvent class] toCommandClass:[MyCommand class]];
 [commandMap mapEventClass:[MyEvent class] toCommandClass:[MyOtherCommand class] removeMappingAfterExecution:YES];
@@ -53,10 +57,13 @@ and more...
 * Commands get destroyed immediately after execution.
 
 
-Guards
-======
-Guards do only one thing: approve.
-Only when all guards approve, a command gets executed. You can add guards to event-command-mappings like this:
+## Guards
+
+* Guards do only one thing: approve.
+* Guards decide, whether a command gets executed or not.
+* Only when all guards approve, a command gets executed.
+
+#### You can add guards to event-command-mappings like this:
 
 ```objective-c
 // Like so
@@ -77,32 +84,32 @@ SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[ServerRespons
 Gummi uses [SDObjection] for Dependency Injection.
 
 
-Use Gummi in your project
-===============================
+## Use Gummi in your project
 
 You find the source files you need in Gummi/Classes
 
 Create a Podfile and put it into your root folder of your project
-Podfile
+
+#### Edit your Podfile
 ```
 platform :ios, '5.0'
 
 pod 'Gummi'
 ```
 
-Setup [CocoaPods], if not done already
+#### Setup [CocoaPods], if not done already
 
 ```
 $ sudo gem install cocoapods
 $ pod setup
 ```
 
-Add this remote
+#### Add this remote
 ```
 $ pod repo add sschmid-cocoapods-specs https://github.com/sschmid/cocoapods-specs
 ```
 
-Install Gummi
+#### Install Gummi
 ```
 $ cd path/to/project
 $ pod install
