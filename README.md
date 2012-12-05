@@ -112,5 +112,9 @@ $ cd path/to/project
 $ pod install
 ```
 
+## Other projects using Gummi
+
+If you enjoy using Gummi in your projects let me know, and I'll mention your projects here.
+
 [cocoapods]: http://cocoapods.org/
 [SDObjection]: https://github.com/sschmid/SDObjection
