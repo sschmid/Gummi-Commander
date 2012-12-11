@@ -219,6 +219,19 @@ SPEC_BEGIN(SDDefaultEventBusSpec)
                 [[observer.result should] equal:@"14523"];
             });
 
+            it(@"executes in right order depending on negative priority", ^{
+                SomeObserver *observer = [[SomeObserver alloc] init];
+                NSString *name = @"testName";
+                [eventBus addObserver:observer selector:@selector(m1:) name:name priority:0];
+                [eventBus addObserver:observer selector:@selector(m2:) name:name priority:1];
+                [eventBus addObserver:observer selector:@selector(m3:) name:name priority:-1];
+                [eventBus addObserver:observer selector:@selector(m4:) name:name priority:-3];
+                [eventBus addObserver:observer selector:@selector(m5:) name:name priority:5];
+                [eventBus postEvent:[[SomeEvent alloc] initWithName:name]];
+
+                [[observer.result should] equal:@"52134"];
+            });
+
         });
 
         SPEC_END
