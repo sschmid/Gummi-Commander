@@ -38,8 +38,8 @@
 		8D4DFF550923F53555C401B2 /* ServerResponseGreater500Guard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFE39196FD6A14EF8719F /* ServerResponseGreater500Guard.m */; };
 		8D4DFFCEC203947BF6AAD9CD /* SDDefaultEventBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF312BB133A5E3BAC0D16 /* SDDefaultEventBus.m */; };
 		8D4DFFF390D6725E06FD7C28 /* GuardsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF8B13AC723154ACD6089 /* GuardsSpec.m */; };
-		AB6CC49B3E594B52840F60ED /* libPods-GummiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A98DC56042476CAF753DA6 /* libPods-GummiTests.a */; settings = {}; };
-		CA65275B2C9D4AAEAC7106AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AEF59EA1924AADB5FE9E68 /* libPods.a */; settings = {}; };
+		AB6CC49B3E594B52840F60ED /* libPods-GummiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A98DC56042476CAF753DA6 /* libPods-GummiTests.a */; };
+		CA65275B2C9D4AAEAC7106AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AEF59EA1924AADB5FE9E68 /* libPods.a */; };
 		CB294BBF166F4584007DA2F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB294BBE166F4584007DA2F7 /* UIKit.framework */; };
 		CB294BC1166F4584007DA2F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB294BC0166F4584007DA2F7 /* Foundation.framework */; };
 		CB294BC3166F4584007DA2F7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB294BC2166F4584007DA2F7 /* CoreGraphics.framework */; };
@@ -129,7 +129,7 @@
 		8D4DFEF8A6016A9B68C74B5C /* ServerResponseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseEvent.h; sourceTree = "<group>"; };
 		8D4DFF5D2D1897066FB5F62C /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		8D4DFF896E38B5E1FD21A26A /* GreetingEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingEvent.m; sourceTree = "<group>"; };
-		B1AEF59EA1924AADB5FE9E68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPods.a; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1AEF59EA1924AADB5FE9E68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB294BBA166F4584007DA2F7 /* Gummi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gummi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB294BBE166F4584007DA2F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB294BC0166F4584007DA2F7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,7 +148,7 @@
 		CB294BE4166F4585007DA2F7 /* GummiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GummiTests-Info.plist"; sourceTree = "<group>"; };
 		CB294BE6166F4585007DA2F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F27AA6070D0047D4B4326F59 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		F4A98DC56042476CAF753DA6 /* libPods-GummiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-GummiTests.a"; path = "libPods-GummiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4A98DC56042476CAF753DA6 /* libPods-GummiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GummiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,8 +486,6 @@
 			mainGroup = CB294BAF166F4584007DA2F7;
 			productRefGroup = CB294BBB166F4584007DA2F7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				CB294BB9166F4584007DA2F7 /* Gummi */,
@@ -532,7 +530,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 1;
 		};
 		CB294BD9166F4584007DA2F7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -560,7 +557,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-GummiTests-resources.sh\"\n";
-			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -773,6 +769,7 @@
 				CB294BEF166F4585007DA2F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB294BF0166F4585007DA2F7 /* Build configuration list for PBXNativeTarget "GummiTests" */ = {
 			isa = XCConfigurationList;
@@ -781,6 +778,7 @@
 				CB294BF2166F4585007DA2F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
