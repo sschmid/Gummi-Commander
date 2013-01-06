@@ -1,13 +1,13 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import "GreetingsExample.h"
-#import "Objection.h"
-#import "GummiModule.h"
+#import "GIInjector.h"
+#import "GummiCommander.h"
 #import "GreetingsModule.h"
 #import "GreetingEvent.h"
 
@@ -19,9 +19,8 @@
     if (self) {
 
         // Init Gummi
-        JSObjectionInjector *injector = [JSObjection createInjector];
-        [JSObjection setDefaultInjector:injector];
-        [injector addModule:[[GummiModule alloc] init]];
+        GIInjector *injector = [GIInjector sharedInjector];
+        [injector addModule:[[GummiCommander alloc] init]];
 
         // Plug in example
         [injector addModule:[[GreetingsModule alloc] init]];
@@ -32,10 +31,11 @@
         // Does not greet anymore
         [injector removeModuleClass:[GreetingsModule class]];
         [GreetingEvent greet:@"No one hears me :("];
+
+        [[GIInjector sharedInjector] reset];
     }
 
     return self;
 }
-
 
 @end

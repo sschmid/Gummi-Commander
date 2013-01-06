@@ -1,23 +1,22 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
-
-#import "Objection.h"
-#import "SDModule.h"
+#import "GCGIExtension.h"
 #import "GreetingsModule.h"
 #import "GreetingEvent.h"
 #import "GreetingCommand.h"
+#import "GIInjector.h"
 
 @implementation GreetingsModule
 
-- (void)configure {
-    [super configure];
+- (void)configure:(GIInjector *)injector {
+    [super configure:injector];
 
-    [self mapEventClass:[GreetingEvent class] toCommandClass:[GreetingCommand class]];
+    [self mapEvent:[GreetingEvent class] toCommand:[GreetingCommand class]];
 }
 
 @end

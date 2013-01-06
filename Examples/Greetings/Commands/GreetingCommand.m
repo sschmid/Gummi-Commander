@@ -1,17 +1,17 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import "GreetingCommand.h"
-#import "Objection.h"
 #import "GreetingEvent.h"
+#import "GIInjector.h"
 
 
 @implementation GreetingCommand
-objection_requires(@"event")
+inject(@"event")
 @synthesize event = _event;
 
 - (void)execute {

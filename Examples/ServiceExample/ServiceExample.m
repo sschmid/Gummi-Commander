@@ -1,15 +1,14 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import "ServiceExample.h"
-#import "Objection.h"
-#import "GummiModule.h"
 #import "ServiceModule.h"
-#import "Service.h"
+#import "GIInjector.h"
+#import "GummiCommander.h"
 
 
 @implementation ServiceExample
@@ -19,9 +18,8 @@
     if (self) {
 
         // Init Gummi
-        JSObjectionInjector *injector = [JSObjection createInjector];
-        [JSObjection setDefaultInjector:injector];
-        [injector addModule:[[GummiModule alloc] init]];
+        GIInjector *injector = [GIInjector sharedInjector];
+        [injector addModule:[[GummiCommander alloc] init]];
 
         // Plug in example
         NSLog(@"Adding ServiceModule module");
@@ -36,7 +34,9 @@
 
 - (void)remove {
     NSLog(@"Remove ServiceModule");
-    [[JSObjection defaultInjector] removeModuleClass:[ServiceModule class]];
+    [[GIInjector sharedInjector] removeModuleClass:[ServiceModule class]];
+
+    [[GIInjector sharedInjector] reset];
 }
 
 @end

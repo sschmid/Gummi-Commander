@@ -1,5 +1,5 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
@@ -10,26 +10,26 @@
 #import "Service.h"
 #import "ServerResponseEvent.h"
 #import "ServerResponseCommand.h"
-#import "SDEventCommandMapping.h"
 #import "ServerResponseGreater500Guard.h"
+#import "GIInjector.h"
 
 
 @implementation ServiceModule
 
-- (void)configure {
-    [super configure];
+- (void)configure:(GIInjector *)injector {
+    [super configure:injector];
 
     // Map events to commands
-    [[self mapEventClass:[ServerResponseEvent class] toCommandClass:[ServerResponseCommand class]]
+    [[self mapEvent:[ServerResponseEvent class] toCommand:[ServerResponseCommand class]]
             withGuards:[NSArray arrayWithObject:[ServerResponseGreater500Guard class]]];
 
-    // Set objection rules
-    [self registerSingleton:[Model class]];
-    [self registerEagerSingleton:[Service class]];
+    // Set injection rules
+    [self mapSingleton:[Model class] to:[Model class] lazy:YES];
+    [self mapSingleton:[Service class] to:[Service class] lazy:NO];
 }
 
 - (void)unload {
-    Service *service = [self.injector getObject:[Service class]];
+    Service *service = [_injector getObject:[Service class]];
     [service close];
 
     [super unload];

@@ -1,12 +1,11 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import <Foundation/Foundation.h>
-#import "Objection.h"
 
-@interface GreetingsModule : SDModule
+@interface GreetingsModule : GCGIExtension
 @end
