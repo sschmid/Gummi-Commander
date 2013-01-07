@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'Gummi Commander' target in the 'Gummi Commander' project
+// Prefix header for all source files of the 'Gummi-Commander' target in the 'Gummi-Commander' project
 //
 
 #import <Availability.h>

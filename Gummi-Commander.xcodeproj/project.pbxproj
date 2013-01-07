@@ -1,0 +1,838 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77CA2834BAE9422D97391D0B /* libPods-Gummi-CommanderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */; };
+		8D4DF081F571EDE2F6E799C7 /* DependencyGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFC31115C1216D20440B4 /* DependencyGuard.m */; };
+		8D4DF0B3084E66331919770E /* NoGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */; };
+		8D4DF3508819BF6621472D7C /* GCMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFF9A9B385114C11D7E03 /* GCMapping.m */; };
+		8D4DF4379DD90E011937461D /* SomeObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF54489DD989EE7351DFA /* SomeObserver.m */; };
+		8D4DF4B95FC81EDF2DDA6758 /* SomeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFAE5C62D742A525D59CD /* SomeCommand.m */; };
+		8D4DF580C94E2AD3E51656B7 /* GreetingsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF509273E41D801E599A8 /* GreetingsExample.m */; };
+		8D4DF5A7247CA4778CD0892F /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF772700035615E4E07BE /* Service.m */; };
+		8D4DF7251A78F1ACA95A2A8E /* SomeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB8982E950DC7519F746 /* SomeEvent.m */; };
+		8D4DF74EA2F0E3A49696412C /* GCDefaultEventBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF7C5F3413650E3A2C34E /* GCDefaultEventBus.m */; };
+		8D4DF7723CAA365EC2389657 /* GCGICommandMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */; };
+		8D4DF7BC35D0783B3B8CA8C4 /* ServerResponseGreater500Guard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF951B4E3E49ABA8ACF2C /* ServerResponseGreater500Guard.m */; };
+		8D4DF854B5CE56469D7FC2B4 /* ServerResponseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFEDDCD6FEB51D7343BE4 /* ServerResponseCommand.m */; };
+		8D4DF8D6FD2487415C1745F8 /* GreetingCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF73E312543435B57BDA8 /* GreetingCommand.m */; };
+		8D4DF8DDEDA78CDBEB8A6AF3 /* SomeOtherCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF590EADAC51C3F3FBC64 /* SomeOtherCommand.m */; };
+		8D4DF91D6A660DB34C55BA6C /* GCGIExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */; };
+		8D4DF9B39873622D9C9B91EC /* GuardsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */; };
+		8D4DFA122FEB905B760DA71B /* GCDefaultEventBusSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF80E899D7F6449788F6A /* GCDefaultEventBusSpec.m */; };
+		8D4DFB69998860B61E7CDCCC /* ServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF240B5833107C84CAD3B /* ServiceExample.m */; };
+		8D4DFB7F071566F14AA85105 /* ServiceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF320D10650DE621589B8 /* ServiceModule.m */; };
+		8D4DFB95C4C80D2D8E580C4E /* StressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFBA64D7C3BA96FC0996D /* StressTest.m */; };
+		8D4DFC7B3C3FB6FAA327D880 /* GCGIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */; };
+		8D4DFCBB68F807F5156366FE /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFF93E5B91AE225544210 /* Model.m */; };
+		8D4DFCCA9C3529D3A0C93CF1 /* YesGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */; };
+		8D4DFCCCE6E034943BB5FA3A /* GreetingsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFBF91124245EA85A79D4 /* GreetingsModule.m */; };
+		8D4DFDBB1B7B92071C798870 /* GreetingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */; };
+		8D4DFE3C012290F9EBCF6087 /* GCGICommandMapSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */; };
+		8D4DFEE51D0460CB69EB41C1 /* SomeGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF59DE3F3D86110111696 /* SomeGuard.m */; };
+		8D4DFF33A8EBDA00EDC5DE97 /* GummiCommander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFA6DCDBCDBFB315A154D /* GummiCommander.m */; };
+		8D4DFF43E0097CF2B50A654D /* ServerResponseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */; };
+		8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */; };
+		8D4DFF6B7B3E12E5D37F87CE /* GCObserverEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF0042F5C7450ACE40E9D /* GCObserverEntry.m */; };
+		8D4DFFCBBE329901848C9D27 /* SomeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFCF4BEA463DD6BECA3AC /* SomeObject.m */; };
+		CB2E9AE9169B4E930061DD59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AE8169B4E930061DD59 /* UIKit.framework */; };
+		CB2E9AEB169B4E930061DD59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AEA169B4E930061DD59 /* Foundation.framework */; };
+		CB2E9AED169B4E930061DD59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AEC169B4E930061DD59 /* CoreGraphics.framework */; };
+		CB2E9AF3169B4E930061DD59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9AF1169B4E930061DD59 /* InfoPlist.strings */; };
+		CB2E9AF5169B4E930061DD59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2E9AF4169B4E930061DD59 /* main.m */; };
+		CB2E9AF9169B4E930061DD59 /* GCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2E9AF8169B4E930061DD59 /* GCAppDelegate.m */; };
+		CB2E9AFB169B4E930061DD59 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9AFA169B4E930061DD59 /* Default.png */; };
+		CB2E9AFD169B4E930061DD59 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9AFC169B4E930061DD59 /* Default@2x.png */; };
+		CB2E9AFF169B4E930061DD59 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9AFE169B4E930061DD59 /* Default-568h@2x.png */; };
+		CB2E9B07169B4E930061DD59 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9B06169B4E930061DD59 /* SenTestingKit.framework */; };
+		CB2E9B08169B4E930061DD59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AE8169B4E930061DD59 /* UIKit.framework */; };
+		CB2E9B09169B4E930061DD59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AEA169B4E930061DD59 /* Foundation.framework */; };
+		CB2E9B11169B4E930061DD59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B0F169B4E930061DD59 /* InfoPlist.strings */; };
+		CB2E9B32169B4F990061DD59 /* Gummi-Commander-57.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B31169B4F990061DD59 /* Gummi-Commander-57.png */; };
+		CB2E9B35169B4F9B0061DD59 /* Gummi-Commander-114.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B34169B4F9B0061DD59 /* Gummi-Commander-114.png */; };
+		CB2E9B37169B4F9F0061DD59 /* Gummi-Commander-144.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B36169B4F9F0061DD59 /* Gummi-Commander-144.png */; };
+		CB2E9B39169B4FA10061DD59 /* Gummi-Commander-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B38169B4FA10061DD59 /* Gummi-Commander-72.png */; };
+		FA82826285254412B104896F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B631FE3FF4934E218192DA6E /* libPods.a */; settings = {}; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB2E9B0A169B4E930061DD59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB2E9ADB169B4E930061DD59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB2E9AE3169B4E930061DD59;
+			remoteInfo = "Gummi-Commander";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gummi-CommanderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55A5C2EA13A343D2BEBCC8D4 /* Pods-Gummi-CommanderTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gummi-CommanderTests.xcconfig"; path = "Pods/Pods-Gummi-CommanderTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		797FE7E5AC6849658D6A2416 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		8D4DF0042F5C7450ACE40E9D /* GCObserverEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCObserverEntry.m; sourceTree = "<group>"; };
+		8D4DF1829A4D2C8BF6A99305 /* ServerResponseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseEvent.h; sourceTree = "<group>"; };
+		8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommanderSpec.m; sourceTree = "<group>"; };
+		8D4DF19778E48ED9C2450A21 /* GreetingsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsModule.h; sourceTree = "<group>"; };
+		8D4DF1B1A709D4865B6F635E /* GummiCommander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GummiCommander.h; sourceTree = "<group>"; };
+		8D4DF1DF8FC9DC8A2ADF17D9 /* ServerResponseGreater500Guard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseGreater500Guard.h; sourceTree = "<group>"; };
+		8D4DF1E3054C8D744746F19E /* GCMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMapping.h; sourceTree = "<group>"; };
+		8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoGuard.m; sourceTree = "<group>"; };
+		8D4DF1EBC94C0DEAA342CBDD /* GCCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCommand.h; sourceTree = "<group>"; };
+		8D4DF240B5833107C84CAD3B /* ServiceExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceExample.m; sourceTree = "<group>"; };
+		8D4DF2E9FC020E085E8E8675 /* GCEventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCEventBus.h; sourceTree = "<group>"; };
+		8D4DF31EF3BEAD9CDD7CA8DF /* GCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCEvent.h; sourceTree = "<group>"; };
+		8D4DF320D10650DE621589B8 /* ServiceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModule.m; sourceTree = "<group>"; };
+		8D4DF33936C87AE8B6DAFEAA /* GCCommandMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCommandMap.h; sourceTree = "<group>"; };
+		8D4DF33AF45F8E342D78FD97 /* DependencyGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DependencyGuard.h; sourceTree = "<group>"; };
+		8D4DF35FE4F26C7FFEB999A5 /* SomeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeObject.h; sourceTree = "<group>"; };
+		8D4DF3B15C116B1C948FC560 /* GCGICommandMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGICommandMap.h; sourceTree = "<group>"; };
+		8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIExtension.m; sourceTree = "<group>"; };
+		8D4DF49A56E9FBAE020BE966 /* GCObserverEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCObserverEntry.h; sourceTree = "<group>"; };
+		8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardsSpec.m; sourceTree = "<group>"; };
+		8D4DF4F302EE34EE1FF610DB /* GreetingEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingEvent.h; sourceTree = "<group>"; };
+		8D4DF509273E41D801E599A8 /* GreetingsExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingsExample.m; sourceTree = "<group>"; };
+		8D4DF54489DD989EE7351DFA /* SomeObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeObserver.m; sourceTree = "<group>"; };
+		8D4DF590EADAC51C3F3FBC64 /* SomeOtherCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeOtherCommand.m; sourceTree = "<group>"; };
+		8D4DF59DE3F3D86110111696 /* SomeGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeGuard.m; sourceTree = "<group>"; };
+		8D4DF5C491271C4B1558FFC6 /* GreetingCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingCommand.h; sourceTree = "<group>"; };
+		8D4DF5CFADBC1E2E5F2C1C83 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		8D4DF6AA0B2471B2A7F43F56 /* SomeObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeObserver.h; sourceTree = "<group>"; };
+		8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGICommandMapSpec.m; sourceTree = "<group>"; };
+		8D4DF73DF1CB1A1C62D28CDF /* GCGIExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIExtension.h; sourceTree = "<group>"; };
+		8D4DF73E312543435B57BDA8 /* GreetingCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingCommand.m; sourceTree = "<group>"; };
+		8D4DF772700035615E4E07BE /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
+		8D4DF7BC7E0256FC61F6020F /* GCGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGuard.h; sourceTree = "<group>"; };
+		8D4DF7BEB8784D14166ADBB2 /* ServiceExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceExample.h; sourceTree = "<group>"; };
+		8D4DF7C5F3413650E3A2C34E /* GCDefaultEventBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDefaultEventBus.m; sourceTree = "<group>"; };
+		8D4DF80E899D7F6449788F6A /* GCDefaultEventBusSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDefaultEventBusSpec.m; sourceTree = "<group>"; };
+		8D4DF929BBE618A60CBA6CCC /* ServerResponseCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseCommand.h; sourceTree = "<group>"; };
+		8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseEvent.m; sourceTree = "<group>"; };
+		8D4DF938CD3D98D51DC4108D /* GCDefaultEventBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDefaultEventBus.h; sourceTree = "<group>"; };
+		8D4DF951B4E3E49ABA8ACF2C /* ServerResponseGreater500Guard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseGreater500Guard.m; sourceTree = "<group>"; };
+		8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingEvent.m; sourceTree = "<group>"; };
+		8D4DFA64F37956D636131FBB /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		8D4DFA6DCDBCDBFB315A154D /* GummiCommander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommander.m; sourceTree = "<group>"; };
+		8D4DFAE5C62D742A525D59CD /* SomeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeCommand.m; sourceTree = "<group>"; };
+		8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIEvent.m; sourceTree = "<group>"; };
+		8D4DFB0F621ADB9B6EC6D85F /* GreetingsExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsExample.h; sourceTree = "<group>"; };
+		8D4DFB8982E950DC7519F746 /* SomeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeEvent.m; sourceTree = "<group>"; };
+		8D4DFBA64D7C3BA96FC0996D /* StressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressTest.m; sourceTree = "<group>"; };
+		8D4DFBF91124245EA85A79D4 /* GreetingsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingsModule.m; sourceTree = "<group>"; };
+		8D4DFC31115C1216D20440B4 /* DependencyGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DependencyGuard.m; sourceTree = "<group>"; };
+		8D4DFC3ABA24DCC67BFF9F54 /* SomeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeEvent.h; sourceTree = "<group>"; };
+		8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YesGuard.m; sourceTree = "<group>"; };
+		8D4DFCF4BEA463DD6BECA3AC /* SomeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeObject.m; sourceTree = "<group>"; };
+		8D4DFD1F75E7FAD71C3AC082 /* YesGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesGuard.h; sourceTree = "<group>"; };
+		8D4DFE79CCB7E28BB6CC1A6A /* NoGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoGuard.h; sourceTree = "<group>"; };
+		8D4DFEACBF1B2C47E0AFAE63 /* GCGIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIEvent.h; sourceTree = "<group>"; };
+		8D4DFEDDCD6FEB51D7343BE4 /* ServerResponseCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseCommand.m; sourceTree = "<group>"; };
+		8D4DFEFB2E275C2EC1AE93FA /* SomeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeCommand.h; sourceTree = "<group>"; };
+		8D4DFF3A365A661671C18564 /* ServiceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModule.h; sourceTree = "<group>"; };
+		8D4DFF6BF12BD2909E4C671C /* SomeOtherCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeOtherCommand.h; sourceTree = "<group>"; };
+		8D4DFF93E5B91AE225544210 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		8D4DFF9A9B385114C11D7E03 /* GCMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMapping.m; sourceTree = "<group>"; };
+		8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGICommandMap.m; sourceTree = "<group>"; };
+		8D4DFFD83D3C8E6FEC353C95 /* SomeGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeGuard.h; sourceTree = "<group>"; };
+		B631FE3FF4934E218192DA6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPods.a; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2E9AE4169B4E930061DD59 /* Gummi-Commander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gummi-Commander.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2E9AE8169B4E930061DD59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CB2E9AEA169B4E930061DD59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CB2E9AEC169B4E930061DD59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CB2E9AF0169B4E930061DD59 /* Gummi-Commander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gummi-Commander-Info.plist"; sourceTree = "<group>"; };
+		CB2E9AF2169B4E930061DD59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CB2E9AF4169B4E930061DD59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB2E9AF6169B4E930061DD59 /* Gummi-Commander-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gummi-Commander-Prefix.pch"; sourceTree = "<group>"; };
+		CB2E9AF7169B4E930061DD59 /* GCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCAppDelegate.h; sourceTree = "<group>"; };
+		CB2E9AF8169B4E930061DD59 /* GCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCAppDelegate.m; sourceTree = "<group>"; };
+		CB2E9AFA169B4E930061DD59 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CB2E9AFC169B4E930061DD59 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CB2E9AFE169B4E930061DD59 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CB2E9B05169B4E930061DD59 /* Gummi-CommanderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gummi-CommanderTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2E9B06169B4E930061DD59 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CB2E9B0E169B4E930061DD59 /* Gummi-CommanderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gummi-CommanderTests-Info.plist"; sourceTree = "<group>"; };
+		CB2E9B10169B4E930061DD59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CB2E9B31169B4F990061DD59 /* Gummi-Commander-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gummi-Commander-57.png"; sourceTree = "<group>"; };
+		CB2E9B34169B4F9B0061DD59 /* Gummi-Commander-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gummi-Commander-114.png"; sourceTree = "<group>"; };
+		CB2E9B36169B4F9F0061DD59 /* Gummi-Commander-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gummi-Commander-144.png"; sourceTree = "<group>"; };
+		CB2E9B38169B4FA10061DD59 /* Gummi-Commander-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gummi-Commander-72.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB2E9AE1169B4E930061DD59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2E9AE9169B4E930061DD59 /* UIKit.framework in Frameworks */,
+				CB2E9AEB169B4E930061DD59 /* Foundation.framework in Frameworks */,
+				CB2E9AED169B4E930061DD59 /* CoreGraphics.framework in Frameworks */,
+				FA82826285254412B104896F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB2E9B01169B4E930061DD59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2E9B07169B4E930061DD59 /* SenTestingKit.framework in Frameworks */,
+				CB2E9B08169B4E930061DD59 /* UIKit.framework in Frameworks */,
+				CB2E9B09169B4E930061DD59 /* Foundation.framework in Frameworks */,
+				77CA2834BAE9422D97391D0B /* libPods-Gummi-CommanderTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8D4DF084012D606886C8CD85 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF1EBC94C0DEAA342CBDD /* GCCommand.h */,
+				8D4DF33936C87AE8B6DAFEAA /* GCCommandMap.h */,
+				8D4DF31EF3BEAD9CDD7CA8DF /* GCEvent.h */,
+				8D4DF2E9FC020E085E8E8675 /* GCEventBus.h */,
+				8D4DF7BC7E0256FC61F6020F /* GCGuard.h */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		8D4DF11575CE4827F116CEA2 /* Greetings */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFAD8C9F57BF1EBB2D80A /* Commands */,
+				8D4DF82276DFDDE4DD9EA090 /* Events */,
+				8D4DFB0F621ADB9B6EC6D85F /* GreetingsExample.h */,
+				8D4DF509273E41D801E599A8 /* GreetingsExample.m */,
+				8D4DF19778E48ED9C2450A21 /* GreetingsModule.h */,
+				8D4DFBF91124245EA85A79D4 /* GreetingsModule.m */,
+			);
+			path = Greetings;
+			sourceTree = "<group>";
+		};
+		8D4DF1319871927A5D56C78B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF929BBE618A60CBA6CCC /* ServerResponseCommand.h */,
+				8D4DFEDDCD6FEB51D7343BE4 /* ServerResponseCommand.m */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		8D4DF1B3CB99F59DBE9A9297 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFA64F37956D636131FBB /* Service.h */,
+				8D4DF772700035615E4E07BE /* Service.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8D4DF2857F11222F14999290 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF11575CE4827F116CEA2 /* Greetings */,
+				8D4DF5D64CFF2008D5CFCB2D /* ServiceExample */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		8D4DF2EC5A99324E92713AC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9B31169B4F990061DD59 /* Gummi-Commander-57.png */,
+				CB2E9B38169B4FA10061DD59 /* Gummi-Commander-72.png */,
+				CB2E9B34169B4F9B0061DD59 /* Gummi-Commander-114.png */,
+				CB2E9B36169B4F9F0061DD59 /* Gummi-Commander-144.png */,
+				CB2E9AFE169B4E930061DD59 /* Default-568h@2x.png */,
+				CB2E9AFA169B4E930061DD59 /* Default.png */,
+				CB2E9AFC169B4E930061DD59 /* Default@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8D4DF41E57893DEB39AD4146 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF33AF45F8E342D78FD97 /* DependencyGuard.h */,
+				8D4DFC31115C1216D20440B4 /* DependencyGuard.m */,
+				8D4DFE79CCB7E28BB6CC1A6A /* NoGuard.h */,
+				8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */,
+				8D4DFEFB2E275C2EC1AE93FA /* SomeCommand.h */,
+				8D4DFAE5C62D742A525D59CD /* SomeCommand.m */,
+				8D4DFC3ABA24DCC67BFF9F54 /* SomeEvent.h */,
+				8D4DFB8982E950DC7519F746 /* SomeEvent.m */,
+				8D4DFFD83D3C8E6FEC353C95 /* SomeGuard.h */,
+				8D4DF59DE3F3D86110111696 /* SomeGuard.m */,
+				8D4DF35FE4F26C7FFEB999A5 /* SomeObject.h */,
+				8D4DFCF4BEA463DD6BECA3AC /* SomeObject.m */,
+				8D4DF6AA0B2471B2A7F43F56 /* SomeObserver.h */,
+				8D4DF54489DD989EE7351DFA /* SomeObserver.m */,
+				8D4DFF6BF12BD2909E4C671C /* SomeOtherCommand.h */,
+				8D4DF590EADAC51C3F3FBC64 /* SomeOtherCommand.m */,
+				8D4DFD1F75E7FAD71C3AC082 /* YesGuard.h */,
+				8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8D4DF54F951E9EC22D405151 /* Gummi Injection */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF3B15C116B1C948FC560 /* GCGICommandMap.h */,
+				8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */,
+				8D4DFEACBF1B2C47E0AFAE63 /* GCGIEvent.h */,
+				8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */,
+				8D4DF73DF1CB1A1C62D28CDF /* GCGIExtension.h */,
+				8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */,
+				8D4DF1B1A709D4865B6F635E /* GummiCommander.h */,
+				8D4DFA6DCDBCDBFB315A154D /* GummiCommander.m */,
+			);
+			path = "Gummi Injection";
+			sourceTree = "<group>";
+		};
+		8D4DF5D64CFF2008D5CFCB2D /* ServiceExample */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF1319871927A5D56C78B /* Commands */,
+				8D4DF6FAF39E0D47D1BC2F16 /* Events */,
+				8D4DF802EFB1F40B767F31DD /* Guards */,
+				8D4DF84991DFC0CDDA4E2946 /* Model */,
+				8D4DF1B3CB99F59DBE9A9297 /* Service */,
+				8D4DF7BEB8784D14166ADBB2 /* ServiceExample.h */,
+				8D4DF240B5833107C84CAD3B /* ServiceExample.m */,
+				8D4DFF3A365A661671C18564 /* ServiceModule.h */,
+				8D4DF320D10650DE621589B8 /* ServiceModule.m */,
+			);
+			path = ServiceExample;
+			sourceTree = "<group>";
+		};
+		8D4DF65133C5F2569160A8EC /* SDObjection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SDObjection;
+			sourceTree = "<group>";
+		};
+		8D4DF6C4FBB4B55AE41AF705 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF084012D606886C8CD85 /* Api */,
+				8D4DF6F50BB8FBE130DF6FFC /* Impl */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8D4DF6F50BB8FBE130DF6FFC /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF938CD3D98D51DC4108D /* GCDefaultEventBus.h */,
+				8D4DF7C5F3413650E3A2C34E /* GCDefaultEventBus.m */,
+				8D4DF1E3054C8D744746F19E /* GCMapping.h */,
+				8D4DFF9A9B385114C11D7E03 /* GCMapping.m */,
+				8D4DF49A56E9FBAE020BE966 /* GCObserverEntry.h */,
+				8D4DF0042F5C7450ACE40E9D /* GCObserverEntry.m */,
+				8D4DF54F951E9EC22D405151 /* Gummi Injection */,
+				8D4DF65133C5F2569160A8EC /* SDObjection */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		8D4DF6FAF39E0D47D1BC2F16 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF1829A4D2C8BF6A99305 /* ServerResponseEvent.h */,
+				8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		8D4DF802EFB1F40B767F31DD /* Guards */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF1DF8FC9DC8A2ADF17D9 /* ServerResponseGreater500Guard.h */,
+				8D4DF951B4E3E49ABA8ACF2C /* ServerResponseGreater500Guard.m */,
+			);
+			path = Guards;
+			sourceTree = "<group>";
+		};
+		8D4DF82276DFDDE4DD9EA090 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF4F302EE34EE1FF610DB /* GreetingEvent.h */,
+				8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		8D4DF84991DFC0CDDA4E2946 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF5CFADBC1E2E5F2C1C83 /* Model.h */,
+				8D4DFF93E5B91AE225544210 /* Model.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8D4DFAD8C9F57BF1EBB2D80A /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF5C491271C4B1558FFC6 /* GreetingCommand.h */,
+				8D4DF73E312543435B57BDA8 /* GreetingCommand.m */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		CB2E9AD9169B4E930061DD59 = {
+			isa = PBXGroup;
+			children = (
+				8D4DF2857F11222F14999290 /* Examples */,
+				CB2E9AE7169B4E930061DD59 /* Frameworks */,
+				CB2E9AEE169B4E930061DD59 /* Gummi-Commander */,
+				CB2E9B0C169B4E930061DD59 /* Gummi-CommanderTests */,
+				55A5C2EA13A343D2BEBCC8D4 /* Pods-Gummi-CommanderTests.xcconfig */,
+				CB2E9AE5169B4E930061DD59 /* Products */,
+				8D4DF2EC5A99324E92713AC3 /* Resources */,
+				797FE7E5AC6849658D6A2416 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		CB2E9AE5169B4E930061DD59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9AE4169B4E930061DD59 /* Gummi-Commander.app */,
+				CB2E9B05169B4E930061DD59 /* Gummi-CommanderTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB2E9AE7169B4E930061DD59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9AE8169B4E930061DD59 /* UIKit.framework */,
+				CB2E9AEA169B4E930061DD59 /* Foundation.framework */,
+				CB2E9AEC169B4E930061DD59 /* CoreGraphics.framework */,
+				CB2E9B06169B4E930061DD59 /* SenTestingKit.framework */,
+				45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */,
+				B631FE3FF4934E218192DA6E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB2E9AEE169B4E930061DD59 /* Gummi-Commander */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9AF7169B4E930061DD59 /* GCAppDelegate.h */,
+				CB2E9AF8169B4E930061DD59 /* GCAppDelegate.m */,
+				CB2E9AEF169B4E930061DD59 /* Supporting Files */,
+				8D4DF6C4FBB4B55AE41AF705 /* Classes */,
+			);
+			path = "Gummi-Commander";
+			sourceTree = "<group>";
+		};
+		CB2E9AEF169B4E930061DD59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9AF0169B4E930061DD59 /* Gummi-Commander-Info.plist */,
+				CB2E9AF1169B4E930061DD59 /* InfoPlist.strings */,
+				CB2E9AF4169B4E930061DD59 /* main.m */,
+				CB2E9AF6169B4E930061DD59 /* Gummi-Commander-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB2E9B0C169B4E930061DD59 /* Gummi-CommanderTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9B0D169B4E930061DD59 /* Supporting Files */,
+				8D4DF41E57893DEB39AD4146 /* Classes */,
+				8D4DF80E899D7F6449788F6A /* GCDefaultEventBusSpec.m */,
+				8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */,
+				8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */,
+				8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */,
+				8D4DFBA64D7C3BA96FC0996D /* StressTest.m */,
+			);
+			path = "Gummi-CommanderTests";
+			sourceTree = "<group>";
+		};
+		CB2E9B0D169B4E930061DD59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB2E9B0E169B4E930061DD59 /* Gummi-CommanderTests-Info.plist */,
+				CB2E9B0F169B4E930061DD59 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB2E9AE3169B4E930061DD59 /* Gummi-Commander */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB2E9B17169B4E930061DD59 /* Build configuration list for PBXNativeTarget "Gummi-Commander" */;
+			buildPhases = (
+				CB2E9AE0169B4E930061DD59 /* Sources */,
+				CB2E9AE1169B4E930061DD59 /* Frameworks */,
+				CB2E9AE2169B4E930061DD59 /* Resources */,
+				6B4B703226E8497FB801234F /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Gummi-Commander";
+			productName = "Gummi-Commander";
+			productReference = CB2E9AE4169B4E930061DD59 /* Gummi-Commander.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB2E9B04169B4E930061DD59 /* Gummi-CommanderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB2E9B1A169B4E930061DD59 /* Build configuration list for PBXNativeTarget "Gummi-CommanderTests" */;
+			buildPhases = (
+				CB2E9B00169B4E930061DD59 /* Sources */,
+				CB2E9B01169B4E930061DD59 /* Frameworks */,
+				CB2E9B02169B4E930061DD59 /* Resources */,
+				CB2E9B03169B4E930061DD59 /* ShellScript */,
+				B1CB7E4CFD13431CAE10AAC4 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB2E9B0B169B4E930061DD59 /* PBXTargetDependency */,
+			);
+			name = "Gummi-CommanderTests";
+			productName = "Gummi-CommanderTests";
+			productReference = CB2E9B05169B4E930061DD59 /* Gummi-CommanderTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB2E9ADB169B4E930061DD59 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GC;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Simon Schmid";
+			};
+			buildConfigurationList = CB2E9ADE169B4E930061DD59 /* Build configuration list for PBXProject "Gummi-Commander" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CB2E9AD9169B4E930061DD59;
+			productRefGroup = CB2E9AE5169B4E930061DD59 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+			);
+			projectRoot = "";
+			targets = (
+				CB2E9AE3169B4E930061DD59 /* Gummi-Commander */,
+				CB2E9B04169B4E930061DD59 /* Gummi-CommanderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB2E9AE2169B4E930061DD59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2E9AF3169B4E930061DD59 /* InfoPlist.strings in Resources */,
+				CB2E9AFB169B4E930061DD59 /* Default.png in Resources */,
+				CB2E9AFD169B4E930061DD59 /* Default@2x.png in Resources */,
+				CB2E9AFF169B4E930061DD59 /* Default-568h@2x.png in Resources */,
+				CB2E9B32169B4F990061DD59 /* Gummi-Commander-57.png in Resources */,
+				CB2E9B35169B4F9B0061DD59 /* Gummi-Commander-114.png in Resources */,
+				CB2E9B37169B4F9F0061DD59 /* Gummi-Commander-144.png in Resources */,
+				CB2E9B39169B4FA10061DD59 /* Gummi-Commander-72.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB2E9B02169B4E930061DD59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2E9B11169B4E930061DD59 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B4B703226E8497FB801234F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 1;
+		};
+		B1CB7E4CFD13431CAE10AAC4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Gummi-CommanderTests-resources.sh\"\n";
+		};
+		CB2E9B03169B4E930061DD59 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB2E9AE0169B4E930061DD59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB2E9AF5169B4E930061DD59 /* main.m in Sources */,
+				CB2E9AF9169B4E930061DD59 /* GCAppDelegate.m in Sources */,
+				8D4DF8D6FD2487415C1745F8 /* GreetingCommand.m in Sources */,
+				8D4DFDBB1B7B92071C798870 /* GreetingEvent.m in Sources */,
+				8D4DF580C94E2AD3E51656B7 /* GreetingsExample.m in Sources */,
+				8D4DFCCCE6E034943BB5FA3A /* GreetingsModule.m in Sources */,
+				8D4DF854B5CE56469D7FC2B4 /* ServerResponseCommand.m in Sources */,
+				8D4DFF43E0097CF2B50A654D /* ServerResponseEvent.m in Sources */,
+				8D4DF7BC35D0783B3B8CA8C4 /* ServerResponseGreater500Guard.m in Sources */,
+				8D4DFCBB68F807F5156366FE /* Model.m in Sources */,
+				8D4DF5A7247CA4778CD0892F /* Service.m in Sources */,
+				8D4DFB69998860B61E7CDCCC /* ServiceExample.m in Sources */,
+				8D4DFB7F071566F14AA85105 /* ServiceModule.m in Sources */,
+				8D4DF74EA2F0E3A49696412C /* GCDefaultEventBus.m in Sources */,
+				8D4DF3508819BF6621472D7C /* GCMapping.m in Sources */,
+				8D4DFF6B7B3E12E5D37F87CE /* GCObserverEntry.m in Sources */,
+				8D4DF7723CAA365EC2389657 /* GCGICommandMap.m in Sources */,
+				8D4DFC7B3C3FB6FAA327D880 /* GCGIEvent.m in Sources */,
+				8D4DF91D6A660DB34C55BA6C /* GCGIExtension.m in Sources */,
+				8D4DFF33A8EBDA00EDC5DE97 /* GummiCommander.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB2E9B00169B4E930061DD59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D4DF081F571EDE2F6E799C7 /* DependencyGuard.m in Sources */,
+				8D4DF0B3084E66331919770E /* NoGuard.m in Sources */,
+				8D4DF4B95FC81EDF2DDA6758 /* SomeCommand.m in Sources */,
+				8D4DF7251A78F1ACA95A2A8E /* SomeEvent.m in Sources */,
+				8D4DFEE51D0460CB69EB41C1 /* SomeGuard.m in Sources */,
+				8D4DFFCBBE329901848C9D27 /* SomeObject.m in Sources */,
+				8D4DF4379DD90E011937461D /* SomeObserver.m in Sources */,
+				8D4DF8DDEDA78CDBEB8A6AF3 /* SomeOtherCommand.m in Sources */,
+				8D4DFCCA9C3529D3A0C93CF1 /* YesGuard.m in Sources */,
+				8D4DFA122FEB905B760DA71B /* GCDefaultEventBusSpec.m in Sources */,
+				8D4DFE3C012290F9EBCF6087 /* GCGICommandMapSpec.m in Sources */,
+				8D4DF9B39873622D9C9B91EC /* GuardsSpec.m in Sources */,
+				8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */,
+				8D4DFB95C4C80D2D8E580C4E /* StressTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB2E9B0B169B4E930061DD59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB2E9AE3169B4E930061DD59 /* Gummi-Commander */;
+			targetProxy = CB2E9B0A169B4E930061DD59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CB2E9AF1169B4E930061DD59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB2E9AF2169B4E930061DD59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CB2E9B0F169B4E930061DD59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB2E9B10169B4E930061DD59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB2E9B15169B4E930061DD59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB2E9B16169B4E930061DD59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB2E9B18169B4E930061DD59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 797FE7E5AC6849658D6A2416 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gummi-Commander/Gummi-Commander-Prefix.pch";
+				INFOPLIST_FILE = "Gummi-Commander/Gummi-Commander-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CB2E9B19169B4E930061DD59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 797FE7E5AC6849658D6A2416 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gummi-Commander/Gummi-Commander-Prefix.pch";
+				INFOPLIST_FILE = "Gummi-Commander/Gummi-Commander-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CB2E9B1B169B4E930061DD59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55A5C2EA13A343D2BEBCC8D4 /* Pods-Gummi-CommanderTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gummi-Commander.app/Gummi-Commander";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(inherited)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gummi-Commander/Gummi-Commander-Prefix.pch";
+				INFOPLIST_FILE = "Gummi-CommanderTests/Gummi-CommanderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CB2E9B1C169B4E930061DD59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55A5C2EA13A343D2BEBCC8D4 /* Pods-Gummi-CommanderTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gummi-Commander.app/Gummi-Commander";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(inherited)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gummi-Commander/Gummi-Commander-Prefix.pch";
+				INFOPLIST_FILE = "Gummi-CommanderTests/Gummi-CommanderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB2E9ADE169B4E930061DD59 /* Build configuration list for PBXProject "Gummi-Commander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB2E9B15169B4E930061DD59 /* Debug */,
+				CB2E9B16169B4E930061DD59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB2E9B17169B4E930061DD59 /* Build configuration list for PBXNativeTarget "Gummi-Commander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB2E9B18169B4E930061DD59 /* Debug */,
+				CB2E9B19169B4E930061DD59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB2E9B1A169B4E930061DD59 /* Build configuration list for PBXNativeTarget "Gummi-CommanderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB2E9B1B169B4E930061DD59 /* Debug */,
+				CB2E9B1C169B4E930061DD59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB2E9ADB169B4E930061DD59 /* Project object */;
+}
