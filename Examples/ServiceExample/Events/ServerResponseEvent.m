@@ -11,7 +11,7 @@
 @implementation ServerResponseEvent
 
 - (id)initWithResponse:(NSString *)response {
-    self = [self initWithName:NSStringFromClass([self class])];
+    self = [self init];
     self.response = response;
 
     return self;

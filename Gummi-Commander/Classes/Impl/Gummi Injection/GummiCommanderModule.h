@@ -9,5 +9,5 @@
 #import "GCGIExtension.h"
 
 
-@interface GummiCommander : GIModule
+@interface GummiCommanderModule : GIModule
 @end

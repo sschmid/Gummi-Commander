@@ -11,7 +11,7 @@
 @synthesize greeting = _greeting;
 
 - (id)initWithGreeting:(NSString *)greeting {
-    self = [self initWithName:NSStringFromClass([self class])];
+    self = [self init];
     self.greeting = greeting;
 
     return self;

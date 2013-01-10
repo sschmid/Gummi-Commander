@@ -23,7 +23,7 @@
 @synthesize remove = _remove;
 @synthesize guards = _guards;
 
-- (id)initWithEventClass:(Class)eventClass commandClass:(Class)commandClass priority:(int)priority remove:(BOOL)remove {
+- (id)initWithEvent:(Class)eventClass command:(Class)commandClass priority:(int)priority remove:(BOOL)remove {
     self = [super init];
     if (self) {
         self.eventClass = eventClass;

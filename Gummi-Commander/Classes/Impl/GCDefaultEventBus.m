@@ -7,6 +7,7 @@
 
 #import "GCDefaultEventBus.h"
 #import "GCObserverEntry.h"
+#import "GCEvent.h"
 
 @interface GCDefaultEventBus ()
 @property(nonatomic, strong) NSMutableDictionary *observerEntries;
@@ -23,29 +24,30 @@
     return self;
 }
 
-- (void)addObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName priority:(int)priority {
-    if (![self hasObserver:observer selector:aSelector name:aName])
-        [self insertObserverEntry:[[GCObserverEntry alloc] initWithObserver:observer selector:aSelector priority:priority]
-              intoObserverEntries:[self getObserverEntriesForName:aName] withPriority:priority];
+- (void)addObserver:(id)observer forEvent:(Class)eventClass withSelector:(SEL)selector priority:(int)priority {
+    if (![self hasObserver:observer forEvent:eventClass withSelector:selector])
+        [self insertObserverEntry:[[GCObserverEntry alloc] initWithObserver:observer event:eventClass selector:selector priority:priority]
+              intoObserverEntries:[self getObserverEntriesForEvent:eventClass] withPriority:priority];
 }
 
-- (void)removeObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = [self getObserverEntriesForName:aName];
-    for (GCObserverEntry *entry in [observerEntriesForName copy])
-        if (entry.observer == observer && aSelector == entry.selector)
-            [observerEntriesForName removeObject:entry];
+- (void)removeObserver:(id)observer fromEvent:(Class)eventClass withSelector:(SEL)selector {
+    NSMutableArray *observerEntriesForEvent = [self getObserverEntriesForEvent:eventClass];
+    for (GCObserverEntry *entry in [observerEntriesForEvent copy])
+        if ([entry.observer isEqual:observer] && selector == entry.selector)
+            [observerEntriesForEvent removeObject:entry];
 }
 
-- (void)removeObserver:(id)observer name:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = [self getObserverEntriesForName:aName];
-    for (GCObserverEntry *entry in [observerEntriesForName copy])
-        if (entry.observer == observer)
-            [observerEntriesForName removeObject:entry];
+- (void)removeObserver:(id)observer fromEvent:(Class)eventClass {
+    NSMutableArray *observerEntriesForEventKey = [self getObserverEntriesForEvent:eventClass];
+    for (GCObserverEntry *entry in [observerEntriesForEventKey copy])
+        if ([entry.observer isEqual:observer])
+            [observerEntriesForEventKey removeObject:entry];
 }
 
 - (void)removeObserver:(id)observer {
-    for (NSString *key in self.observerEntries)
-        [self removeObserver:observer name:key];
+    for (NSArray *observerEntriesForEventKey in [self.observerEntries allValues])
+        for (GCObserverEntry *entry in observerEntriesForEventKey)
+            [self removeObserver:entry.observer fromEvent:entry.eventClass];
 }
 
 - (void)removeAllObservers {
@@ -53,29 +55,25 @@
 }
 
 - (void)postEvent:(id <GCEvent>)event {
-    for (GCObserverEntry *entry in [self getObserverEntriesForName:event.name])
+    for (GCObserverEntry *entry in [self getObserverEntriesForEvent:[event class]])
         [entry execute:event];
 }
 
-- (BOOL)hasObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName {
-    for (GCObserverEntry *entry in [self getObserverEntriesForName:aName])
-        if (entry.observer == observer && entry.selector == aSelector)
+- (BOOL)hasObserver:(id)observer forEvent:(Class)eventClass withSelector:(SEL)selector {
+    for (GCObserverEntry *entry in [self getObserverEntriesForEvent:eventClass])
+        if ([entry.observer isEqual:observer] && entry.selector == selector)
             return true;
 
     return NO;
 }
 
-- (BOOL)hasObserver:(id)observer name:(NSString *)aName {
-    for (GCObserverEntry *entry in [self getObserverEntriesForName:aName])
-        if (entry.observer == observer)
-            return true;
-
-    return NO;
+- (BOOL)hasObserver:(id)observer forEvent:(Class)eventClass {
+    return [self hasObserver:observer forEventKey:NSStringFromClass(eventClass)];
 }
 
 - (BOOL)hasObserver:(id)observer {
     for (NSString *key in self.observerEntries)
-        if ([self hasObserver:observer name:key])
+        if ([self hasObserver:observer forEventKey:key])
             return YES;
 
     return NO;
@@ -84,27 +82,39 @@
 
 #pragma mark private
 
-- (void)insertObserverEntry:(GCObserverEntry *)observerEntry intoObserverEntries:(NSMutableArray *)observerEntriesForName withPriority:(int)priority {
+- (void)insertObserverEntry:(GCObserverEntry *)observerEntry intoObserverEntries:(NSMutableArray *)observerEntriesForEvent withPriority:(int)priority {
     GCObserverEntry *existingEntry;
-    for (NSUInteger i = 0; i < observerEntriesForName.count; i++) {
-        existingEntry = observerEntriesForName[i];
+    for (NSUInteger i = 0; i < observerEntriesForEvent.count; i++) {
+        existingEntry = observerEntriesForEvent[i];
         if (existingEntry.priority < priority) {
-            [observerEntriesForName insertObject:observerEntry atIndex:i];
+            [observerEntriesForEvent insertObject:observerEntry atIndex:i];
 
             return;
         }
     }
-    [observerEntriesForName addObject:observerEntry];
+    [observerEntriesForEvent addObject:observerEntry];
 }
 
-- (NSMutableArray *)getObserverEntriesForName:(NSString *)aName {
-    NSMutableArray *observerEntriesForName = self.observerEntries[aName];
+- (NSMutableArray *)getObserverEntriesForEvent:(Class)eventClass {
+    return [self getObserverEntriesForEventKey:NSStringFromClass(eventClass)];
+}
+
+- (NSMutableArray *)getObserverEntriesForEventKey:(NSString *)key {
+    NSMutableArray *observerEntriesForName = self.observerEntries[key];
     if (!observerEntriesForName) {
         observerEntriesForName = [[NSMutableArray alloc] init];
-        self.observerEntries[aName] = observerEntriesForName;
+        self.observerEntries[key] = observerEntriesForName;
     }
 
     return observerEntriesForName;
+}
+
+- (BOOL)hasObserver:(id)observer forEventKey:(NSString *)key {
+    for (GCObserverEntry *entry in [self getObserverEntriesForEventKey:key])
+        if ([entry.observer isEqual:observer])
+            return true;
+
+    return NO;
 }
 
 @end

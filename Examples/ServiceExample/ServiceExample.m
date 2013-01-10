@@ -8,7 +8,7 @@
 #import "ServiceExample.h"
 #import "ServiceModule.h"
 #import "GIInjector.h"
-#import "GummiCommander.h"
+#import "GummiCommanderModule.h"
 
 
 @implementation ServiceExample
@@ -17,12 +17,12 @@
     self = [super init];
     if (self) {
 
-        // Init Gummi
+        // Init Gummi Commander
         GIInjector *injector = [GIInjector sharedInjector];
-        [injector addModule:[[GummiCommander alloc] init]];
+        [injector addModule:[[GummiCommanderModule alloc] init]];
 
         // Plug in example
-        NSLog(@"Adding ServiceModule module");
+        NSLog(@"Adding ServiceModule");
         [injector addModule:[[ServiceModule alloc] init]];
 
         // Remove ServiceModule after 5 seconds
@@ -35,8 +35,6 @@
 - (void)remove {
     NSLog(@"Remove ServiceModule");
     [[GIInjector sharedInjector] removeModuleClass:[ServiceModule class]];
-
-    [[GIInjector sharedInjector] reset];
 }
 
 @end

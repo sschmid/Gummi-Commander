@@ -7,9 +7,10 @@
 
 #import "GCGICommandMap.h"
 #import "GIInjector.h"
-#import "GCEventBus.h"
+#import "GCEvent.h"
 #import "GCCommand.h"
 #import "GCGuard.h"
+#import "GCEventBus.h"
 
 @interface GCGICommandMap ()
 @property(nonatomic, strong) NSMutableDictionary *map;
@@ -17,9 +18,9 @@
 
 @implementation GCGICommandMap
 
-inject(@"injector", @"eventBus")
-@synthesize injector = _injector;
+inject(@"eventBus", @"injector")
 @synthesize eventBus = _eventBus;
+@synthesize injector = _injector;
 @synthesize map = _map;
 
 - (id)init {
@@ -43,29 +44,27 @@ inject(@"injector", @"eventBus")
 }
 
 - (GCMapping *)mapEvent:(Class)event toCommand:(Class)command priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    NSString *key = NSStringFromClass(event);
-    [self.eventBus addObserver:self selector:@selector(executeCommand:) name:key priority:priority];
-    GCMapping *mapping = [[GCMapping alloc] initWithEventClass:event commandClass:command priority:priority remove:remove];
-    [self insertMapping:mapping intoMappingsForEvent:[self getMappingsForEventKey:key] withPriority:priority];
+    [self.eventBus addObserver:self forEvent:event withSelector:@selector(executeCommand:) priority:priority];
+    GCMapping *mapping = [[GCMapping alloc] initWithEvent:event command:command priority:priority remove:remove];
+    [self insertMapping:mapping intoMappingsForEvent:[self getMappingsForEvent:event] withPriority:priority];
     return mapping;
 }
 
 - (GCMapping *)mappingForEvent:(Class)event command:(Class)command {
-    for (GCMapping *mapping in [self getMappingsForEventKey:NSStringFromClass(event)])
-        if (mapping.commandClass == command)
+    for (GCMapping *mapping in [self getMappingsForEvent:event])
+        if ([mapping.commandClass isEqual:command])
             return mapping;
 
     return nil;
 }
 
 - (void)unMapEvent:(Class)event fromCommand:(Class)command {
-    NSString *key = NSStringFromClass(event);
-    NSMutableArray *mappingsForEvent = [self getMappingsForEventKey:key];
+    NSMutableArray *mappingsForEvent = [self getMappingsForEvent:event];
     for (GCMapping *mapping in [mappingsForEvent copy]) {
-        if (mapping.commandClass == command) {
+        if ([mapping.commandClass isEqual:command]) {
             [mappingsForEvent removeObject:mapping];
             if (mappingsForEvent.count == 0)
-                [self.eventBus removeObserver:self name:key];
+                [self.eventBus removeObserver:self fromEvent:event];
 
             return;
         }
@@ -78,8 +77,8 @@ inject(@"injector", @"eventBus")
 }
 
 - (BOOL)isEvent:(Class)event mappedToCommand:(Class)command {
-    for (GCMapping *mapping in [self getMappingsForEventKey:NSStringFromClass(event)])
-        if (mapping.commandClass == command)
+    for (GCMapping *mapping in [self getMappingsForEvent:event])
+        if ([mapping.commandClass isEqual:command])
             return YES;
 
     return NO;
@@ -98,10 +97,12 @@ inject(@"injector", @"eventBus")
             return;
         }
     }
+
     [mappingsForEvent addObject:mapping];
 }
 
-- (NSMutableArray *)getMappingsForEventKey:(NSString *)key {
+- (NSMutableArray *)getMappingsForEvent:(Class)event {
+    NSString *key = NSStringFromClass(event);
     NSMutableArray *mappingsForEvent = self.map[key];
     if (!mappingsForEvent) {
         mappingsForEvent = [[NSMutableArray alloc] init];
@@ -112,7 +113,7 @@ inject(@"injector", @"eventBus")
 }
 
 - (void)executeCommand:(NSObject <GCEvent> *)event {
-    for (GCMapping *mapping in [[self getMappingsForEventKey:NSStringFromClass([event class])] copy]) {
+    for (GCMapping *mapping in [[self getMappingsForEvent:[event class]] copy]) {
         [self.injector map:event to:[event class]];
         if ([self allGuardsApprove:mapping.guards]) {
             [[self.injector getObject:mapping.commandClass] execute];

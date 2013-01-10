@@ -35,7 +35,7 @@
 		8D4DFDBB1B7B92071C798870 /* GreetingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */; };
 		8D4DFE3C012290F9EBCF6087 /* GCGICommandMapSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */; };
 		8D4DFEE51D0460CB69EB41C1 /* SomeGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF59DE3F3D86110111696 /* SomeGuard.m */; };
-		8D4DFF33A8EBDA00EDC5DE97 /* GummiCommander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFA6DCDBCDBFB315A154D /* GummiCommander.m */; };
+		8D4DFF33A8EBDA00EDC5DE97 /* GummiCommanderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */; };
 		8D4DFF43E0097CF2B50A654D /* ServerResponseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */; };
 		8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */; };
 		8D4DFF6B7B3E12E5D37F87CE /* GCObserverEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF0042F5C7450ACE40E9D /* GCObserverEntry.m */; };
@@ -78,7 +78,7 @@
 		8D4DF1829A4D2C8BF6A99305 /* ServerResponseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseEvent.h; sourceTree = "<group>"; };
 		8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommanderSpec.m; sourceTree = "<group>"; };
 		8D4DF19778E48ED9C2450A21 /* GreetingsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsModule.h; sourceTree = "<group>"; };
-		8D4DF1B1A709D4865B6F635E /* GummiCommander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GummiCommander.h; sourceTree = "<group>"; };
+		8D4DF1B1A709D4865B6F635E /* GummiCommanderModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GummiCommanderModule.h; sourceTree = "<group>"; };
 		8D4DF1DF8FC9DC8A2ADF17D9 /* ServerResponseGreater500Guard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseGreater500Guard.h; sourceTree = "<group>"; };
 		8D4DF1E3054C8D744746F19E /* GCMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMapping.h; sourceTree = "<group>"; };
 		8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoGuard.m; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		8D4DF951B4E3E49ABA8ACF2C /* ServerResponseGreater500Guard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseGreater500Guard.m; sourceTree = "<group>"; };
 		8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingEvent.m; sourceTree = "<group>"; };
 		8D4DFA64F37956D636131FBB /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
-		8D4DFA6DCDBCDBFB315A154D /* GummiCommander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommander.m; sourceTree = "<group>"; };
+		8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommanderModule.m; sourceTree = "<group>"; };
 		8D4DFAE5C62D742A525D59CD /* SomeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeCommand.m; sourceTree = "<group>"; };
 		8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIEvent.m; sourceTree = "<group>"; };
 		8D4DFB0F621ADB9B6EC6D85F /* GreetingsExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsExample.h; sourceTree = "<group>"; };
@@ -288,8 +288,8 @@
 				8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */,
 				8D4DF73DF1CB1A1C62D28CDF /* GCGIExtension.h */,
 				8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */,
-				8D4DF1B1A709D4865B6F635E /* GummiCommander.h */,
-				8D4DFA6DCDBCDBFB315A154D /* GummiCommander.m */,
+				8D4DF1B1A709D4865B6F635E /* GummiCommanderModule.h */,
+				8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */,
 			);
 			path = "Gummi Injection";
 			sourceTree = "<group>";
@@ -308,13 +308,6 @@
 				8D4DF320D10650DE621589B8 /* ServiceModule.m */,
 			);
 			path = ServiceExample;
-			sourceTree = "<group>";
-		};
-		8D4DF65133C5F2569160A8EC /* SDObjection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SDObjection;
 			sourceTree = "<group>";
 		};
 		8D4DF6C4FBB4B55AE41AF705 /* Classes */ = {
@@ -336,7 +329,6 @@
 				8D4DF49A56E9FBAE020BE966 /* GCObserverEntry.h */,
 				8D4DF0042F5C7450ACE40E9D /* GCObserverEntry.m */,
 				8D4DF54F951E9EC22D405151 /* Gummi Injection */,
-				8D4DF65133C5F2569160A8EC /* SDObjection */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -633,7 +625,7 @@
 				8D4DF7723CAA365EC2389657 /* GCGICommandMap.m in Sources */,
 				8D4DFC7B3C3FB6FAA327D880 /* GCGIEvent.m in Sources */,
 				8D4DF91D6A660DB34C55BA6C /* GCGIExtension.m in Sources */,
-				8D4DFF33A8EBDA00EDC5DE97 /* GummiCommander.m in Sources */,
+				8D4DFF33A8EBDA00EDC5DE97 /* GummiCommanderModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

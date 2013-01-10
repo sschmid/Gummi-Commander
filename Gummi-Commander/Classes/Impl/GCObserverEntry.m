@@ -11,13 +11,15 @@
 
 @implementation GCObserverEntry
 @synthesize observer = _observer;
+@synthesize eventClass = _eventClass;
 @synthesize selector = _selector;
 @synthesize priority = _priority;
 
-- (id)initWithObserver:(id)observer selector:(SEL)aSelector priority:(int)priority {
+- (id)initWithObserver:(id)observer event:(Class)eventClass selector:(SEL)aSelector priority:(int)priority {
     self = [super init];
     if (self) {
         self.observer = observer;
+        self.eventClass = eventClass;
         self.selector = aSelector;
         self.priority = priority;
     }

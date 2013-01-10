@@ -7,7 +7,7 @@
 
 #import "GreetingsExample.h"
 #import "GIInjector.h"
-#import "GummiCommander.h"
+#import "GummiCommanderModule.h"
 #import "GreetingsModule.h"
 #import "GreetingEvent.h"
 
@@ -18,9 +18,9 @@
     self = [super init];
     if (self) {
 
-        // Init Gummi
+        // Init Gummi Commander
         GIInjector *injector = [GIInjector sharedInjector];
-        [injector addModule:[[GummiCommander alloc] init]];
+        [injector addModule:[[GummiCommanderModule alloc] init]];
 
         // Plug in example
         [injector addModule:[[GreetingsModule alloc] init]];

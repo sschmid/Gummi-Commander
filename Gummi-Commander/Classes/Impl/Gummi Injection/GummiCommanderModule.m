@@ -5,12 +5,12 @@
 //
 
 
-#import "GummiCommander.h"
+#import "GummiCommanderModule.h"
 #import "GIInjector.h"
 #import "GCDefaultEventBus.h"
 
 
-@implementation GummiCommander
+@implementation GummiCommanderModule
 
 - (void)configure:(GIInjector *)injector {
     [super configure:injector];

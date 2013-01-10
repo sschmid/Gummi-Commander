@@ -8,7 +8,7 @@
 #import "Kiwi.h"
 #import "GIInjector.h"
 #import "GCGICommandMap.h"
-#import "GummiCommander.h"
+#import "GummiCommanderModule.h"
 #import "GCDefaultEventBus.h"
 #import "SomeEvent.h"
 #import "GCCommand.h"
@@ -30,12 +30,17 @@ SPEC_BEGIN(GCGICommandMapSpec)
             beforeEach(^{
                 [[GIInjector sharedInjector] reset];
                 injector = [GIInjector sharedInjector];
-                [injector addModule:[[GummiCommander alloc] init]];
+                [injector addModule:[[GummiCommanderModule alloc] init]];
                 commandMap = [injector getObject:@protocol(GCCommandMap)];
             });
 
             it(@"instantiates commandMap", ^{
                 [[commandMap should] beKindOfClass:[GCGICommandMap class]];
+            });
+
+            it(@"has eventBus", ^{
+                id eventBus = commandMap.eventBus;
+                [[eventBus should] conformToProtocol:@protocol(GCEventBus)];
             });
 
             it(@"has no mapping", ^{
@@ -75,75 +80,91 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
                 SomeEvent *event = [[SomeEvent alloc] init];
                 event.object = [[SomeObject alloc] init];
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
                 [eventBus postEvent:event];
 
-                [[theValue(event.object.flag) should] beYes];
+                [[theValue(event.object.flag) should] beNo];
             });
 
-            it(@"executes commands in right order", ^{
-                id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
-                SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[SomeObject alloc] init];
+            context(@"when assigned eventBus", ^{
 
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
+                beforeEach(^{
+                    commandMap.eventBus = [[GCDefaultEventBus alloc] init];
+                });
 
-                [eventBus postEvent:event];
+                it(@"has eventBus", ^{
+                    id eventBus = commandMap.eventBus;
+                    [[eventBus should] beKindOfClass:[GCDefaultEventBus class]];
+                });
 
-                [[event.string should] equal:@"12"];
-            });
+                it(@"executes a command", ^{
+                    SomeEvent *event = [[SomeEvent alloc] init];
+                    event.object = [[SomeObject alloc] init];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
+                    [commandMap.eventBus postEvent:event];
 
-            it(@"executes commands in right order", ^{
-                id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
-                SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[SomeObject alloc] init];
+                    [[theValue(event.object.flag) should] beYes];
+                });
 
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
+                it(@"executes commands in right order", ^{
+                    SomeEvent *event = [[SomeEvent alloc] init];
+                    event.object = [[SomeObject alloc] init];
 
-                [eventBus postEvent:event];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
 
-                [[event.string should] equal:@"21"];
-            });
+                    [commandMap.eventBus postEvent:event];
 
-            it(@"executes commands in right order", ^{
-                id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
-                SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[SomeObject alloc] init];
+                    [[event.string should] equal:@"12"];
+                });
 
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10];
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class] priority:20];
+                it(@"executes commands in right order", ^{
+                    SomeEvent *event = [[SomeEvent alloc] init];
+                    event.object = [[SomeObject alloc] init];
 
-                [eventBus postEvent:event];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
 
-                [[event.string should] equal:@"21"];
-            });
+                    [commandMap.eventBus postEvent:event];
 
-            it(@"executes commands in right order", ^{
-                id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
-                SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[SomeObject alloc] init];
+                    [[event.string should] equal:@"21"];
+                });
 
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class] priority:20];
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10];
+                it(@"executes commands in right order", ^{
+                    SomeEvent *event = [[SomeEvent alloc] init];
+                    event.object = [[SomeObject alloc] init];
 
-                [eventBus postEvent:event];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class] priority:20];
 
-                [[event.string should] equal:@"21"];
-            });
+                    [commandMap.eventBus postEvent:event];
 
-            it(@"auto removes mapping", ^{
-                id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
-                SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[SomeObject alloc] init];
+                    [[event.string should] equal:@"21"];
+                });
 
-                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10 removeMappingAfterExecution:YES];
+                it(@"executes commands in right order", ^{
+                    SomeEvent *event = [[SomeEvent alloc] init];
+                    event.object = [[SomeObject alloc] init];
 
-                [eventBus postEvent:event];
-                [eventBus postEvent:event];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class] priority:20];
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10];
 
-                [[event.string should] equal:@"1"];
+                    [commandMap.eventBus postEvent:event];
+
+                    [[event.string should] equal:@"21"];
+                });
+
+                it(@"auto removes mapping", ^{
+                    SomeEvent *event = [[SomeEvent alloc] init];
+                    event.object = [[SomeObject alloc] init];
+
+                    [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10 removeMappingAfterExecution:YES];
+
+                    [commandMap.eventBus postEvent:event];
+                    [commandMap.eventBus postEvent:event];
+
+                    [[event.string should] equal:@"1"];
+                });
+
             });
 
             context(@"guards", ^{
