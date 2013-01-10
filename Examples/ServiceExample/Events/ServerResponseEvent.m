@@ -1,5 +1,5 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
@@ -11,7 +11,7 @@
 @implementation ServerResponseEvent
 
 - (id)initWithResponse:(NSString *)response {
-    self = [self initWithName:NSStringFromClass([self class])];
+    self = [self init];
     self.response = response;
 
     return self;

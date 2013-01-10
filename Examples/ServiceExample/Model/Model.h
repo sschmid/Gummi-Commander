@@ -1,5 +1,5 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //

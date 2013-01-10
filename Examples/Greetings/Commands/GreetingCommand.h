@@ -1,15 +1,15 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import <Foundation/Foundation.h>
-#import "SDCommand.h"
+#import "GCCommand.h"
 
 @class GreetingEvent;
 
-@interface GreetingCommand : NSObject <SDCommand>
+@interface GreetingCommand : NSObject <GCCommand>
 @property(nonatomic) GreetingEvent *event;
 @end

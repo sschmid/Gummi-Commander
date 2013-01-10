@@ -1,20 +1,19 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import <Foundation/Foundation.h>
-#import "SDBaseEvent.h"
+#import "GCGIEvent.h"
 
 
-@interface GreetingEvent : SDBaseEvent
+@interface GreetingEvent : GCGIEvent
 @property(nonatomic, copy) NSString *greeting;
 
 - (id)initWithGreeting:(NSString *)greeting;
 
 + (void)greet:(NSString *)greeting;
-
 
 @end

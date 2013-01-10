@@ -1,12 +1,12 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import <Foundation/Foundation.h>
-#import "SDModule.h"
+#import "GCGIExtension.h"
 
-@interface ServiceModule : SDModule
+@interface ServiceModule : GCGIExtension
 @end

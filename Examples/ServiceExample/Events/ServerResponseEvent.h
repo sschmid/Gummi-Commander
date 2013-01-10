@@ -1,15 +1,15 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import <Foundation/Foundation.h>
-#import "SDBaseEvent.h"
+#import "GCGIEvent.h"
 
 
-@interface ServerResponseEvent : SDBaseEvent
+@interface ServerResponseEvent : GCGIEvent
 @property(nonatomic, strong) NSString *response;
 
 - (id)initWithResponse:(NSString *)response;

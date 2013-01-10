@@ -1,7 +1,8 @@
 platform :ios, '5.0'
 
-pod 'SDObjection'
+pod "Gummi-Injection", :head
+pod "Gummi-Dispatcher", :head
 
-target :GummiTests, :exclusive => true do
+target "Gummi-CommanderTests", :exclusive => true do
     pod 'Kiwi'
 end

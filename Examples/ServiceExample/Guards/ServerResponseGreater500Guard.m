@@ -1,18 +1,17 @@
 //
-// Created by sschmid on 02.12.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import "ServerResponseGreater500Guard.h"
-#import "Objection.h"
+#import "GIInjector.h"
 
 
 @implementation ServerResponseGreater500Guard
-objection_requires(@"event")
+inject(@"event")
 @synthesize event = _event;
-
 
 - (BOOL)approve {
     return [self.event.response intValue] > 500;

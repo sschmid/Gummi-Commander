@@ -1,5 +1,5 @@
 //
-// Created by sschmid on 27.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
@@ -11,7 +11,7 @@
 @synthesize greeting = _greeting;
 
 - (id)initWithGreeting:(NSString *)greeting {
-    self = [self initWithName:NSStringFromClass([self class])];
+    self = [self init];
     self.greeting = greeting;
 
     return self;

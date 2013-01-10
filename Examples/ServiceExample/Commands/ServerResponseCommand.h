@@ -1,18 +1,18 @@
 //
-// Created by sschmid on 30.11.12.
+// Created by Simon Schmid
 //
 // contact@sschmid.com
 //
 
 
 #import <Foundation/Foundation.h>
-#import "SDCommand.h"
+#import "GCCommand.h"
 
 @class ServerResponseEvent;
 @class Model;
 
 
-@interface ServerResponseCommand : NSObject <SDCommand>
+@interface ServerResponseCommand : NSObject <GCCommand>
 @property(nonatomic, strong) ServerResponseEvent *event;
 @property(nonatomic, strong) Model *model;
 @end
