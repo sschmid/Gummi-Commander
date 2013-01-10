@@ -7,10 +7,10 @@
 
 #import "GCGICommandMap.h"
 #import "GIInjector.h"
-#import "GCEvent.h"
 #import "GCCommand.h"
 #import "GCGuard.h"
-#import "GCEventBus.h"
+#import "GDDispatcher.h"
+
 
 @interface GCGICommandMap ()
 @property(nonatomic, strong) NSMutableDictionary *map;
@@ -18,8 +18,8 @@
 
 @implementation GCGICommandMap
 
-inject(@"eventBus", @"injector")
-@synthesize eventBus = _eventBus;
+inject(@"dispatcher", @"injector")
+@synthesize dispatcher = _dispatcher;
 @synthesize injector = _injector;
 @synthesize map = _map;
 
@@ -44,7 +44,7 @@ inject(@"eventBus", @"injector")
 }
 
 - (GCMapping *)mapEvent:(Class)event toCommand:(Class)command priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    [self.eventBus addObserver:self forEvent:event withSelector:@selector(executeCommand:) priority:priority];
+    [self.dispatcher addObserver:self forObject:event withSelector:@selector(executeCommand:) priority:priority];
     GCMapping *mapping = [[GCMapping alloc] initWithEvent:event command:command priority:priority remove:remove];
     [self insertMapping:mapping intoMappingsForEvent:[self getMappingsForEvent:event] withPriority:priority];
     return mapping;
@@ -64,7 +64,7 @@ inject(@"eventBus", @"injector")
         if ([mapping.commandClass isEqual:command]) {
             [mappingsForEvent removeObject:mapping];
             if (mappingsForEvent.count == 0)
-                [self.eventBus removeObserver:self fromEvent:event];
+                [self.dispatcher removeObserver:self fromObject:event];
 
             return;
         }
@@ -73,7 +73,7 @@ inject(@"eventBus", @"injector")
 
 - (void)unMapAll {
     [self.map removeAllObjects];
-    [self.eventBus removeObserver:self];
+    [self.dispatcher removeObserver:self];
 }
 
 - (BOOL)isEvent:(Class)event mappedToCommand:(Class)command {
@@ -112,7 +112,7 @@ inject(@"eventBus", @"injector")
     return mappingsForEvent;
 }
 
-- (void)executeCommand:(NSObject <GCEvent> *)event {
+- (void)executeCommand:(id)event {
     for (GCMapping *mapping in [[self getMappingsForEvent:[event class]] copy]) {
         [self.injector map:event to:[event class]];
         if ([self allGuardsApprove:mapping.guards]) {

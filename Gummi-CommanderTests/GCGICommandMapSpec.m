@@ -9,16 +9,16 @@
 #import "GIInjector.h"
 #import "GCGICommandMap.h"
 #import "GummiCommanderModule.h"
-#import "GCDefaultEventBus.h"
 #import "SomeEvent.h"
 #import "GCCommand.h"
 #import "SomeCommand.h"
-#import "SomeObject.h"
 #import "SomeOtherCommand.h"
 #import "SomeGuard.h"
 #import "NoGuard.h"
 #import "YesGuard.h"
 #import "DependencyGuard.h"
+#import "GDDispatcher.h"
+#import "FlagObject.h"
 
 
 SPEC_BEGIN(GCGICommandMapSpec)
@@ -38,9 +38,9 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 [[commandMap should] beKindOfClass:[GCGICommandMap class]];
             });
 
-            it(@"has eventBus", ^{
-                id eventBus = commandMap.eventBus;
-                [[eventBus should] conformToProtocol:@protocol(GCEventBus)];
+            it(@"has dispatcher", ^{
+                id dispatcher = commandMap.dispatcher;
+                [[dispatcher should] beKindOfClass:[GDDispatcher class]];
             });
 
             it(@"has no mapping", ^{
@@ -66,101 +66,101 @@ SPEC_BEGIN(GCGICommandMapSpec)
 
             it(@"removes all mappings", ^{
                 [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
-                [commandMap mapEvent:[SomeObject class] toCommand:[SomeOtherCommand class]];
+                [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
                 [commandMap unMapAll];
 
                 BOOL has1 = [commandMap isEvent:[SomeEvent class] mappedToCommand:[SomeCommand class]];
-                BOOL has2 = [commandMap isEvent:[SomeObject class] mappedToCommand:[SomeOtherCommand class]];
+                BOOL has2 = [commandMap isEvent:[SomeEvent class] mappedToCommand:[SomeOtherCommand class]];
 
                 [[theValue(has1) should] beNo];
                 [[theValue(has2) should] beNo];
             });
 
             it(@"executes a command", ^{
-                id <GCEventBus> eventBus = [injector getObject:@protocol(GCEventBus)];
+                GDDispatcher *dispatcher = [injector getObject:[GDDispatcher class]];
                 SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[SomeObject alloc] init];
-                [eventBus postEvent:event];
+                event.object = [[FlagObject alloc] init];
+                [dispatcher dispatchObject:event];
 
                 [[theValue(event.object.flag) should] beNo];
             });
 
-            context(@"when assigned eventBus", ^{
+            context(@"when assigned dispatcher", ^{
 
                 beforeEach(^{
-                    commandMap.eventBus = [[GCDefaultEventBus alloc] init];
+                    commandMap.dispatcher = [[GDDispatcher alloc] init];
                 });
 
-                it(@"has eventBus", ^{
-                    id eventBus = commandMap.eventBus;
-                    [[eventBus should] beKindOfClass:[GCDefaultEventBus class]];
+                it(@"has dispatcher", ^{
+                    id dispatcher = commandMap.dispatcher;
+                    [[dispatcher should] beKindOfClass:[GDDispatcher class]];
                 });
 
                 it(@"executes a command", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[SomeObject alloc] init];
+                    event.object = [[FlagObject alloc] init];
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
-                    [commandMap.eventBus postEvent:event];
+                    [commandMap.dispatcher dispatchObject:event];
 
                     [[theValue(event.object.flag) should] beYes];
                 });
 
                 it(@"executes commands in right order", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[SomeObject alloc] init];
+                    event.object = [[FlagObject alloc] init];
 
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
 
-                    [commandMap.eventBus postEvent:event];
+                    [commandMap.dispatcher dispatchObject:event];
 
                     [[event.string should] equal:@"12"];
                 });
 
                 it(@"executes commands in right order", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[SomeObject alloc] init];
+                    event.object = [[FlagObject alloc] init];
 
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class]];
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class]];
 
-                    [commandMap.eventBus postEvent:event];
+                    [commandMap.dispatcher dispatchObject:event];
 
                     [[event.string should] equal:@"21"];
                 });
 
                 it(@"executes commands in right order", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[SomeObject alloc] init];
+                    event.object = [[FlagObject alloc] init];
 
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10];
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class] priority:20];
 
-                    [commandMap.eventBus postEvent:event];
+                    [commandMap.dispatcher dispatchObject:event];
 
                     [[event.string should] equal:@"21"];
                 });
 
                 it(@"executes commands in right order", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[SomeObject alloc] init];
+                    event.object = [[FlagObject alloc] init];
 
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeOtherCommand class] priority:20];
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10];
 
-                    [commandMap.eventBus postEvent:event];
+                    [commandMap.dispatcher dispatchObject:event];
 
                     [[event.string should] equal:@"21"];
                 });
 
                 it(@"auto removes mapping", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[SomeObject alloc] init];
+                    event.object = [[FlagObject alloc] init];
 
                     [commandMap mapEvent:[SomeEvent class] toCommand:[SomeCommand class] priority:10 removeMappingAfterExecution:YES];
 
-                    [commandMap.eventBus postEvent:event];
-                    [commandMap.eventBus postEvent:event];
+                    [commandMap.dispatcher dispatchObject:event];
+                    [commandMap.dispatcher dispatchObject:event];
 
                     [[event.string should] equal:@"1"];
                 });
@@ -213,7 +213,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         it(@"prevents command execution when guard does not approve", ^{
                             [mapping withGuards:[NSArray arrayWithObject:[NoGuard class]]];
                             SomeEvent *event = [[SomeEvent alloc] init];
-                            event.object = [[SomeObject alloc] init];
+                            event.object = [[FlagObject alloc] init];
                             [event dispatch];
 
                             [[theValue(event.object.flag) should] beNo];
@@ -222,7 +222,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         it(@"executes command when guard approves", ^{
                             [mapping withGuards:[NSArray arrayWithObject:[YesGuard class]]];
                             SomeEvent *event = [[SomeEvent alloc] init];
-                            event.object = [[SomeObject alloc] init];
+                            event.object = [[FlagObject alloc] init];
                             [event dispatch];
 
                             [[theValue(event.object.flag) should] beYes];
@@ -231,7 +231,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         it(@"injects dependencies into guards", ^{
                             [mapping withGuards:[NSArray arrayWithObject:[DependencyGuard class]]];
                             SomeEvent *event = [[SomeEvent alloc] init];
-                            event.object = [[SomeObject alloc] init];
+                            event.object = [[FlagObject alloc] init];
                             [event dispatch];
 
                             [[theValue(event.object.flag) should] beYes];

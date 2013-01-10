@@ -5,9 +5,9 @@
 //
 
 
-#import "SomeObject.h"
+#import "FlagObject.h"
 
 
-@implementation SomeObject
+@implementation FlagObject
 @synthesize flag = _flag;
 @end

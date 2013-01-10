@@ -8,9 +8,9 @@
 #import <Foundation/Foundation.h>
 #import "GCGIEvent.h"
 
-@class SomeObject;
+@class FlagObject;
 
 @interface SomeEvent : GCGIEvent
-@property(nonatomic, strong) SomeObject *object;
+@property(nonatomic, strong) FlagObject *object;
 @property(nonatomic, strong) NSString *string;
 @end

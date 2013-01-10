@@ -8,10 +8,10 @@
 #import "GCCommandMap.h"
 
 
-@protocol GCEventBus;
+@class GDDispatcher;
 @class GIInjector;
 
 @interface GCGICommandMap : NSObject <GCCommandMap>
-@property(nonatomic, strong) id <GCEventBus> eventBus;
+@property(nonatomic, strong) GDDispatcher *dispatcher;
 @property(nonatomic, strong) GIInjector *injector;
 @end

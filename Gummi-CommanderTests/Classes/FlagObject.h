@@ -6,9 +6,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "GCEvent.h"
 
 
-@interface GCGIEvent : NSObject <GCEvent>
-+ (void)dispatch;
+@interface FlagObject : NSObject
+@property(nonatomic) BOOL flag;
 @end

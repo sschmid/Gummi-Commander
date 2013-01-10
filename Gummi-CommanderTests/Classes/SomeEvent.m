@@ -6,7 +6,7 @@
 
 
 #import "SomeEvent.h"
-#import "SomeObject.h"
+
 
 @implementation SomeEvent
 @synthesize string = _string;

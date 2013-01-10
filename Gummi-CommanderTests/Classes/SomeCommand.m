@@ -9,7 +9,8 @@
 #import "SomeCommand.h"
 #import "GIInjector.h"
 #import "SomeEvent.h"
-#import "SomeObject.h"
+#import "FlagObject.h"
+
 
 @implementation SomeCommand
 inject(@"event");

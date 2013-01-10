@@ -7,7 +7,7 @@
 
 #import "GummiCommanderModule.h"
 #import "GIInjector.h"
-#import "GCDefaultEventBus.h"
+#import "GDDispatcher.h"
 
 
 @implementation GummiCommanderModule
@@ -16,7 +16,7 @@
     [super configure:injector];
 
     [self map:_injector to:[GIInjector class] ];
-    [self mapSingleton:[GCDefaultEventBus class] to:@protocol(GCEventBus) lazy:YES];
+    [self mapSingleton:[GDDispatcher class] to:[GDDispatcher class] lazy:YES];
     [self map:[GCGICommandMap class] to:@protocol(GCCommandMap)];
 
     NSLog(@"Gummi Commander initialized.");

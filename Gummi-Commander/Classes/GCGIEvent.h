@@ -5,6 +5,6 @@
 //
 
 
-@protocol GCEvent <NSObject>
+@interface GCGIEvent : NSObject
 - (void)dispatch;
 @end
