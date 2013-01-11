@@ -1,7 +1,7 @@
 ## Gummi Commander
 ![Gummi Commander Logo](http://sschmid.com/Libs/Gummi-Commander/Gummi-Commander-128.png)
 
-Gummi Commander is a Command Event Mapping System for Objective-C.
+Gummi Commander is a Event Command Mapping System for Objective-C.
 It uses [Gummi Injection] for Dependency Injection and [Gummi Dispatcher] as a Messaging System.
 
 ## Set up Gummi
