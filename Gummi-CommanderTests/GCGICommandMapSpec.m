@@ -203,7 +203,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         });
 
                         it(@"has guard", ^{
-                            guards = [NSArray arrayWithObject:[SomeGuard class]];
+                            guards = @[[SomeGuard class]];
                             [mapping withGuards:guards];
                             BOOL has = [mapping hasGuard:[SomeGuard class]];
 
@@ -211,7 +211,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         });
 
                         it(@"prevents command execution when guard does not approve", ^{
-                            [mapping withGuards:[NSArray arrayWithObject:[NoGuard class]]];
+                            [mapping withGuards:@[[NoGuard class]]];
                             SomeEvent *event = [[SomeEvent alloc] init];
                             event.object = [[FlagObject alloc] init];
                             [event dispatch];
@@ -220,7 +220,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         });
 
                         it(@"executes command when guard approves", ^{
-                            [mapping withGuards:[NSArray arrayWithObject:[YesGuard class]]];
+                            [mapping withGuards:@[[YesGuard class]]];
                             SomeEvent *event = [[SomeEvent alloc] init];
                             event.object = [[FlagObject alloc] init];
                             [event dispatch];
@@ -229,7 +229,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         });
 
                         it(@"injects dependencies into guards", ^{
-                            [mapping withGuards:[NSArray arrayWithObject:[DependencyGuard class]]];
+                            [mapping withGuards:@[[DependencyGuard class]]];
                             SomeEvent *event = [[SomeEvent alloc] init];
                             event.object = [[FlagObject alloc] init];
                             [event dispatch];
@@ -242,7 +242,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 });
 
                 it(@"has guard", ^{
-                    [[commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]] withGuards:[NSArray arrayWithObject:[SomeGuard class]]];
+                    [[commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]] withGuards:@[[SomeGuard class]]];
                     BOOL has = [[commandMap mappingForCommand:[SomeCommand class] event:[SomeEvent class]] hasGuard:[SomeGuard class]];
 
                     [[theValue(has) should] beYes];

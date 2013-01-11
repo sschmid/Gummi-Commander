@@ -21,7 +21,7 @@
 
     // Map events to commands
     [[self mapCommand:[ServerResponseCommand class] toEvent:[ServerResponseEvent class]]
-            withGuards:[NSArray arrayWithObject:[ServerResponseGreater500Guard class]]];
+            withGuards:@[[ServerResponseGreater500Guard class]]];
 
     // Set injection rules
     [self mapSingleton:[Model class] to:[Model class]];
