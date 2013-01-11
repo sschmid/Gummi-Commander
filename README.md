@@ -1,59 +1,33 @@
-## Gummi
+## Gummi Commander
+![Gummi Commander Logo](http://sschmid.com/Libs/Gummi-Commander/Gummi-Commander-128.png)
 
-Gummi is an Event Command Mapping System for Objective-C.
-It uses [SDObjection] for Dependency Injection.
-
-## How to use:
-
-See examples:
-* Greetings
-* Service
+Gummi Commander is a Event Command Mapping System for Objective-C.
+It uses [Gummi Injection] for Dependency Injection and [Gummi Dispatcher] as a Messaging System.
 
 ## Set up Gummi
 
+You can get started by simply allocating a commandMap.
+
+To get the 'best experience' you may want to put your logic into different modules and add them to the Injector.
+There is GummiCommanderModule provided, that sets up some basic mappings for you to get started.
+
 ```objective-c
-// Init Gummi
-JSObjectionInjector *injector = [JSObjection createInjector];
-[JSObjection setDefaultInjector:injector];
-[injector addModule:[[GummiModule alloc] init]];
-
-// Plug in example
-[injector addModule:[[GreetingsModule alloc] init]];
-
-// Logs greeting
-[GreetingEvent greet:@"Hello World!"];
-
-// Does not greet anymore
-[injector removeModuleClass:[GreetingsModule class]];
-[GreetingEvent greet:@"No one hears me :("];
+GIInjector *injector = [GIInjector sharedInjector];
+[injector addModule:[[GummiCommanderModule alloc] init]];
 ```
 
-#### GreetingModule
+## CommandMap:
 
+When an instance of MyEvent gets dispatched, all mapped commands get executed
 ```objective-c
-
-- (void)configure {
-    [super configure];
-
-    [self mapEventClass:[GreetingEvent class] toCommandClass:[GreetingCommand class]];
-    
-    // Mappings get automatically unmapped, when module gets removed.
-}
-```
-
-#### CommandMap supports:
-
-```objective-c
-[commandMap mapEventClass:[MyEvent class] toCommandClass:[MyCommand class]];
-[commandMap mapEventClass:[MyEvent class] toCommandClass:[MyOtherCommand class] removeMappingAfterExecution:YES];
-[commandMap mapEventClass:[MyEvent class] toCommandClass:[ACommand class] priority: 5];
-[commandMap mapEventClass:[MyEvent class] toCommandClass:[AnOtherCommand class] priority: 10 removeMappingAfterExecution:NO];
-
-and more...
+[commandMap mapCommand:[MyCommand class] toEvent:[MyEvent class]];
+[commandMap mapCommand:[MyOtherCommand class] toEvent:[MyEvent class] removeMappingAfterExecution:YES];
+[commandMap mapCommand:[ACommand class] toEvent:[MyEvent class] priority: 5];
+[commandMap mapCommand:[AnOtherCommand class] toEvent:[MyEvent class] priority: 10 removeMappingAfterExecution:NO];
 ```
 
 * Commands are short lived objects.
-* Commands get created and executed when posting an event.
+* Commands get created and executed when dispatching an event.
 * Commands can inject the corresponding event, models and more...
 * Commands get destroyed immediately after execution.
 
@@ -64,34 +38,38 @@ and more...
 * Guards decide, whether a command gets executed or not.
 * Only when all guards approve, a command gets executed.
 
-#### You can add guards to event-command-mappings like this:
+#### You can add guards to command-event-mappings like this:
 
 ```objective-c
 // Like so
-[[commandMap mapEventClass:[ServerResponseEvent class] toCommandClass:[ServerResponseCommand class]]
-	withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
+[[commandMap mapCommand:[ServerResponseCommand class] toEvent:[ServerResponseEvent class]]
+        withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
 
 
 // Same
-SDEventCommandMapping *mapping = [commandMap mapEventClass:[ServerResponseEvent class] toCommandClass:[ServerResponseCommand class]];
+GCMapping *mapping = [commandMap mapCommand:[ServerResponseCommand class] toEvent:[ServerResponseEvent class]];
 [mapping withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
 
 // Get mapping
-SDEventCommandMapping *mapping = [commandMap mappingForEventClass:[ServerResponseEvent class] commandClass:[ServerResponseCommand class]];
+GCMapping *mapping = [commandMap mappingForCommand:[ServerResponseCommand class] event:[ServerResponseEvent class]];
 [mapping withGuards:[NSArray arrayWithObject:[ServerResponseGuard class]]];
 ```
 
-## Use Gummi in your project
+## Use Gummi Commander in your project
 
-You find the source files you need in Gummi/Classes
+You find the source files you need in Gummi-Commander/Classes
 
+#### Dependencies
+Gummi Commander uses [Gummi Injection] for Dependency Injection and [Gummi Dispatcher] as a Messaging System.
+
+## CocoaPods
 Create a Podfile and put it into your root folder of your project
 
 #### Edit your Podfile
 ```
 platform :ios, '5.0'
 
-pod 'Gummi'
+pod 'Gummi-Commander'
 ```
 
 #### Setup [CocoaPods], if not done already
@@ -112,9 +90,10 @@ $ cd path/to/project
 $ pod install
 ```
 
-## Other projects using Gummi
+## Other projects using Gummi Commander
 
-If you enjoy using Gummi in your projects let me know, and I'll mention your projects here.
+If you enjoy using Gummi Commander in your projects let me know, and I'll mention your projects here.
 
 [cocoapods]: http://cocoapods.org/
-[SDObjection]: https://github.com/sschmid/SDObjection
+[Gummi Injection]: https://github.com/sschmid/Gummi-Injection/
+[Gummi Dispatcher]: https://github.com/sschmid/Gummi-Dispatcher/
