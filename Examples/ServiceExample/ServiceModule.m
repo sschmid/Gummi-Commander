@@ -20,12 +20,12 @@
     [super configure:injector];
 
     // Map events to commands
-    [[self mapEvent:[ServerResponseEvent class] toCommand:[ServerResponseCommand class]]
+    [[self mapCommand:[ServerResponseCommand class] toEvent:[ServerResponseEvent class]]
             withGuards:[NSArray arrayWithObject:[ServerResponseGreater500Guard class]]];
 
     // Set injection rules
-    [self mapSingleton:[Model class] to:[Model class] lazy:YES];
-    [self mapSingleton:[Service class] to:[Service class] lazy:NO];
+    [self mapSingleton:[Model class] to:[Model class]];
+    [self mapEagerSingleton:[Service class] to:[Service class]];
 }
 
 - (void)unload {
