@@ -18,9 +18,9 @@
     self = [super init];
     if (self) {
 
-// Init Gummi Commander
-GIInjector *injector = [GIInjector sharedInjector];
-[injector addModule:[[GummiCommanderModule alloc] init]];
+        // Init Gummi Commander
+        GIInjector *injector = [GIInjector sharedInjector];
+        [injector addModule:[[GummiCommanderModule alloc] init]];
 
         // Plug in example
         [injector addModule:[[GreetingsModule alloc] init]];

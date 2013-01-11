@@ -16,7 +16,7 @@
     [super configure:injector];
 
     [self map:_injector to:[GIInjector class] ];
-    [self mapSingleton:[GDDispatcher class] to:[GDDispatcher class] lazy:YES];
+    [self mapSingleton:[GDDispatcher class] to:[GDDispatcher class]];
     [self map:[GCGICommandMap class] to:@protocol(GCCommandMap)];
 
     NSLog(@"Gummi Commander initialized.");

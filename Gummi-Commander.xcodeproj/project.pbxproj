@@ -273,17 +273,15 @@
 			children = (
 				8D4DF3B15C116B1C948FC560 /* GCGICommandMap.h */,
 				8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */,
-				8D4DF1EBC94C0DEAA342CBDD /* GCCommand.h */,
-				8D4DF33936C87AE8B6DAFEAA /* GCCommandMap.h */,
 				8D4DFEACBF1B2C47E0AFAE63 /* GCGIEvent.h */,
 				8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */,
 				8D4DF73DF1CB1A1C62D28CDF /* GCGIExtension.h */,
 				8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */,
-				8D4DF7BC7E0256FC61F6020F /* GCGuard.h */,
 				8D4DF1E3054C8D744746F19E /* GCMapping.h */,
 				8D4DFF9A9B385114C11D7E03 /* GCMapping.m */,
 				8D4DF1B1A709D4865B6F635E /* GummiCommanderModule.h */,
 				8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */,
+				8D4DF8EE76C1A7EDFAF4EB00 /* Api */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -322,6 +320,16 @@
 				8D4DFF93E5B91AE225544210 /* Model.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8D4DF8EE76C1A7EDFAF4EB00 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF1EBC94C0DEAA342CBDD /* GCCommand.h */,
+				8D4DF7BC7E0256FC61F6020F /* GCGuard.h */,
+				8D4DF33936C87AE8B6DAFEAA /* GCCommandMap.h */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		8D4DFAD8C9F57BF1EBB2D80A /* Commands */ = {
