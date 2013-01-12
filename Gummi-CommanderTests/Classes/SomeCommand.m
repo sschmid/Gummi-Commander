@@ -4,7 +4,6 @@
 // contact@sschmid.com
 //
 
-
 #import "GCCommand.h"
 #import "SomeCommand.h"
 #import "GIInjector.h"
@@ -14,7 +13,6 @@
 
 @implementation SomeCommand
 inject(@"event");
-@synthesize event = _event;
 
 - (void)execute {
     self.event.object.flag = YES;

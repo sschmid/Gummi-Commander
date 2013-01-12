@@ -4,12 +4,10 @@
 // contact@sschmid.com
 //
 
-
 #import "ServiceExample.h"
 #import "ServiceModule.h"
 #import "GIInjector.h"
 #import "GummiCommanderModule.h"
-
 
 @implementation ServiceExample
 

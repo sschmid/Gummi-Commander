@@ -4,7 +4,7 @@
 // contact@sschmid.com
 //
 
-
+#import <Foundation/Foundation.h>
 #import "GCMapping.h"
 
 @protocol GCCommandMap <NSObject>

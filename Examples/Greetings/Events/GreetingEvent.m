@@ -4,11 +4,9 @@
 // contact@sschmid.com
 //
 
-
 #import "GreetingEvent.h"
 
 @implementation GreetingEvent
-@synthesize greeting = _greeting;
 
 - (id)initWithGreeting:(NSString *)greeting {
     self = [self init];

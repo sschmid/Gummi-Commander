@@ -4,7 +4,6 @@
 // contact@sschmid.com
 //
 
-
 #import "GCGIExtension.h"
 #import "GIInjector.h"
 
@@ -13,7 +12,6 @@
 @end
 
 @implementation GCGIExtension
-@synthesize commandMap = _commandMap;
 
 - (void)configure:(GIInjector *)injector {
     [super configure:injector];

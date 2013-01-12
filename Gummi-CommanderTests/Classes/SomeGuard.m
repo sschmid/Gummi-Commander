@@ -4,9 +4,7 @@
 // contact@sschmid.com
 //
 
-
 #import "SomeGuard.h"
-
 
 @implementation SomeGuard
 

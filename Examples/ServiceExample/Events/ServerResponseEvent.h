@@ -4,10 +4,8 @@
 // contact@sschmid.com
 //
 
-
 #import <Foundation/Foundation.h>
 #import "GCGIEvent.h"
-
 
 @interface ServerResponseEvent : GCGIEvent
 @property(nonatomic, strong) NSString *response;

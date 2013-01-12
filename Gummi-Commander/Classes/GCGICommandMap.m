@@ -4,24 +4,18 @@
 // contact@sschmid.com
 //
 
-
 #import "GCGICommandMap.h"
 #import "GIInjector.h"
 #import "GCCommand.h"
 #import "GCGuard.h"
 #import "GDDispatcher.h"
 
-
 @interface GCGICommandMap ()
 @property(nonatomic, strong) NSMutableDictionary *map;
 @end
 
 @implementation GCGICommandMap
-
 inject(@"dispatcher", @"injector")
-@synthesize dispatcher = _dispatcher;
-@synthesize injector = _injector;
-@synthesize map = _map;
 
 - (id)init {
     self = [super init];

@@ -4,7 +4,6 @@
 // contact@sschmid.com
 //
 
-
 #import "Kiwi.h"
 #import "GIInjector.h"
 #import "GCGICommandMap.h"
@@ -19,7 +18,6 @@
 #import "DependencyGuard.h"
 #import "GDDispatcher.h"
 #import "FlagObject.h"
-
 
 SPEC_BEGIN(GCGICommandMapSpec)
 

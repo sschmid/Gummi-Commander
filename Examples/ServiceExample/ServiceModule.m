@@ -4,7 +4,6 @@
 // contact@sschmid.com
 //
 
-
 #import "ServiceModule.h"
 #import "Model.h"
 #import "Service.h"
@@ -12,7 +11,6 @@
 #import "ServerResponseCommand.h"
 #import "ServerResponseGreater500Guard.h"
 #import "GIInjector.h"
-
 
 @implementation ServiceModule
 

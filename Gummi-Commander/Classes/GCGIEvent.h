@@ -4,6 +4,7 @@
 // contact@sschmid.com
 //
 
+#import <Foundation/Foundation.h>
 
 @interface GCGIEvent : NSObject
 - (void)dispatch;

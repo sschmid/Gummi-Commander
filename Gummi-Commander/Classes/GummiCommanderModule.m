@@ -4,11 +4,9 @@
 // contact@sschmid.com
 //
 
-
 #import "GummiCommanderModule.h"
 #import "GIInjector.h"
 #import "GDDispatcher.h"
-
 
 @implementation GummiCommanderModule
 

@@ -4,10 +4,8 @@
 // contact@sschmid.com
 //
 
-
 #import <Foundation/Foundation.h>
 #import "GCGIEvent.h"
-
 
 @interface GreetingEvent : GCGIEvent
 @property(nonatomic, copy) NSString *greeting;

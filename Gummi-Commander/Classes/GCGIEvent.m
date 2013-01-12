@@ -4,11 +4,9 @@
 // contact@sschmid.com
 //
 
-
 #import "GCGIEvent.h"
 #import "GIInjector.h"
 #import "GDDispatcher.h"
-
 
 @implementation GCGIEvent
 

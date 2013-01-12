@@ -4,9 +4,7 @@
 // contact@sschmid.com
 //
 
-
 #import "NoGuard.h"
-
 
 @implementation NoGuard
 

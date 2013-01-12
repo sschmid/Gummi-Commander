@@ -4,9 +4,7 @@
 // contact@sschmid.com
 //
 
-
 #import "GCMapping.h"
-
 
 @interface GCMapping ()
 @property(nonatomic, readwrite, strong) Class eventClass;
@@ -17,11 +15,6 @@
 @end
 
 @implementation GCMapping
-@synthesize eventClass = _eventClass;
-@synthesize commandClass = _commandClass;
-@synthesize priority = _priority;
-@synthesize remove = _remove;
-@synthesize guards = _guards;
 
 - (id)initWithEvent:(Class)eventClass command:(Class)commandClass priority:(int)priority remove:(BOOL)remove {
     self = [super init];

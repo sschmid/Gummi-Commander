@@ -4,12 +4,9 @@
 // contact@sschmid.com
 //
 
-
 #import "Model.h"
 
-
 @implementation Model
-@synthesize lastServerResponse = _lastServerResponse;
 
 - (id)init {
     self = [super init];

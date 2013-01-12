@@ -4,9 +4,7 @@
 // contact@sschmid.com
 //
 
-
 #import "YesGuard.h"
-
 
 @implementation YesGuard
 

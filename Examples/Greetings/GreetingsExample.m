@@ -4,13 +4,11 @@
 // contact@sschmid.com
 //
 
-
 #import "GreetingsExample.h"
 #import "GIInjector.h"
 #import "GummiCommanderModule.h"
 #import "GreetingsModule.h"
 #import "GreetingEvent.h"
-
 
 @implementation GreetingsExample
 

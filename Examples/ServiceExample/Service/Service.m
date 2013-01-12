@@ -4,18 +4,14 @@
 // contact@sschmid.com
 //
 
-
 #import "Service.h"
 #import "ServerResponseEvent.h"
 
-
 @interface Service ()
 @property(nonatomic, strong) NSTimer *timer;
-
 @end
 
 @implementation Service
-@synthesize timer = _timer;
 
 - (id)init {
     self = [super init];

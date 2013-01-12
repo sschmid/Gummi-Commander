@@ -4,9 +4,7 @@
 // contact@sschmid.com
 //
 
-
 #import "ServerResponseEvent.h"
-
 
 @implementation ServerResponseEvent
 

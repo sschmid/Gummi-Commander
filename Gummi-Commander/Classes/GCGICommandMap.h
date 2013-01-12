@@ -4,9 +4,8 @@
 // contact@sschmid.com
 //
 
-
+#import <Foundation/Foundation.h>
 #import "GCCommandMap.h"
-
 
 @class GDDispatcher;
 @class GIInjector;

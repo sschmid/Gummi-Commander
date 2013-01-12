@@ -4,7 +4,6 @@
 // contact@sschmid.com
 //
 
-
 #import "Kiwi.h"
 
 SPEC_BEGIN(GummiCommanderSpec)

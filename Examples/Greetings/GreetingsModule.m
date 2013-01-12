@@ -4,7 +4,6 @@
 // contact@sschmid.com
 //
 
-
 #import "GCGIExtension.h"
 #import "GreetingsModule.h"
 #import "GreetingEvent.h"

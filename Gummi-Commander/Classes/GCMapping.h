@@ -4,9 +4,7 @@
 // contact@sschmid.com
 //
 
-
 #import <Foundation/Foundation.h>
-
 
 @interface GCMapping : NSObject
 @property(nonatomic, readonly, strong) Class eventClass;
