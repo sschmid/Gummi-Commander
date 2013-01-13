@@ -36,7 +36,7 @@
 <p><img src="http://sschmid.com/Libs/Gummi-Commander/Gummi-Commander-128.png" alt="Gummi Commander Logo"></p>
 
 <p>Gummi Commander is an Event Command Mapping System for Objective-C.
-It uses <a href="https://github.com/sschmid/Gummi-Injection/">Gummi Injection</a> for Dependency Injection and <a href="https://github.com/sschmid/Gummi-Dispatcher/">Gummi Dispatcher</a> as a Messaging System.</p>
+It uses <a href="http://sschmid.github.com/Gummi-Injection/">Gummi Injection</a> for Dependency Injection and <a href="http://sschmid.github.com/Gummi-Dispatcher/">Gummi Dispatcher</a> as a Messaging System.</p>
 
 <h2>Features</h2>
 
@@ -57,7 +57,8 @@ The provided GummiCommanderModule should be added first.</p>
 
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">ApplicationExtension</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
 
-<span class="c1">// Maybe add this extension later in the code, right before the game starts</span>
+<span class="c1">// Maybe add this extension later in the code,</span>
+<span class="c1">// right before the game starts</span>
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">GameExtension</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
 </pre></div>
 
@@ -66,9 +67,14 @@ The provided GummiCommanderModule should be added first.</p>
 <p>When an instance of MyEvent gets dispatched, all mapped commands get executed</p>
 
 <div class="highlight"><pre><span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">MyCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]];</span>
-<span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">MyOtherCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span> <span class="nl">removeMappingAfterExecution:</span><span class="n">YES</span><span class="p">];</span>
-<span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ACommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span> <span class="nl">priority:</span> <span class="mi">5</span><span class="p">];</span>
-<span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">AnOtherCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span> <span class="nl">priority:</span> <span class="mi">10</span><span class="p">];</span>
+<span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">MyOtherCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span>
+                          <span class="nl">removeMappingAfterExecution:</span><span class="n">YES</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ACommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span>
+                                       <span class="nl">priority:</span> <span class="mi">5</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">AnOtherCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span>
+                                             <span class="nl">priority:</span> <span class="mi">10</span><span class="p">];</span>
 </pre></div>
 
 <ul>
@@ -84,8 +90,9 @@ The provided GummiCommanderModule should be added first.</p>
 <li>Only when all guards approve, a command gets executed.</li>
 </ul><h4>You can add guards like this:</h4>
 
-<div class="highlight"><pre><span class="p">[[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
-        <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGuard</span> <span class="n">class</span><span class="p">]]];</span>
+<div class="highlight"><pre><span class="p">[[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span>
+                <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
+             <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGuard</span> <span class="n">class</span><span class="p">]]];</span>
 </pre></div>
 
 <h2>Extension</h2>
@@ -98,8 +105,9 @@ The provided GummiCommanderModule should be added first.</p>
     <span class="p">[</span><span class="n">super</span> <span class="nl">configure:</span><span class="n">injector</span><span class="p">];</span>
 
     <span class="c1">// Map commands to events</span>
-    <span class="p">[[</span><span class="n">self</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
-            <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGreater500Guard</span> <span class="n">class</span><span class="p">]]];</span>
+    <span class="p">[[</span><span class="n">self</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span>
+              <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
+           <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGreater500Guard</span> <span class="n">class</span><span class="p">]]];</span>
 
     <span class="c1">// Set injection rules</span>
     <span class="p">[</span><span class="n">self</span> <span class="nl">mapEagerSingleton:</span><span class="p">[</span><span class="n">Service</span> <span class="n">class</span><span class="p">]</span> <span class="nl">to:</span><span class="p">[</span><span class="n">Service</span> <span class="n">class</span><span class="p">]];</span>
@@ -109,8 +117,8 @@ The provided GummiCommanderModule should be added first.</p>
     <span class="n">Service</span> <span class="o">*</span><span class="n">service</span> <span class="o">=</span> <span class="p">[</span><span class="n">_injector</span> <span class="nl">getObject:</span><span class="p">[</span><span class="n">Service</span> <span class="n">class</span><span class="p">]];</span>
     <span class="p">[</span><span class="n">service</span> <span class="n">close</span><span class="p">];</span>
 
-    <span class="c1">// All mappings from the CommandMap and the Injector made in this module</span>
-    <span class="c1">// get removed automatically.</span>
+    <span class="c1">// All mappings from the CommandMap and the Injector made</span>
+    <span class="c1">// in this module get removed automatically.</span>
 
     <span class="p">[</span><span class="n">super</span> <span class="n">unload</span><span class="p">];</span>
 <span class="p">}</span>
