@@ -6,7 +6,7 @@ Gummi Commander is an Event Command Mapping System for Objective-C.
 
 ## Dependencies
 Gummi Commander uses
-* [Gummi Injection] (https://github.com/sschmid/Gummi-Injection) for Dependency Injection
+* [Gummi Injection] (https://github.com/sschmid/Gummi-Injection) for Dependency Injection.
 * [Gummi Dispatcher] (https://github.com/sschmid/Gummi-Dispatcher) as a Messaging System.
 
 ## Features
@@ -27,12 +27,31 @@ GIInjector *injector = [GIInjector sharedInjector];
 
 [injector addModule:[[ApplicationExtension alloc] init]];
 
-// Maybe add this extension later in the code, right before the game starts
+// Maybe add this extension later in the code,
+// right before the game starts
 [injector addModule:[[GameExtension alloc] init]];
+```
+
+## Commands
+* Commands are short lived objects.
+* Commands get created and executed when dispatching an event.
+* Commands can inject the corresponding event, models and more...
+* Commands get destroyed immediately after execution.
+
+```objective-c
+@implementation ServerResponseCommand
+inject(@"event", @"model")
+
+- (void)execute {
+    self.model.lastServerResponse = self.event.response;
+}
+
+@end
 ```
 
 ## The CommandMap
 When an instance of MyEvent gets dispatched, all mapped commands get executed
+
 ```objective-c
 [commandMap mapCommand:[MyCommand class] toEvent:[MyEvent class]];
 [commandMap mapCommand:[MyOtherCommand class] toEvent:[MyEvent class]
@@ -45,17 +64,24 @@ When an instance of MyEvent gets dispatched, all mapped commands get executed
                                              priority: 10];
 ```
 
-* Commands are short lived objects.
-* Commands get created and executed when dispatching an event.
-* Commands can inject the corresponding event, models and more...
-* Commands get destroyed immediately after execution.
-
 ## Guards
 * Guards do only one thing: approve.
 * Guards decide, whether a command gets executed or not.
 * Only when all guards approve, a command gets executed.
 
+```objective-c
+@implementation ServerResponseGreater500Guard
+inject(@"event")
+
+- (BOOL)approve {
+    return [self.event.response intValue] > 500;
+}
+
+@end
+```
+
 #### You can add guards like this:
+
 ```objective-c
 [[commandMap mapCommand:[ServerResponseCommand class]
                 toEvent:[ServerResponseEvent class]]
@@ -64,6 +90,7 @@ When an instance of MyEvent gets dispatched, all mapped commands get executed
 
 ## Extensions
 Put related configuration logic into extensions and add or remove them at will
+
 ```objective-c
 @implementation ServiceExtension
 
@@ -90,19 +117,16 @@ Put related configuration logic into extensions and add or remove them at will
 }
 ```
 
-## Ideas / Roadmap
-* Add method mapCommandOnce:toEvent:
-
-
 ## Install Gummi Commander
 You find the source files you need in Gummi-Commander/Classes.
 
 You also need:
 * [Gummi Dispatcher] (https://github.com/sschmid/Gummi-Dispatcher) Observe and dispatch any objects
-* [Dependecy Injection] (https://github.com/sschmid/Gummi-Injection) A lightweight dependency injection framework for Objective-C.
+* [Gummi Injection] (https://github.com/sschmid/Gummi-Injection) A lightweight dependency injection framework for Objective-C
 
 ## CocoaPods
 Install [CocoaPods] (http://cocoapods.org) and add the Gummi Commander reference to your Podfile
+
 ```
 platform :ios, '5.0'
   pod 'Gummi-Commander'
@@ -110,11 +134,13 @@ end
 ```
 
 #### Add this remote
+
 ```
 $ pod repo add sschmid-cocoapods-specs https://github.com/sschmid/cocoapods-specs
 ```
 
 #### Install Gummi Commander
+
 ```
 $ cd path/to/project
 $ pod install
