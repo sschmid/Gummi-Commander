@@ -24,36 +24,36 @@
     [super unload];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass {
-    return [self.commandMap mapCommand:commandClass toEvent:eventClass];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass {
+    return [self.commandMap mapCommand:commandClass toObject:objectClass];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass priority:(int)priority {
-    return [self.commandMap mapCommand:commandClass toEvent:eventClass priority:priority];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority {
+    return [self.commandMap mapCommand:commandClass toObject:objectClass priority:priority];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass removeMappingAfterExecution:(BOOL)remove {
-    return [self.commandMap mapCommand:commandClass toEvent:eventClass removeMappingAfterExecution:remove];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass removeMappingAfterExecution:(BOOL)remove {
+    return [self.commandMap mapCommand:commandClass toObject:objectClass removeMappingAfterExecution:remove];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    return [self.commandMap mapCommand:commandClass toEvent:eventClass priority:priority removeMappingAfterExecution:remove];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
+    return [self.commandMap mapCommand:commandClass toObject:objectClass priority:priority removeMappingAfterExecution:remove];
 }
 
-- (GCMapping *)mappingForCommand:(Class)commandClass event:(Class)eventClass {
-    return [self.commandMap mappingForCommand:commandClass event:eventClass];
+- (GCMapping *)mappingForCommand:(Class)commandClass mappedToObject:(Class)objectClass {
+    return [self.commandMap mappingForCommand:commandClass mappedToObject:objectClass];
 }
 
-- (void)unMapCommand:(Class)commandClass fromEvent:(Class)eventClass {
-    [self.commandMap unMapCommand:commandClass fromEvent:eventClass];
+- (void)unMapCommand:(Class)commandClass fromObject:(Class)objectClass {
+    [self.commandMap unMapCommand:commandClass fromObject:objectClass];
 }
 
 - (void)unMapAll {
     [self.commandMap unMapAll];
 }
 
-- (BOOL)isCommand:(Class)commandClass mappedToEvent:(Class)eventClass {
-    return [self.commandMap isCommand:commandClass mappedToEvent:eventClass];
+- (BOOL)isCommand:(Class)commandClass mappedToObject:(Class)objectClass {
+    return [self.commandMap isCommand:commandClass mappedToObject:objectClass];
 }
 
 @end

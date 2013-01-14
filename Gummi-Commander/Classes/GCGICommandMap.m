@@ -25,40 +25,40 @@ inject(@"dispatcher", @"injector")
     return self;
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass {
-    return [self mapCommand:commandClass toEvent:eventClass priority:0 removeMappingAfterExecution:NO];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass {
+    return [self mapCommand:commandClass toObject:objectClass priority:0 removeMappingAfterExecution:NO];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass priority:(int)priority {
-    return [self mapCommand:commandClass toEvent:eventClass priority:priority removeMappingAfterExecution:NO];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority {
+    return [self mapCommand:commandClass toObject:objectClass priority:priority removeMappingAfterExecution:NO];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass removeMappingAfterExecution:(BOOL)remove {
-    return [self mapCommand:commandClass toEvent:eventClass priority:0 removeMappingAfterExecution:remove];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass removeMappingAfterExecution:(BOOL)remove {
+    return [self mapCommand:commandClass toObject:objectClass priority:0 removeMappingAfterExecution:remove];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toEvent:(Class)eventClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    [self.dispatcher addObserver:self forObject:eventClass withSelector:@selector(executeCommand:) priority:priority];
-    GCMapping *mapping = [[GCMapping alloc] initWithEvent:eventClass command:commandClass priority:priority remove:remove];
-    [self insertMapping:mapping intoMappingsForEvent:[self getMappingsForEvent:eventClass] withPriority:priority];
+- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
+    [self.dispatcher addObserver:self forObject:objectClass withSelector:@selector(executeCommand:) priority:priority];
+    GCMapping *mapping = [[GCMapping alloc] initWithCommand:commandClass object:objectClass priority:priority remove:remove];
+    [self insertMapping:mapping intoMappingsForObject:[self getMappingsForObject:objectClass] withPriority:priority];
     return mapping;
 }
 
-- (GCMapping *)mappingForCommand:(Class)commandClass event:(Class)eventClass {
-    for (GCMapping *mapping in [self getMappingsForEvent:eventClass])
+- (GCMapping *)mappingForCommand:(Class)commandClass mappedToObject:(Class)objectClass {
+    for (GCMapping *mapping in [self getMappingsForObject:objectClass])
         if ([mapping.commandClass isEqual:commandClass])
             return mapping;
 
     return nil;
 }
 
-- (void)unMapCommand:(Class)commandClass fromEvent:(Class)eventClass {
-    NSMutableArray *mappingsForEvent = [self getMappingsForEvent:eventClass];
-    for (GCMapping *mapping in [mappingsForEvent copy]) {
+- (void)unMapCommand:(Class)commandClass fromObject:(Class)objectClass {
+    NSMutableArray *mappingsForObject = [self getMappingsForObject:objectClass];
+    for (GCMapping *mapping in [mappingsForObject copy]) {
         if ([mapping.commandClass isEqual:commandClass]) {
-            [mappingsForEvent removeObject:mapping];
-            if (mappingsForEvent.count == 0)
-                [self.dispatcher removeObserver:self fromObject:eventClass];
+            [mappingsForObject removeObject:mapping];
+            if (mappingsForObject.count == 0)
+                [self.dispatcher removeObserver:self fromObject:objectClass];
 
             return;
         }
@@ -70,8 +70,8 @@ inject(@"dispatcher", @"injector")
     [self.dispatcher removeObserver:self];
 }
 
-- (BOOL)isCommand:(Class)commandClass mappedToEvent:(Class)eventClass {
-    for (GCMapping *mapping in [self getMappingsForEvent:eventClass])
+- (BOOL)isCommand:(Class)commandClass mappedToObject:(Class)objectClass {
+    for (GCMapping *mapping in [self getMappingsForObject:objectClass])
         if ([mapping.commandClass isEqual:commandClass])
             return YES;
 
@@ -81,40 +81,40 @@ inject(@"dispatcher", @"injector")
 
 #pragma mark private
 
-- (void)insertMapping:(GCMapping *)mapping intoMappingsForEvent:(NSMutableArray *)mappingsForEvent withPriority:(int)priority {
+- (void)insertMapping:(GCMapping *)mapping intoMappingsForObject:(NSMutableArray *)mappingsForObject withPriority:(int)priority {
     GCMapping *existingMapping;
-    for (NSUInteger i = 0; i < mappingsForEvent.count; i++) {
-        existingMapping = mappingsForEvent[i];
+    for (NSUInteger i = 0; i < mappingsForObject.count; i++) {
+        existingMapping = mappingsForObject[i];
         if (existingMapping.priority < priority) {
-            [mappingsForEvent insertObject:mapping atIndex:i];
+            [mappingsForObject insertObject:mapping atIndex:i];
 
             return;
         }
     }
 
-    [mappingsForEvent addObject:mapping];
+    [mappingsForObject addObject:mapping];
 }
 
-- (NSMutableArray *)getMappingsForEvent:(Class)event {
-    NSString *key = NSStringFromClass(event);
-    NSMutableArray *mappingsForEvent = self.map[key];
-    if (!mappingsForEvent) {
-        mappingsForEvent = [[NSMutableArray alloc] init];
-        self.map[key] = mappingsForEvent;
+- (NSMutableArray *)getMappingsForObject:(Class)object {
+    NSString *key = NSStringFromClass(object);
+    NSMutableArray *mappingsForObject = self.map[key];
+    if (!mappingsForObject) {
+        mappingsForObject = [[NSMutableArray alloc] init];
+        self.map[key] = mappingsForObject;
     }
 
-    return mappingsForEvent;
+    return mappingsForObject;
 }
 
-- (void)executeCommand:(id)event {
-    for (GCMapping *mapping in [[self getMappingsForEvent:[event class]] copy]) {
-        [self.injector map:event to:[event class]];
+- (void)executeCommand:(id)object {
+    for (GCMapping *mapping in [[self getMappingsForObject:[object class]] copy]) {
+        [self.injector map:object to:[object class]];
         if ([self allGuardsApprove:mapping.guards]) {
             [[self.injector getObject:mapping.commandClass] execute];
             if (mapping.remove)
-                [self unMapCommand:mapping.commandClass fromEvent:mapping.eventClass];
+                [self unMapCommand:mapping.commandClass fromObject:mapping.objectClass];
         }
-        [self.injector unMap:event from:[event class]];
+        [self.injector unMap:object from:[object class]];
     }
 }
 

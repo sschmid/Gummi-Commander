@@ -7,8 +7,8 @@
 #import "GCMapping.h"
 
 @interface GCMapping ()
-@property(nonatomic, readwrite, strong) Class eventClass;
 @property(nonatomic, readwrite, strong) Class commandClass;
+@property(nonatomic, readwrite, strong) Class objectClass;
 @property(nonatomic, readwrite) int priority;
 @property(nonatomic, readwrite) BOOL remove;
 @property(nonatomic, readwrite, strong) NSArray *guards;
@@ -16,11 +16,11 @@
 
 @implementation GCMapping
 
-- (id)initWithEvent:(Class)eventClass command:(Class)commandClass priority:(int)priority remove:(BOOL)remove {
+- (id)initWithCommand:(Class)commandClass object:(Class)objectClass priority:(int)priority remove:(BOOL)remove {
     self = [super init];
     if (self) {
-        self.eventClass = eventClass;
         self.commandClass = commandClass;
+        self.objectClass = objectClass;
         self.priority = priority;
         self.remove = remove;
     }

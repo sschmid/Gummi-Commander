@@ -17,8 +17,8 @@
 - (void)configure:(GIInjector *)injector {
     [super configure:injector];
 
-    // Map events to commands
-    [[self mapCommand:[ServerResponseCommand class] toEvent:[ServerResponseEvent class]]
+    // Map commands to events
+    [[self mapCommand:[ServerResponseCommand class] toObject:[ServerResponseEvent class]]
             withGuards:@[[ServerResponseGreater500Guard class]]];
 
     // Set injection rules

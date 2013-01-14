@@ -42,33 +42,33 @@ SPEC_BEGIN(GCGICommandMapSpec)
             });
 
             it(@"has no mapping", ^{
-                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToEvent:[SomeEvent class]];
+                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
 
                 [[theValue(has) should] beNo];
             });
 
             it(@"has a mapping", ^{
-                [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
-                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToEvent:[SomeEvent class]];
+                [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
+                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
 
                 [[theValue(has) should] beYes];
             });
 
             it(@"removes mapping", ^{
-                [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
-                [commandMap unMapCommand:[SomeCommand class] fromEvent:[SomeEvent class]];
-                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToEvent:[SomeEvent class]];
+                [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
+                [commandMap unMapCommand:[SomeCommand class] fromObject:[SomeEvent class]];
+                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
 
                 [[theValue(has) should] beNo];
             });
 
             it(@"removes all mappings", ^{
-                [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
-                [commandMap mapCommand:[SomeOtherCommand class] toEvent:[SomeEvent class]];
+                [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
+                [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class]];
                 [commandMap unMapAll];
 
-                BOOL has1 = [commandMap isCommand:[SomeCommand class] mappedToEvent:[SomeEvent class]];
-                BOOL has2 = [commandMap isCommand:[SomeOtherCommand class] mappedToEvent:[SomeEvent class]];
+                BOOL has1 = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
+                BOOL has2 = [commandMap isCommand:[SomeOtherCommand class] mappedToObject:[SomeEvent class]];
 
                 [[theValue(has1) should] beNo];
                 [[theValue(has2) should] beNo];
@@ -97,7 +97,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 it(@"executes a command", ^{
                     SomeEvent *event = [[SomeEvent alloc] init];
                     event.object = [[FlagObject alloc] init];
-                    [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
+                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
                     [commandMap.dispatcher dispatchObject:event];
 
                     [[theValue(event.object.flag) should] beYes];
@@ -107,8 +107,8 @@ SPEC_BEGIN(GCGICommandMapSpec)
                     SomeEvent *event = [[SomeEvent alloc] init];
                     event.object = [[FlagObject alloc] init];
 
-                    [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
-                    [commandMap mapCommand:[SomeOtherCommand class] toEvent:[SomeEvent class]];
+                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
+                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class]];
 
                     [commandMap.dispatcher dispatchObject:event];
 
@@ -119,8 +119,8 @@ SPEC_BEGIN(GCGICommandMapSpec)
                     SomeEvent *event = [[SomeEvent alloc] init];
                     event.object = [[FlagObject alloc] init];
 
-                    [commandMap mapCommand:[SomeOtherCommand class] toEvent:[SomeEvent class]];
-                    [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
+                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class]];
+                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
 
                     [commandMap.dispatcher dispatchObject:event];
 
@@ -131,8 +131,8 @@ SPEC_BEGIN(GCGICommandMapSpec)
                     SomeEvent *event = [[SomeEvent alloc] init];
                     event.object = [[FlagObject alloc] init];
 
-                    [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class] priority:10];
-                    [commandMap mapCommand:[SomeOtherCommand class] toEvent:[SomeEvent class] priority:20];
+                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class] priority:10];
+                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class] priority:20];
 
                     [commandMap.dispatcher dispatchObject:event];
 
@@ -143,8 +143,8 @@ SPEC_BEGIN(GCGICommandMapSpec)
                     SomeEvent *event = [[SomeEvent alloc] init];
                     event.object = [[FlagObject alloc] init];
 
-                    [commandMap mapCommand:[SomeOtherCommand class] toEvent:[SomeEvent class] priority:20];
-                    [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class] priority:10];
+                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class] priority:20];
+                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class] priority:10];
 
                     [commandMap.dispatcher dispatchObject:event];
 
@@ -155,7 +155,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                     SomeEvent *event = [[SomeEvent alloc] init];
                     event.object = [[FlagObject alloc] init];
 
-                    [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class] priority:10 removeMappingAfterExecution:YES];
+                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class] priority:10 removeMappingAfterExecution:YES];
 
                     [commandMap.dispatcher dispatchObject:event];
                     [commandMap.dispatcher dispatchObject:event];
@@ -168,7 +168,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
             context(@"guards", ^{
 
                 it(@"has no mapping", ^{
-                    GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] event:[SomeEvent class]];
+                    GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
 
                     [mapping shouldBeNil];
                 });
@@ -176,17 +176,17 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 context(@"when added a mapping", ^{
 
                     beforeEach(^{
-                        [commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]];
+                        [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
                     });
 
                     it(@"has mapping", ^{
-                        GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] event:[SomeEvent class]];
+                        GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
 
                         [[mapping should] beKindOfClass:[GCMapping class]];
                     });
 
                     it(@"has no guards", ^{
-                        GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] event:[SomeEvent class]];
+                        GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
                         BOOL has = [mapping hasGuard:[SomeGuard class]];
 
                         [[theValue(has) should] beNo];
@@ -197,7 +197,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         __block NSArray *guards = nil;
                         __block GCMapping *mapping = nil;
                         beforeEach(^{
-                            mapping = [commandMap mappingForCommand:[SomeCommand class] event:[SomeEvent class]];
+                            mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
                         });
 
                         it(@"has guard", ^{
@@ -240,8 +240,8 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 });
 
                 it(@"has guard", ^{
-                    [[commandMap mapCommand:[SomeCommand class] toEvent:[SomeEvent class]] withGuards:@[[SomeGuard class]]];
-                    BOOL has = [[commandMap mappingForCommand:[SomeCommand class] event:[SomeEvent class]] hasGuard:[SomeGuard class]];
+                    [[commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]] withGuards:@[[SomeGuard class]]];
+                    BOOL has = [[commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]] hasGuard:[SomeGuard class]];
 
                     [[theValue(has) should] beYes];
                 });
