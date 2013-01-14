@@ -12,14 +12,14 @@ Gummi Commander uses
 ## Features
 * Execute multiple commands by dispatching one event
 * Add mappings with priority
-* Prevent certain commands to execute, by adding Guards
+* Prevent certain commands to execute by adding Guards
 * Inject the corresponding event and other objects of interest into commands
 
 ## How to use Gummi Commander
 You can get started by simply allocating a commandMap.
 
-The recommended way to use Gummi Commander is to put your configuration logic into 'GCGIExtension' and add them to the Injector.
-The provided 'GummiCommanderModule' should be added first.
+The recommended way to use Gummi Commander is to put your configuration logic into `GCGIExtension` and add them to the Injector.
+The provided `GummiCommanderModule` should be added first.
 
 ```objective-c
 GIInjector *injector = [GIInjector sharedInjector];
@@ -54,6 +54,7 @@ When an instance of MyEvent gets dispatched, all mapped commands get executed
 
 ```objective-c
 [commandMap mapCommand:[MyCommand class] toEvent:[MyEvent class]];
+
 [commandMap mapCommand:[MyOtherCommand class] toEvent:[MyEvent class]
                           removeMappingAfterExecution:YES];
 
