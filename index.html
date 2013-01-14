@@ -31,26 +31,36 @@
         <hr>
 
         <section id="main_content">
-          <h2>Gummi Commander</h2>
+          <h1>Gummi Commander</h1>
 
 <p><img src="http://sschmid.com/Libs/Gummi-Commander/Gummi-Commander-128.png" alt="Gummi Commander Logo"></p>
 
-<p>Gummi Commander is an Event Command Mapping System for Objective-C.
-It uses <a href="http://sschmid.github.com/Gummi-Injection/">Gummi Injection</a> for Dependency Injection and <a href="http://sschmid.github.com/Gummi-Dispatcher/">Gummi Dispatcher</a> as a Messaging System.</p>
+<h2>Description</h2>
 
-<h2>Features</h2>
+<p>Gummi Commander is an Event Command Mapping System for Objective-C.</p>
+
+<h2>Dependencies</h2>
+
+<p>Gummi Commander uses</p>
+
+<ul>
+<li>
+<a href="http://sschmid.github.com/Gummi-Injection">Gummi Injection</a> for Dependency Injection.</li>
+<li>
+<a href="http://sschmid.github.com/Gummi-Dispatcher">Gummi Dispatcher</a> as a Messaging System.</li>
+</ul><h2>Features</h2>
 
 <ul>
 <li>Execute multiple commands by dispatching one event</li>
 <li>Add mappings with priority</li>
 <li>Prevent certain commands to execute, by adding Guards</li>
 <li>Inject the corresponding event and other objects of interest into commands</li>
-</ul><h2>Set up Gummi Commander</h2>
+</ul><h2>How to use Gummi Commander</h2>
 
 <p>You can get started by simply allocating a commandMap.</p>
 
-<p>The recommended way to use Gummi Commander is to put your configuration logic into extensions (GCGIExtension) and add them to the Injector.
-The provided GummiCommanderModule should be added first.</p>
+<p>The recommended way to use Gummi Commander is to put your configuration logic into 'GCGIExtension' and add them to the Injector.
+The provided 'GummiCommanderModule' should be added first.</p>
 
 <div class="highlight"><pre><span class="n">GIInjector</span> <span class="o">*</span><span class="n">injector</span> <span class="o">=</span> <span class="p">[</span><span class="n">GIInjector</span> <span class="n">sharedInjector</span><span class="p">];</span>
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">GummiCommanderModule</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
@@ -60,6 +70,23 @@ The provided GummiCommanderModule should be added first.</p>
 <span class="c1">// Maybe add this extension later in the code,</span>
 <span class="c1">// right before the game starts</span>
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">GameExtension</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
+</pre></div>
+
+<h2>Commands</h2>
+
+<ul>
+<li>Commands are short lived objects.</li>
+<li>Commands get created and executed when dispatching an event.</li>
+<li>Commands can inject the corresponding event, models and more...</li>
+<li>Commands get destroyed immediately after execution.</li>
+</ul><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">ServerResponseCommand</span>
+<span class="n">inject</span><span class="p">(</span><span class="s">@"event"</span><span class="p">,</span> <span class="s">@"model"</span><span class="p">)</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">execute</span> <span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">lastServerResponse</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">response</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
 </pre></div>
 
 <h2>The CommandMap</h2>
@@ -77,27 +104,32 @@ The provided GummiCommanderModule should be added first.</p>
                                              <span class="nl">priority:</span> <span class="mi">10</span><span class="p">];</span>
 </pre></div>
 
-<ul>
-<li>Commands are short lived objects.</li>
-<li>Commands get created and executed when dispatching an event.</li>
-<li>Commands can inject the corresponding event, models and more...</li>
-<li>Commands get destroyed immediately after execution.</li>
-</ul><h2>Guards</h2>
+<h2>Guards</h2>
 
 <ul>
 <li>Guards do only one thing: approve.</li>
 <li>Guards decide, whether a command gets executed or not.</li>
 <li>Only when all guards approve, a command gets executed.</li>
-</ul><h4>You can add guards like this:</h4>
+</ul><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">ServerResponseGreater500Guard</span>
+<span class="n">inject</span><span class="p">(</span><span class="s">@"event"</span><span class="p">)</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">approve</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">response</span> <span class="n">intValue</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<h4>You can add guards like this:</h4>
 
 <div class="highlight"><pre><span class="p">[[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span>
                 <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
              <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGuard</span> <span class="n">class</span><span class="p">]]];</span>
 </pre></div>
 
-<h2>Extension</h2>
+<h2>Extensions</h2>
 
-<p>Put related configuration logic into extensions and add and remove them at will</p>
+<p>Put related configuration logic into extensions and add or remove them at will</p>
 
 <div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">ServiceExtension</span>
 
@@ -123,10 +155,6 @@ The provided GummiCommanderModule should be added first.</p>
     <span class="p">[</span><span class="n">super</span> <span class="n">unload</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
-
-<h2>Other projects using Gummi Commander</h2>
-
-<p>If you enjoy using Gummi Commander in your projects let me know, and I'll mention your projects here.</p>
         </section>
 
         <footer>
