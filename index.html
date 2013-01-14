@@ -59,8 +59,8 @@
 
 <p>You can get started by simply allocating a commandMap.</p>
 
-<p>The recommended way to use Gummi Commander is to put your configuration logic into 'GCGIExtension' and add them to the Injector.
-The provided 'GummiCommanderModule' should be added first.</p>
+<p>The recommended way to use Gummi Commander is to put your configuration logic into <code>GCGIExtension</code> and add them to the Injector.
+The provided <code>GummiCommanderModule</code> should be added first.</p>
 
 <div class="highlight"><pre><span class="n">GIInjector</span> <span class="o">*</span><span class="n">injector</span> <span class="o">=</span> <span class="p">[</span><span class="n">GIInjector</span> <span class="n">sharedInjector</span><span class="p">];</span>
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">GummiCommanderModule</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
