@@ -52,8 +52,9 @@
 
 <ul>
 <li>Execute multiple commands by dispatching one event</li>
+<li>Supports nested Async and Sequence Commands</li>
 <li>Add mappings with priority</li>
-<li>Prevent certain commands to execute, by adding Guards</li>
+<li>Prevent certain commands to execute by adding Guards</li>
 <li>Inject the corresponding event and other objects of interest into commands</li>
 </ul><h2>How to use Gummi Commander</h2>
 
@@ -84,6 +85,68 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 
 <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">execute</span> <span class="p">{</span>
     <span class="n">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">lastServerResponse</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">response</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<h2>Async and Sequence Commands</h2>
+
+<p>Gummi Commander also supports nested Async and Sequence Commands.</p>
+
+<ul>
+<li>Sequence
+
+<ul>
+<li>Async</li>
+<li>Command</li>
+<li>Sequence
+
+<ul>
+<li>Async</li>
+<li>Async</li>
+<li>Command</li>
+</ul>
+</li>
+<li>Command</li>
+<li>Async</li>
+</ul>
+</li>
+<li>Async</li>
+<li>Command</li>
+</ul><p>With <code>stopWhenNoSuccess</code> you can decide, if a Sequence Command should stop or carry on, when any Command did execute without success.</p>
+
+<p>A Sequence Command</p>
+
+<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">MySequenceCommand1</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">self</span><span class="p">.</span><span class="n">stopWhenNoSuccess</span> <span class="o">=</span> <span class="n">NO</span><span class="p">;</span> <span class="c1">// Default</span>
+
+        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyAsync1Command</span> <span class="n">class</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyCommand1</span> <span class="n">class</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MySequenceCommand2</span> <span class="n">class</span><span class="p">]];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<p>An Async Command</p>
+
+<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">MyAsyncCommand</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">execute</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">performSelector:</span><span class="k">@selector</span><span class="p">(</span><span class="n">doSth</span><span class="p">)</span> <span class="nl">withObject:</span><span class="nb">nil</span> <span class="nl">afterDelay:</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">doSth</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">didExecuteWithSuccess:</span><span class="n">YES</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="k">@end</span>
