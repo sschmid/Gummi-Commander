@@ -21,7 +21,7 @@
     [self addIcon];
 
 //    [[GreetingsExample alloc] init];
-//
+
 //    [[ServiceExample alloc] init];
 
     [[CommandChainingExample alloc] init];

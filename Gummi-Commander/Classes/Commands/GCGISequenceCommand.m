@@ -57,6 +57,8 @@ inject(@"injector")
 - (void)command:(id <GCAsyncCommand>)command didExecuteWithSuccess:(BOOL)success {
     command.delegate = nil;
     if (self.stopWhenNoSuccess && !success) {
+        NSLog(@"'%@' did execute without success", NSStringFromClass([command class]));
+        NSLog(@"Cancelling Sequence '%@'", NSStringFromClass([self class]));
         [self.commands removeAllObjects];
         [self didExecuteWithSuccess:NO];
     } else {

@@ -14,7 +14,7 @@
 
 - (void)logAWord:(id)string {
     NSLog(@"%@", string);
-    [self didExecuteWithSuccess:NO];
+    [self didExecuteWithSuccess:YES];
 }
 
 @end
