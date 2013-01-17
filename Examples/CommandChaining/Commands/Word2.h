@@ -5,7 +5,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GCGuard.h"
+#import "GCGIAsyncCommand.h"
 
-@interface SomeGuard : NSObject <GCGuard>
+@interface Word2 : GCGIAsyncCommand
 @end

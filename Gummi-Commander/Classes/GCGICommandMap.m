@@ -107,15 +107,15 @@ inject(@"dispatcher", @"injector")
 }
 
 - (void)executeCommand:(id)object {
+    [self.injector map:object to:[object class]];
     for (GCMapping *mapping in [[self getMappingsForObject:[object class]] copy]) {
-        [self.injector map:object to:[object class]];
         if ([self allGuardsApprove:mapping.guards]) {
             [[self.injector getObject:mapping.commandClass] execute];
             if (mapping.remove)
                 [self unMapCommand:mapping.commandClass fromObject:mapping.objectClass];
         }
-        [self.injector unMap:object from:[object class]];
     }
+    [self.injector unMap:object from:[object class]];
 }
 
 - (BOOL)allGuardsApprove:(NSArray *)guards {

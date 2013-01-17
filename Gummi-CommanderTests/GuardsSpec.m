@@ -5,19 +5,19 @@
 //
 
 #import "Kiwi.h"
-#import "SomeGuard.h"
+#import "YesGuard.h"
 
 SPEC_BEGIN(GuardsSpec)
 
         describe(@"Guards", ^{
 
-            __block SomeGuard *g = nil;
+            __block YesGuard *g = nil;
             beforeEach(^{
-                g = [[SomeGuard alloc] init];
+                g = [[YesGuard alloc] init];
             });
 
             it(@"instantiates a guard", ^{
-                [[g should] beKindOfClass:[SomeGuard class]];
+                [[g should] beKindOfClass:[YesGuard class]];
             });
 
             it(@"can approve", ^{

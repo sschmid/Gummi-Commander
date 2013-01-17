@@ -7,6 +7,7 @@
 #import "ServiceExample.h"
 #import "GreetingsExample.h"
 #import "GCAppDelegate.h"
+#import "CommandChainingExample.h"
 
 @implementation GCAppDelegate
 
@@ -15,11 +16,15 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
 
+    self.window.rootViewController = [[UIViewController alloc] init];
+
     [self addIcon];
 
-    [[GreetingsExample alloc] init];
+//    [[GreetingsExample alloc] init];
 
-    [[ServiceExample alloc] init];
+//    [[ServiceExample alloc] init];
+
+    [[CommandChainingExample alloc] init];
 
     return YES;
 }
