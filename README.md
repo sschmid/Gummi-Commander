@@ -11,6 +11,7 @@ Gummi Commander uses
 
 ## Features
 * Execute multiple commands by dispatching one event
+* Supports nested Async and Sequence Commands
 * Add mappings with priority
 * Prevent certain commands to execute by adding Guards
 * Inject the corresponding event and other objects of interest into commands
@@ -44,6 +45,63 @@ inject(@"event", @"model")
 
 - (void)execute {
     self.model.lastServerResponse = self.event.response;
+}
+
+@end
+```
+
+## Async and Sequence Commands
+
+Gummi Commander also supports nested Async and Sequence Commands.
+
+* Sequence
+  * Async
+    * Command
+    * Sequence
+      * Async
+      * Async
+      * Command
+    * Command
+  * Async
+* Async
+* Command
+
+
+With `stopWhenNoSuccess` you can decide, if a Sequence Command should stop or carry on, when any Command did execute without success.
+
+A Sequence Command
+
+```objective-c
+@implementation MySequenceCommand1
+
+- (id)init {
+    self = [super init];
+    if (self) {
+
+        self.stopWhenNoSuccess = NO; // Default
+
+        [self addCommand:[MyAsync1Command class]];
+        [self addCommand:[MyCommand1 class]];
+        [self addCommand:[MySequenceCommand2 class]];
+    }
+
+    return self;
+}
+
+@end
+```
+
+An Async Command
+
+```objective-c
+@implementation MyAsyncCommand
+
+- (void)execute {
+    [self performSelector:@selector(doSth) withObject:nil afterDelay:1];
+}
+
+- (void) doSth {
+    [self didExecuteWithSuccess:YES];
 }
 
 @end
