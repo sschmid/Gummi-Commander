@@ -8,34 +8,57 @@
 
 /* Begin PBXBuildFile section */
 		77CA2834BAE9422D97391D0B /* libPods-Gummi-CommanderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */; };
-		8D4DF081F571EDE2F6E799C7 /* DependencyGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFC31115C1216D20440B4 /* DependencyGuard.m */; };
+		8D4DF00F4DC749B920D552B8 /* Word4.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF112F0F5DA41B3DF7673 /* Word4.m */; };
+		8D4DF081F571EDE2F6E799C7 /* HasDependenciesSetGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFC31115C1216D20440B4 /* HasDependenciesSetGuard.m */; };
+		8D4DF08EA51D69205915840F /* Headline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFCCB124A7C0B12C5524E /* Headline.m */; };
 		8D4DF0B3084E66331919770E /* NoGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */; };
+		8D4DF0C12ACF87EE13DA785E /* Word2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF320438902431CB3FAED /* Word2.m */; };
+		8D4DF19A57DCD41B35799AFA /* NoSuccessCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF29617271225852BDD61 /* NoSuccessCommand.m */; };
+		8D4DF200A36DD23F1CB036DB /* Word5.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9E3A902E8C983827BD2 /* Word5.m */; };
+		8D4DF3247625B32B9E2F6E94 /* SetFlagCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF3BE84C26C4439677DD4 /* SetFlagCommand.m */; };
 		8D4DF3508819BF6621472D7C /* GCMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFF9A9B385114C11D7E03 /* GCMapping.m */; };
-		8D4DF4B95FC81EDF2DDA6758 /* SomeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFAE5C62D742A525D59CD /* SomeCommand.m */; };
+		8D4DF4B95FC81EDF2DDA6758 /* Append1Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFAE5C62D742A525D59CD /* Append1Command.m */; };
 		8D4DF580C94E2AD3E51656B7 /* GreetingsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF509273E41D801E599A8 /* GreetingsExample.m */; };
 		8D4DF5A7247CA4778CD0892F /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF772700035615E4E07BE /* Service.m */; };
-		8D4DF7251A78F1ACA95A2A8E /* SomeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB8982E950DC7519F746 /* SomeEvent.m */; };
+		8D4DF655731E27E28F8A5BCE /* CommandChainingExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFA95530711FB279F6047 /* CommandChainingExample.m */; };
+		8D4DF7251A78F1ACA95A2A8E /* FlagAndStringEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB8982E950DC7519F746 /* FlagAndStringEvent.m */; };
 		8D4DF7723CAA365EC2389657 /* GCGICommandMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */; };
 		8D4DF7BC35D0783B3B8CA8C4 /* ServerResponseGreater500Guard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF951B4E3E49ABA8ACF2C /* ServerResponseGreater500Guard.m */; };
+		8D4DF7F195DCF0EC84A20A0E /* NoSuccessSequenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFF261C66123E7EB7EC5D /* NoSuccessSequenceCommand.m */; };
 		8D4DF854B5CE56469D7FC2B4 /* ServerResponseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFEDDCD6FEB51D7343BE4 /* ServerResponseCommand.m */; };
+		8D4DF8858DB1627301EC4495 /* CommandChainSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFBFEBBA068AB1A03D8F5 /* CommandChainSpec.m */; };
 		8D4DF8D6FD2487415C1745F8 /* GreetingCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF73E312543435B57BDA8 /* GreetingCommand.m */; };
-		8D4DF8DDEDA78CDBEB8A6AF3 /* SomeOtherCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF590EADAC51C3F3FBC64 /* SomeOtherCommand.m */; };
+		8D4DF8DDEDA78CDBEB8A6AF3 /* Append2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF590EADAC51C3F3FBC64 /* Append2Command.m */; };
 		8D4DF91D6A660DB34C55BA6C /* GCGIExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */; };
 		8D4DF9B39873622D9C9B91EC /* GuardsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */; };
+		8D4DFA76E9EE0059C3B496FA /* GCGIAsyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF54C90DDFFC34EF74186 /* GCGIAsyncCommand.m */; };
+		8D4DFA9CC63F9C27F555ABD5 /* Word1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB47494271D693E29311 /* Word1.m */; };
+		8D4DFAABA2EBAF295ADFA806 /* Append3Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF020522B21A461E8484D /* Append3Command.m */; };
+		8D4DFB0A38A734AD61223E0A /* Word3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFDA9A48B776EC67BCB1C /* Word3.m */; };
 		8D4DFB69998860B61E7CDCCC /* ServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF240B5833107C84CAD3B /* ServiceExample.m */; };
-		8D4DFB6B77D0F2554487A896 /* FlagObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF8BF54A00C5E1C60F8CE /* FlagObject.m */; };
+		8D4DFB6B77D0F2554487A896 /* FlagAndStringObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF8BF54A00C5E1C60F8CE /* FlagAndStringObject.m */; };
 		8D4DFB7F071566F14AA85105 /* ServiceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF320D10650DE621589B8 /* ServiceModule.m */; };
 		8D4DFB95C4C80D2D8E580C4E /* StressTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFBA64D7C3BA96FC0996D /* StressTest.m */; };
+		8D4DFC7692C26C6047B1FDC8 /* DoubleSequenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF499E33C10D579B0C8EF /* DoubleSequenceCommand.m */; };
 		8D4DFC7B3C3FB6FAA327D880 /* GCGIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */; };
+		8D4DFCA27E971A760B30B99A /* GCGISequenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB4405D3C8DC981B9104 /* GCGISequenceCommand.m */; };
 		8D4DFCBB68F807F5156366FE /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFF93E5B91AE225544210 /* Model.m */; };
 		8D4DFCCA9C3529D3A0C93CF1 /* YesGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */; };
 		8D4DFCCCE6E034943BB5FA3A /* GreetingsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFBF91124245EA85A79D4 /* GreetingsModule.m */; };
+		8D4DFD777B8382A4DBD3CE6F /* Append12AndSetFlagSequenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF31090FAF51C129C8392 /* Append12AndSetFlagSequenceCommand.m */; };
 		8D4DFDBB1B7B92071C798870 /* GreetingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */; };
+		8D4DFDBDC1C7325F20936636 /* Word6.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB753542BE68FFE7F947 /* Word6.m */; };
+		8D4DFE09A393FA2FE0854DED /* WordSequence2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF0CBA15E9DD4D5356C53 /* WordSequence2.m */; };
 		8D4DFE3C012290F9EBCF6087 /* GCGICommandMapSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */; };
-		8D4DFEE51D0460CB69EB41C1 /* SomeGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF59DE3F3D86110111696 /* SomeGuard.m */; };
+		8D4DFE56613AFB7B4E01B45E /* Append1AsyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF13296B65F621CD25C19 /* Append1AsyncCommand.m */; };
+		8D4DFF038094266A957C6A15 /* WordSequence1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFB4E3514EE2FC25BDAD2 /* WordSequence1.m */; };
+		8D4DFF05B9776764FD9D4157 /* Append2AsyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF64CAD83041CA028CECE /* Append2AsyncCommand.m */; };
 		8D4DFF33A8EBDA00EDC5DE97 /* GummiCommanderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */; };
 		8D4DFF43E0097CF2B50A654D /* ServerResponseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */; };
 		8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */; };
+		8D4DFFB4179B8056A21837F7 /* LogASentenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFDD51AA0EFA12C9D1C57 /* LogASentenceCommand.m */; };
+		8D4DFFF2EE5D29FD76CEE7C2 /* Append12Async3AndSetFlagAsyncSequenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF55565B7EB3075621AB9 /* Append12Async3AndSetFlagAsyncSequenceCommand.m */; };
+		CB21BDE316A5AE7400E957FE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB21BDE216A5AE7400E957FE /* QuartzCore.framework */; };
 		CB2E9AE9169B4E930061DD59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AE8169B4E930061DD59 /* UIKit.framework */; };
 		CB2E9AEB169B4E930061DD59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AEA169B4E930061DD59 /* Foundation.framework */; };
 		CB2E9AED169B4E930061DD59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2E9AEC169B4E930061DD59 /* CoreGraphics.framework */; };
@@ -53,7 +76,7 @@
 		CB2E9B35169B4F9B0061DD59 /* Gummi-Commander-114.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B34169B4F9B0061DD59 /* Gummi-Commander-114.png */; };
 		CB2E9B37169B4F9F0061DD59 /* Gummi-Commander-144.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B36169B4F9F0061DD59 /* Gummi-Commander-144.png */; };
 		CB2E9B39169B4FA10061DD59 /* Gummi-Commander-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E9B38169B4FA10061DD59 /* Gummi-Commander-72.png */; };
-		FA82826285254412B104896F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B631FE3FF4934E218192DA6E /* libPods.a */; settings = {}; };
+		FA82826285254412B104896F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B631FE3FF4934E218192DA6E /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +93,13 @@
 		45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gummi-CommanderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A5C2EA13A343D2BEBCC8D4 /* Pods-Gummi-CommanderTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gummi-CommanderTests.xcconfig"; path = "Pods/Pods-Gummi-CommanderTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		797FE7E5AC6849658D6A2416 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		8D4DF0196EDF6A33961FA89D /* FlagObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagObject.h; sourceTree = "<group>"; };
+		8D4DF00F0CA3E4A301633397 /* Word3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word3.h; sourceTree = "<group>"; };
+		8D4DF011E08AD6091210C805 /* GCAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAsyncCommand.h; sourceTree = "<group>"; };
+		8D4DF0196EDF6A33961FA89D /* FlagAndStringObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagAndStringObject.h; sourceTree = "<group>"; };
+		8D4DF020522B21A461E8484D /* Append3Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append3Command.m; sourceTree = "<group>"; };
+		8D4DF0CBA15E9DD4D5356C53 /* WordSequence2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSequence2.m; sourceTree = "<group>"; };
+		8D4DF112F0F5DA41B3DF7673 /* Word4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word4.m; sourceTree = "<group>"; };
+		8D4DF13296B65F621CD25C19 /* Append1AsyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append1AsyncCommand.m; sourceTree = "<group>"; };
 		8D4DF1829A4D2C8BF6A99305 /* ServerResponseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseEvent.h; sourceTree = "<group>"; };
 		8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommanderSpec.m; sourceTree = "<group>"; };
 		8D4DF19778E48ED9C2450A21 /* GreetingsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsModule.h; sourceTree = "<group>"; };
@@ -80,52 +109,92 @@
 		8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoGuard.m; sourceTree = "<group>"; };
 		8D4DF1EBC94C0DEAA342CBDD /* GCCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCommand.h; sourceTree = "<group>"; };
 		8D4DF240B5833107C84CAD3B /* ServiceExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceExample.m; sourceTree = "<group>"; };
+		8D4DF2417A1065AA42E7A9FB /* Headline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Headline.h; sourceTree = "<group>"; };
+		8D4DF26A4827E3AD2A1A34E2 /* Append12Async3AndSetFlagAsyncSequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append12Async3AndSetFlagAsyncSequenceCommand.h; sourceTree = "<group>"; };
+		8D4DF29617271225852BDD61 /* NoSuccessCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSuccessCommand.m; sourceTree = "<group>"; };
+		8D4DF31090FAF51C129C8392 /* Append12AndSetFlagSequenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append12AndSetFlagSequenceCommand.m; sourceTree = "<group>"; };
+		8D4DF320438902431CB3FAED /* Word2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word2.m; sourceTree = "<group>"; };
 		8D4DF320D10650DE621589B8 /* ServiceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModule.m; sourceTree = "<group>"; };
 		8D4DF33936C87AE8B6DAFEAA /* GCCommandMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCommandMap.h; sourceTree = "<group>"; };
-		8D4DF33AF45F8E342D78FD97 /* DependencyGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DependencyGuard.h; sourceTree = "<group>"; };
+		8D4DF33AF45F8E342D78FD97 /* HasDependenciesSetGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HasDependenciesSetGuard.h; sourceTree = "<group>"; };
 		8D4DF3B15C116B1C948FC560 /* GCGICommandMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGICommandMap.h; sourceTree = "<group>"; };
+		8D4DF3BE84C26C4439677DD4 /* SetFlagCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetFlagCommand.m; sourceTree = "<group>"; };
+		8D4DF437EA7D35463CDE1541 /* LogASentenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogASentenceCommand.h; sourceTree = "<group>"; };
 		8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIExtension.m; sourceTree = "<group>"; };
+		8D4DF4916549414C9572EA25 /* NoSuccessCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSuccessCommand.h; sourceTree = "<group>"; };
+		8D4DF499E33C10D579B0C8EF /* DoubleSequenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSequenceCommand.m; sourceTree = "<group>"; };
 		8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardsSpec.m; sourceTree = "<group>"; };
 		8D4DF4F302EE34EE1FF610DB /* GreetingEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingEvent.h; sourceTree = "<group>"; };
 		8D4DF509273E41D801E599A8 /* GreetingsExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingsExample.m; sourceTree = "<group>"; };
-		8D4DF590EADAC51C3F3FBC64 /* SomeOtherCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeOtherCommand.m; sourceTree = "<group>"; };
-		8D4DF59DE3F3D86110111696 /* SomeGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeGuard.m; sourceTree = "<group>"; };
+		8D4DF52CA8B43ACFEDA4D99E /* DoubleSequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleSequenceCommand.h; sourceTree = "<group>"; };
+		8D4DF537CDAAB9A08F23E432 /* Append12AndSetFlagSequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append12AndSetFlagSequenceCommand.h; sourceTree = "<group>"; };
+		8D4DF54C90DDFFC34EF74186 /* GCGIAsyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIAsyncCommand.m; sourceTree = "<group>"; };
+		8D4DF55565B7EB3075621AB9 /* Append12Async3AndSetFlagAsyncSequenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append12Async3AndSetFlagAsyncSequenceCommand.m; sourceTree = "<group>"; };
+		8D4DF57DAE4A1D942A218D49 /* Word1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word1.h; sourceTree = "<group>"; };
+		8D4DF590EADAC51C3F3FBC64 /* Append2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append2Command.m; sourceTree = "<group>"; };
+		8D4DF5BA850E61C666719AE4 /* WordSequence1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSequence1.h; sourceTree = "<group>"; };
 		8D4DF5C491271C4B1558FFC6 /* GreetingCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingCommand.h; sourceTree = "<group>"; };
 		8D4DF5CFADBC1E2E5F2C1C83 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		8D4DF64CAD83041CA028CECE /* Append2AsyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append2AsyncCommand.m; sourceTree = "<group>"; };
+		8D4DF6B17E9341FF0F461F58 /* GCGISequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGISequenceCommand.h; sourceTree = "<group>"; };
 		8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGICommandMapSpec.m; sourceTree = "<group>"; };
+		8D4DF73BEFF1E7156BF116AE /* Word5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word5.h; sourceTree = "<group>"; };
 		8D4DF73DF1CB1A1C62D28CDF /* GCGIExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIExtension.h; sourceTree = "<group>"; };
 		8D4DF73E312543435B57BDA8 /* GreetingCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingCommand.m; sourceTree = "<group>"; };
 		8D4DF772700035615E4E07BE /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
 		8D4DF7BC7E0256FC61F6020F /* GCGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGuard.h; sourceTree = "<group>"; };
 		8D4DF7BEB8784D14166ADBB2 /* ServiceExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceExample.h; sourceTree = "<group>"; };
-		8D4DF8BF54A00C5E1C60F8CE /* FlagObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagObject.m; sourceTree = "<group>"; };
+		8D4DF85DB53448B122E2234F /* Append3Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append3Command.h; sourceTree = "<group>"; };
+		8D4DF8B64744E7010B891E34 /* Word2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word2.h; sourceTree = "<group>"; };
+		8D4DF8BF54A00C5E1C60F8CE /* FlagAndStringObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagAndStringObject.m; sourceTree = "<group>"; };
+		8D4DF92861F5F1343FCA73D1 /* Append1AsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append1AsyncCommand.h; sourceTree = "<group>"; };
 		8D4DF929BBE618A60CBA6CCC /* ServerResponseCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseCommand.h; sourceTree = "<group>"; };
 		8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseEvent.m; sourceTree = "<group>"; };
+		8D4DF94F10CD94D73DD13275 /* Append2AsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append2AsyncCommand.h; sourceTree = "<group>"; };
 		8D4DF951B4E3E49ABA8ACF2C /* ServerResponseGreater500Guard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseGreater500Guard.m; sourceTree = "<group>"; };
 		8D4DF9A47BDCA705902D18F7 /* GreetingEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingEvent.m; sourceTree = "<group>"; };
+		8D4DF9E3A902E8C983827BD2 /* Word5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word5.m; sourceTree = "<group>"; };
 		8D4DFA64F37956D636131FBB /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommanderModule.m; sourceTree = "<group>"; };
-		8D4DFAE5C62D742A525D59CD /* SomeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeCommand.m; sourceTree = "<group>"; };
+		8D4DFA95530711FB279F6047 /* CommandChainingExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandChainingExample.m; sourceTree = "<group>"; };
+		8D4DFAE5C62D742A525D59CD /* Append1Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append1Command.m; sourceTree = "<group>"; };
 		8D4DFAFA6B37D708E6EA0D86 /* GCGIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGIEvent.m; sourceTree = "<group>"; };
 		8D4DFB0F621ADB9B6EC6D85F /* GreetingsExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsExample.h; sourceTree = "<group>"; };
-		8D4DFB8982E950DC7519F746 /* SomeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeEvent.m; sourceTree = "<group>"; };
+		8D4DFB27454C2D558DBC4ECC /* NoSuccessSequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoSuccessSequenceCommand.h; sourceTree = "<group>"; };
+		8D4DFB4405D3C8DC981B9104 /* GCGISequenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGISequenceCommand.m; sourceTree = "<group>"; };
+		8D4DFB47494271D693E29311 /* Word1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word1.m; sourceTree = "<group>"; };
+		8D4DFB4E3514EE2FC25BDAD2 /* WordSequence1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSequence1.m; sourceTree = "<group>"; };
+		8D4DFB753542BE68FFE7F947 /* Word6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word6.m; sourceTree = "<group>"; };
+		8D4DFB83CD34ED9D84B00FF4 /* Word4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word4.h; sourceTree = "<group>"; };
+		8D4DFB8982E950DC7519F746 /* FlagAndStringEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagAndStringEvent.m; sourceTree = "<group>"; };
 		8D4DFBA64D7C3BA96FC0996D /* StressTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StressTest.m; sourceTree = "<group>"; };
 		8D4DFBF91124245EA85A79D4 /* GreetingsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingsModule.m; sourceTree = "<group>"; };
-		8D4DFC31115C1216D20440B4 /* DependencyGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DependencyGuard.m; sourceTree = "<group>"; };
-		8D4DFC3ABA24DCC67BFF9F54 /* SomeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeEvent.h; sourceTree = "<group>"; };
+		8D4DFBFEBBA068AB1A03D8F5 /* CommandChainSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandChainSpec.m; sourceTree = "<group>"; };
+		8D4DFC31115C1216D20440B4 /* HasDependenciesSetGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HasDependenciesSetGuard.m; sourceTree = "<group>"; };
+		8D4DFC3ABA24DCC67BFF9F54 /* FlagAndStringEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagAndStringEvent.h; sourceTree = "<group>"; };
+		8D4DFC6AF0301610CC804725 /* CommandChainingExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandChainingExample.h; sourceTree = "<group>"; };
+		8D4DFC7232061199B36A7C15 /* Word6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word6.h; sourceTree = "<group>"; };
 		8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YesGuard.m; sourceTree = "<group>"; };
+		8D4DFCCB124A7C0B12C5524E /* Headline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Headline.m; sourceTree = "<group>"; };
 		8D4DFD1F75E7FAD71C3AC082 /* YesGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesGuard.h; sourceTree = "<group>"; };
+		8D4DFDA9A48B776EC67BCB1C /* Word3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word3.m; sourceTree = "<group>"; };
+		8D4DFDD51AA0EFA12C9D1C57 /* LogASentenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogASentenceCommand.m; sourceTree = "<group>"; };
 		8D4DFE79CCB7E28BB6CC1A6A /* NoGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoGuard.h; sourceTree = "<group>"; };
 		8D4DFEACBF1B2C47E0AFAE63 /* GCGIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIEvent.h; sourceTree = "<group>"; };
+		8D4DFEC820E7D178773ACB0A /* SetFlagCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetFlagCommand.h; sourceTree = "<group>"; };
+		8D4DFED86058C28A7045F14A /* GCGIAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIAsyncCommand.h; sourceTree = "<group>"; };
+		8D4DFEDD186FC59B5C680142 /* WordSequence2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSequence2.h; sourceTree = "<group>"; };
 		8D4DFEDDCD6FEB51D7343BE4 /* ServerResponseCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerResponseCommand.m; sourceTree = "<group>"; };
-		8D4DFEFB2E275C2EC1AE93FA /* SomeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeCommand.h; sourceTree = "<group>"; };
+		8D4DFEFB2E275C2EC1AE93FA /* Append1Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append1Command.h; sourceTree = "<group>"; };
+		8D4DFF261C66123E7EB7EC5D /* NoSuccessSequenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoSuccessSequenceCommand.m; sourceTree = "<group>"; };
 		8D4DFF3A365A661671C18564 /* ServiceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModule.h; sourceTree = "<group>"; };
-		8D4DFF6BF12BD2909E4C671C /* SomeOtherCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeOtherCommand.h; sourceTree = "<group>"; };
+		8D4DFF6BF12BD2909E4C671C /* Append2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Append2Command.h; sourceTree = "<group>"; };
+		8D4DFF8F24AA8B4DEF92AF06 /* GCSequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCSequenceCommand.h; sourceTree = "<group>"; };
 		8D4DFF93E5B91AE225544210 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		8D4DFF9A9B385114C11D7E03 /* GCMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMapping.m; sourceTree = "<group>"; };
 		8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGICommandMap.m; sourceTree = "<group>"; };
-		8D4DFFD83D3C8E6FEC353C95 /* SomeGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeGuard.h; sourceTree = "<group>"; };
-		B631FE3FF4934E218192DA6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPods.a; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B631FE3FF4934E218192DA6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB21BDE216A5AE7400E957FE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB2E9AE4169B4E930061DD59 /* Gummi-Commander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gummi-Commander.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2E9AE8169B4E930061DD59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB2E9AEA169B4E930061DD59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB21BDE316A5AE7400E957FE /* QuartzCore.framework in Frameworks */,
 				CB2E9B07169B4E930061DD59 /* SenTestingKit.framework in Frameworks */,
 				CB2E9B08169B4E930061DD59 /* UIKit.framework in Frameworks */,
 				CB2E9B09169B4E930061DD59 /* Foundation.framework in Frameworks */,
@@ -211,6 +281,7 @@
 			children = (
 				8D4DF11575CE4827F116CEA2 /* Greetings */,
 				8D4DF5D64CFF2008D5CFCB2D /* ServiceExample */,
+				8D4DFBB21965E97BB4755A9F /* CommandChaining */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -232,22 +303,12 @@
 		8D4DF41E57893DEB39AD4146 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8D4DF33AF45F8E342D78FD97 /* DependencyGuard.h */,
-				8D4DFC31115C1216D20440B4 /* DependencyGuard.m */,
-				8D4DFE79CCB7E28BB6CC1A6A /* NoGuard.h */,
-				8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */,
-				8D4DFEFB2E275C2EC1AE93FA /* SomeCommand.h */,
-				8D4DFAE5C62D742A525D59CD /* SomeCommand.m */,
-				8D4DFC3ABA24DCC67BFF9F54 /* SomeEvent.h */,
-				8D4DFB8982E950DC7519F746 /* SomeEvent.m */,
-				8D4DFFD83D3C8E6FEC353C95 /* SomeGuard.h */,
-				8D4DF59DE3F3D86110111696 /* SomeGuard.m */,
-				8D4DFF6BF12BD2909E4C671C /* SomeOtherCommand.h */,
-				8D4DF590EADAC51C3F3FBC64 /* SomeOtherCommand.m */,
-				8D4DFD1F75E7FAD71C3AC082 /* YesGuard.h */,
-				8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */,
-				8D4DF0196EDF6A33961FA89D /* FlagObject.h */,
-				8D4DF8BF54A00C5E1C60F8CE /* FlagObject.m */,
+				8D4DF0196EDF6A33961FA89D /* FlagAndStringObject.h */,
+				8D4DF8BF54A00C5E1C60F8CE /* FlagAndStringObject.m */,
+				8D4DFC0DDDFA9EF9210DBA74 /* CommandChain */,
+				8D4DFDBFE801487C1F5CEB04 /* Commands */,
+				8D4DF68EF4A00406F6E5CC69 /* Events */,
+				8D4DF9AAF464D4C7FFE47246 /* Guards */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -268,6 +329,15 @@
 			path = ServiceExample;
 			sourceTree = "<group>";
 		};
+		8D4DF68EF4A00406F6E5CC69 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFC3ABA24DCC67BFF9F54 /* FlagAndStringEvent.h */,
+				8D4DFB8982E950DC7519F746 /* FlagAndStringEvent.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		8D4DF6C4FBB4B55AE41AF705 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +352,7 @@
 				8D4DF1B1A709D4865B6F635E /* GummiCommanderModule.h */,
 				8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */,
 				8D4DF8EE76C1A7EDFAF4EB00 /* Api */,
+				8D4DFC18E2D06BE41A8A96B8 /* Commands */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -328,8 +399,23 @@
 				8D4DF1EBC94C0DEAA342CBDD /* GCCommand.h */,
 				8D4DF7BC7E0256FC61F6020F /* GCGuard.h */,
 				8D4DF33936C87AE8B6DAFEAA /* GCCommandMap.h */,
+				8D4DF011E08AD6091210C805 /* GCAsyncCommand.h */,
+				8D4DFF8F24AA8B4DEF92AF06 /* GCSequenceCommand.h */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		8D4DF9AAF464D4C7FFE47246 /* Guards */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFD1F75E7FAD71C3AC082 /* YesGuard.h */,
+				8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */,
+				8D4DFE79CCB7E28BB6CC1A6A /* NoGuard.h */,
+				8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */,
+				8D4DF33AF45F8E342D78FD97 /* HasDependenciesSetGuard.h */,
+				8D4DFC31115C1216D20440B4 /* HasDependenciesSetGuard.m */,
+			);
+			path = Guards;
 			sourceTree = "<group>";
 		};
 		8D4DFAD8C9F57BF1EBB2D80A /* Commands */ = {
@@ -341,9 +427,94 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
+		8D4DFBB21965E97BB4755A9F /* CommandChaining */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFC6AF0301610CC804725 /* CommandChainingExample.h */,
+				8D4DFA95530711FB279F6047 /* CommandChainingExample.m */,
+				8D4DFC8A83E407039948757C /* Commands */,
+			);
+			path = CommandChaining;
+			sourceTree = "<group>";
+		};
+		8D4DFC0DDDFA9EF9210DBA74 /* CommandChain */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF537CDAAB9A08F23E432 /* Append12AndSetFlagSequenceCommand.h */,
+				8D4DF31090FAF51C129C8392 /* Append12AndSetFlagSequenceCommand.m */,
+				8D4DF13296B65F621CD25C19 /* Append1AsyncCommand.m */,
+				8D4DF92861F5F1343FCA73D1 /* Append1AsyncCommand.h */,
+				8D4DF55565B7EB3075621AB9 /* Append12Async3AndSetFlagAsyncSequenceCommand.m */,
+				8D4DF26A4827E3AD2A1A34E2 /* Append12Async3AndSetFlagAsyncSequenceCommand.h */,
+				8D4DF64CAD83041CA028CECE /* Append2AsyncCommand.m */,
+				8D4DF94F10CD94D73DD13275 /* Append2AsyncCommand.h */,
+				8D4DF85DB53448B122E2234F /* Append3Command.h */,
+				8D4DF020522B21A461E8484D /* Append3Command.m */,
+				8D4DF499E33C10D579B0C8EF /* DoubleSequenceCommand.m */,
+				8D4DF52CA8B43ACFEDA4D99E /* DoubleSequenceCommand.h */,
+				8D4DF29617271225852BDD61 /* NoSuccessCommand.m */,
+				8D4DF4916549414C9572EA25 /* NoSuccessCommand.h */,
+				8D4DFF261C66123E7EB7EC5D /* NoSuccessSequenceCommand.m */,
+				8D4DFB27454C2D558DBC4ECC /* NoSuccessSequenceCommand.h */,
+			);
+			path = CommandChain;
+			sourceTree = "<group>";
+		};
+		8D4DFC18E2D06BE41A8A96B8 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DF6B17E9341FF0F461F58 /* GCGISequenceCommand.h */,
+				8D4DFB4405D3C8DC981B9104 /* GCGISequenceCommand.m */,
+				8D4DFED86058C28A7045F14A /* GCGIAsyncCommand.h */,
+				8D4DF54C90DDFFC34EF74186 /* GCGIAsyncCommand.m */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		8D4DFC8A83E407039948757C /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFDD51AA0EFA12C9D1C57 /* LogASentenceCommand.m */,
+				8D4DF437EA7D35463CDE1541 /* LogASentenceCommand.h */,
+				8D4DFCCB124A7C0B12C5524E /* Headline.m */,
+				8D4DF2417A1065AA42E7A9FB /* Headline.h */,
+				8D4DFB47494271D693E29311 /* Word1.m */,
+				8D4DF57DAE4A1D942A218D49 /* Word1.h */,
+				8D4DFB4E3514EE2FC25BDAD2 /* WordSequence1.m */,
+				8D4DF5BA850E61C666719AE4 /* WordSequence1.h */,
+				8D4DF320438902431CB3FAED /* Word2.m */,
+				8D4DF8B64744E7010B891E34 /* Word2.h */,
+				8D4DFDA9A48B776EC67BCB1C /* Word3.m */,
+				8D4DF00F0CA3E4A301633397 /* Word3.h */,
+				8D4DF112F0F5DA41B3DF7673 /* Word4.m */,
+				8D4DFB83CD34ED9D84B00FF4 /* Word4.h */,
+				8D4DF0CBA15E9DD4D5356C53 /* WordSequence2.m */,
+				8D4DFEDD186FC59B5C680142 /* WordSequence2.h */,
+				8D4DF9E3A902E8C983827BD2 /* Word5.m */,
+				8D4DF73BEFF1E7156BF116AE /* Word5.h */,
+				8D4DFB753542BE68FFE7F947 /* Word6.m */,
+				8D4DFC7232061199B36A7C15 /* Word6.h */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		8D4DFDBFE801487C1F5CEB04 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8D4DFF6BF12BD2909E4C671C /* Append2Command.h */,
+				8D4DF590EADAC51C3F3FBC64 /* Append2Command.m */,
+				8D4DFEC820E7D178773ACB0A /* SetFlagCommand.h */,
+				8D4DF3BE84C26C4439677DD4 /* SetFlagCommand.m */,
+				8D4DFEFB2E275C2EC1AE93FA /* Append1Command.h */,
+				8D4DFAE5C62D742A525D59CD /* Append1Command.m */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
 		CB2E9AD9169B4E930061DD59 = {
 			isa = PBXGroup;
 			children = (
+				CB21BDE216A5AE7400E957FE /* QuartzCore.framework */,
 				8D4DF2857F11222F14999290 /* Examples */,
 				CB2E9AE7169B4E930061DD59 /* Frameworks */,
 				CB2E9AEE169B4E930061DD59 /* Gummi-Commander */,
@@ -408,6 +579,7 @@
 				8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */,
 				8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */,
 				8D4DFBA64D7C3BA96FC0996D /* StressTest.m */,
+				8D4DFBFEBBA068AB1A03D8F5 /* CommandChainSpec.m */,
 			);
 			path = "Gummi-CommanderTests";
 			sourceTree = "<group>";
@@ -482,8 +654,6 @@
 			mainGroup = CB2E9AD9169B4E930061DD59;
 			productRefGroup = CB2E9AE5169B4E930061DD59 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				CB2E9AE3169B4E930061DD59 /* Gummi-Commander */,
@@ -532,7 +702,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 1;
 		};
 		B1CB7E4CFD13431CAE10AAC4 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -586,6 +755,19 @@
 				8D4DFC7B3C3FB6FAA327D880 /* GCGIEvent.m in Sources */,
 				8D4DF91D6A660DB34C55BA6C /* GCGIExtension.m in Sources */,
 				8D4DFF33A8EBDA00EDC5DE97 /* GummiCommanderModule.m in Sources */,
+				8D4DFCA27E971A760B30B99A /* GCGISequenceCommand.m in Sources */,
+				8D4DFA76E9EE0059C3B496FA /* GCGIAsyncCommand.m in Sources */,
+				8D4DF655731E27E28F8A5BCE /* CommandChainingExample.m in Sources */,
+				8D4DFFB4179B8056A21837F7 /* LogASentenceCommand.m in Sources */,
+				8D4DF08EA51D69205915840F /* Headline.m in Sources */,
+				8D4DFA9CC63F9C27F555ABD5 /* Word1.m in Sources */,
+				8D4DFF038094266A957C6A15 /* WordSequence1.m in Sources */,
+				8D4DF0C12ACF87EE13DA785E /* Word2.m in Sources */,
+				8D4DFB0A38A734AD61223E0A /* Word3.m in Sources */,
+				8D4DF00F4DC749B920D552B8 /* Word4.m in Sources */,
+				8D4DFE09A393FA2FE0854DED /* WordSequence2.m in Sources */,
+				8D4DF200A36DD23F1CB036DB /* Word5.m in Sources */,
+				8D4DFDBDC1C7325F20936636 /* Word6.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,18 +775,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D4DF081F571EDE2F6E799C7 /* DependencyGuard.m in Sources */,
+				8D4DF081F571EDE2F6E799C7 /* HasDependenciesSetGuard.m in Sources */,
 				8D4DF0B3084E66331919770E /* NoGuard.m in Sources */,
-				8D4DF4B95FC81EDF2DDA6758 /* SomeCommand.m in Sources */,
-				8D4DF7251A78F1ACA95A2A8E /* SomeEvent.m in Sources */,
-				8D4DFEE51D0460CB69EB41C1 /* SomeGuard.m in Sources */,
-				8D4DF8DDEDA78CDBEB8A6AF3 /* SomeOtherCommand.m in Sources */,
+				8D4DF4B95FC81EDF2DDA6758 /* Append1Command.m in Sources */,
+				8D4DF7251A78F1ACA95A2A8E /* FlagAndStringEvent.m in Sources */,
+				8D4DF8DDEDA78CDBEB8A6AF3 /* Append2Command.m in Sources */,
 				8D4DFCCA9C3529D3A0C93CF1 /* YesGuard.m in Sources */,
 				8D4DFE3C012290F9EBCF6087 /* GCGICommandMapSpec.m in Sources */,
 				8D4DF9B39873622D9C9B91EC /* GuardsSpec.m in Sources */,
 				8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */,
 				8D4DFB95C4C80D2D8E580C4E /* StressTest.m in Sources */,
-				8D4DFB6B77D0F2554487A896 /* FlagObject.m in Sources */,
+				8D4DFB6B77D0F2554487A896 /* FlagAndStringObject.m in Sources */,
+				8D4DF8858DB1627301EC4495 /* CommandChainSpec.m in Sources */,
+				8D4DFD777B8382A4DBD3CE6F /* Append12AndSetFlagSequenceCommand.m in Sources */,
+				8D4DF3247625B32B9E2F6E94 /* SetFlagCommand.m in Sources */,
+				8D4DFE56613AFB7B4E01B45E /* Append1AsyncCommand.m in Sources */,
+				8D4DFF05B9776764FD9D4157 /* Append2AsyncCommand.m in Sources */,
+				8D4DFFF2EE5D29FD76CEE7C2 /* Append12Async3AndSetFlagAsyncSequenceCommand.m in Sources */,
+				8D4DFAABA2EBAF295ADFA806 /* Append3Command.m in Sources */,
+				8D4DFC7692C26C6047B1FDC8 /* DoubleSequenceCommand.m in Sources */,
+				8D4DF19A57DCD41B35799AFA /* NoSuccessCommand.m in Sources */,
+				8D4DF7F195DCF0EC84A20A0E /* NoSuccessSequenceCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

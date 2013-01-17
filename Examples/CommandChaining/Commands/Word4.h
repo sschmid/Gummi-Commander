@@ -5,9 +5,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SomeEvent.h"
 #import "GCCommand.h"
 
-@interface SomeOtherCommand : NSObject <GCCommand>
-@property(nonatomic) SomeEvent *event;
+@interface Word4 : NSObject <GCCommand>
 @end

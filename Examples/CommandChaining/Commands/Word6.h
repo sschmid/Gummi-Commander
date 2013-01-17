@@ -5,7 +5,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GCGIAsyncCommand.h"
 
-@interface FlagObject : NSObject
-@property(nonatomic) BOOL flag;
+@interface Word6 : GCGIAsyncCommand
 @end

@@ -8,16 +8,16 @@
 #import "GIInjector.h"
 #import "GCGICommandMap.h"
 #import "GummiCommanderModule.h"
-#import "SomeEvent.h"
+#import "FlagAndStringEvent.h"
 #import "GCCommand.h"
-#import "SomeCommand.h"
-#import "SomeOtherCommand.h"
-#import "SomeGuard.h"
+#import "Append1Command.h"
+#import "Append2Command.h"
 #import "NoGuard.h"
 #import "YesGuard.h"
-#import "DependencyGuard.h"
+#import "HasDependenciesSetGuard.h"
 #import "GDDispatcher.h"
-#import "FlagObject.h"
+#import "FlagAndStringObject.h"
+#import "SetFlagCommand.h"
 
 SPEC_BEGIN(GCGICommandMapSpec)
 
@@ -42,125 +42,95 @@ SPEC_BEGIN(GCGICommandMapSpec)
             });
 
             it(@"has no mapping", ^{
-                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
+                BOOL has = [commandMap isCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
 
                 [[theValue(has) should] beNo];
             });
 
-            it(@"has a mapping", ^{
-                [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
-                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
-
-                [[theValue(has) should] beYes];
-            });
-
-            it(@"removes mapping", ^{
-                [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
-                [commandMap unMapCommand:[SomeCommand class] fromObject:[SomeEvent class]];
-                BOOL has = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
-
-                [[theValue(has) should] beNo];
-            });
-
-            it(@"removes all mappings", ^{
-                [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
-                [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class]];
-                [commandMap unMapAll];
-
-                BOOL has1 = [commandMap isCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
-                BOOL has2 = [commandMap isCommand:[SomeOtherCommand class] mappedToObject:[SomeEvent class]];
-
-                [[theValue(has1) should] beNo];
-                [[theValue(has2) should] beNo];
-            });
-
-            it(@"executes a command", ^{
-                GDDispatcher *dispatcher = [injector getObject:[GDDispatcher class]];
-                SomeEvent *event = [[SomeEvent alloc] init];
-                event.object = [[FlagObject alloc] init];
-                [dispatcher dispatchObject:event];
-
-                [[theValue(event.object.flag) should] beNo];
-            });
-
-            context(@"when assigned dispatcher", ^{
+            context(@"when mapping added", ^{
 
                 beforeEach(^{
-                    commandMap.dispatcher = [[GDDispatcher alloc] init];
+                    [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class]];
                 });
 
-                it(@"has dispatcher", ^{
-                    id dispatcher = commandMap.dispatcher;
-                    [[dispatcher should] beKindOfClass:[GDDispatcher class]];
+                it(@"has a mapping", ^{
+                    BOOL has = [commandMap isCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
+                    [[theValue(has) should] beYes];
+
+                });
+
+                it(@"removes mapping", ^{
+                    [commandMap unMapCommand:[Append1Command class] fromObject:[FlagAndStringEvent class]];
+                    BOOL has = [commandMap isCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
+                    [[theValue(has) should] beNo];
+                });
+
+                it(@"removes all mappings", ^{
+                    [commandMap mapCommand:[Append2Command class] toObject:[FlagAndStringEvent class]];
+                    [commandMap unMapAll];
+
+                    BOOL has1 = [commandMap isCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
+                    BOOL has2 = [commandMap isCommand:[Append2Command class] mappedToObject:[FlagAndStringEvent class]];
+
+                    [[theValue(has1) should] beNo];
+                    [[theValue(has2) should] beNo];
+                });
+
+            });
+
+            context(@"when dispatch event", ^{
+
+                __block FlagAndStringEvent *event;
+                beforeEach(^{
+                    event = [[FlagAndStringEvent alloc] init];
                 });
 
                 it(@"executes a command", ^{
-                    SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[FlagObject alloc] init];
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
-                    [commandMap.dispatcher dispatchObject:event];
+                    [commandMap mapCommand:[SetFlagCommand class] toObject:[event class]];
+                    [event dispatch];
 
                     [[theValue(event.object.flag) should] beYes];
                 });
 
                 it(@"executes commands in right order", ^{
-                    SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[FlagObject alloc] init];
+                    [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class]];
+                    [commandMap mapCommand:[Append2Command class] toObject:[FlagAndStringEvent class]];
+                    [event dispatch];
 
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
-                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class]];
-
-                    [commandMap.dispatcher dispatchObject:event];
-
-                    [[event.string should] equal:@"12"];
+                    [[event.object.string should] equal:@"12"];
                 });
 
                 it(@"executes commands in right order", ^{
-                    SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[FlagObject alloc] init];
+                    [commandMap mapCommand:[Append2Command class] toObject:[FlagAndStringEvent class]];
+                    [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class]];
+                    [event dispatch];
 
-                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class]];
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
-
-                    [commandMap.dispatcher dispatchObject:event];
-
-                    [[event.string should] equal:@"21"];
+                    [[event.object.string should] equal:@"21"];
                 });
 
                 it(@"executes commands in right order", ^{
-                    SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[FlagObject alloc] init];
+                    [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class] priority:10];
+                    [commandMap mapCommand:[Append2Command class] toObject:[FlagAndStringEvent class] priority:20];
+                    [event dispatch];
 
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class] priority:10];
-                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class] priority:20];
-
-                    [commandMap.dispatcher dispatchObject:event];
-
-                    [[event.string should] equal:@"21"];
+                    [[event.object.string should] equal:@"21"];
                 });
 
                 it(@"executes commands in right order", ^{
-                    SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[FlagObject alloc] init];
+                    [commandMap mapCommand:[Append2Command class] toObject:[FlagAndStringEvent class] priority:20];
+                    [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class] priority:10];
+                    [event dispatch];
 
-                    [commandMap mapCommand:[SomeOtherCommand class] toObject:[SomeEvent class] priority:20];
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class] priority:10];
-
-                    [commandMap.dispatcher dispatchObject:event];
-
-                    [[event.string should] equal:@"21"];
+                    [[event.object.string should] equal:@"21"];
                 });
 
                 it(@"auto removes mapping", ^{
-                    SomeEvent *event = [[SomeEvent alloc] init];
-                    event.object = [[FlagObject alloc] init];
-
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class] priority:10 removeMappingAfterExecution:YES];
+                    [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class] priority:10 removeMappingAfterExecution:YES];
 
                     [commandMap.dispatcher dispatchObject:event];
                     [commandMap.dispatcher dispatchObject:event];
 
-                    [[event.string should] equal:@"1"];
+                    [[event.object.string should] equal:@"1"];
                 });
 
             });
@@ -168,7 +138,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
             context(@"guards", ^{
 
                 it(@"has no mapping", ^{
-                    GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
+                    GCMapping *mapping = [commandMap mappingForCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
 
                     [mapping shouldBeNil];
                 });
@@ -176,18 +146,18 @@ SPEC_BEGIN(GCGICommandMapSpec)
                 context(@"when added a mapping", ^{
 
                     beforeEach(^{
-                        [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
+                        [commandMap mapCommand:[Append1Command class] toObject:[FlagAndStringEvent class]];
                     });
 
                     it(@"has mapping", ^{
-                        GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
+                        GCMapping *mapping = [commandMap mappingForCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
 
                         [[mapping should] beKindOfClass:[GCMapping class]];
                     });
 
                     it(@"has no guards", ^{
-                        GCMapping *mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
-                        BOOL has = [mapping hasGuard:[SomeGuard class]];
+                        GCMapping *mapping = [commandMap mappingForCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
+                        BOOL has = [mapping hasGuard:[YesGuard class]];
 
                         [[theValue(has) should] beNo];
                     });
@@ -197,53 +167,43 @@ SPEC_BEGIN(GCGICommandMapSpec)
                         __block NSArray *guards = nil;
                         __block GCMapping *mapping = nil;
                         beforeEach(^{
-                            mapping = [commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]];
+                            mapping = [commandMap mappingForCommand:[Append1Command class] mappedToObject:[FlagAndStringEvent class]];
                         });
 
                         it(@"has guard", ^{
-                            guards = @[[SomeGuard class]];
+                            guards = @[[YesGuard class]];
                             [mapping withGuards:guards];
-                            BOOL has = [mapping hasGuard:[SomeGuard class]];
+                            BOOL has = [mapping hasGuard:[YesGuard class]];
 
                             [[theValue(has) should] beYes];
                         });
 
                         it(@"prevents command execution when guard does not approve", ^{
                             [mapping withGuards:@[[NoGuard class]]];
-                            SomeEvent *event = [[SomeEvent alloc] init];
-                            event.object = [[FlagObject alloc] init];
+                            FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
                             [event dispatch];
 
-                            [[theValue(event.object.flag) should] beNo];
+                            [[event.object.string should] equal:@""];
                         });
 
                         it(@"executes command when guard approves", ^{
                             [mapping withGuards:@[[YesGuard class]]];
-                            SomeEvent *event = [[SomeEvent alloc] init];
-                            event.object = [[FlagObject alloc] init];
+                            FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
                             [event dispatch];
 
-                            [[theValue(event.object.flag) should] beYes];
+                            [[event.object.string should] equal:@"1"];
                         });
 
                         it(@"injects dependencies into guards", ^{
-                            [mapping withGuards:@[[DependencyGuard class]]];
-                            SomeEvent *event = [[SomeEvent alloc] init];
-                            event.object = [[FlagObject alloc] init];
+                            [mapping withGuards:@[[HasDependenciesSetGuard class]]];
+                            FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
                             [event dispatch];
 
-                            [[theValue(event.object.flag) should] beYes];
+                            [[event.object.string should] equal:@"1"];
                         });
 
                     });
 
-                });
-
-                it(@"has guard", ^{
-                    [[commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]] withGuards:@[[SomeGuard class]]];
-                    BOOL has = [[commandMap mappingForCommand:[SomeCommand class] mappedToObject:[SomeEvent class]] hasGuard:[SomeGuard class]];
-
-                    [[theValue(has) should] beYes];
                 });
 
             });

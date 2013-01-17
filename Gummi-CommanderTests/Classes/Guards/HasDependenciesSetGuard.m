@@ -4,11 +4,11 @@
 // contact@sschmid.com
 //
 
-#import "DependencyGuard.h"
+#import "HasDependenciesSetGuard.h"
 #import "GIInjector.h"
-#import "SomeEvent.h"
+#import "FlagAndStringEvent.h"
 
-@implementation DependencyGuard
+@implementation HasDependenciesSetGuard
 inject(@"event", @"injector")
 
 - (BOOL)approve {

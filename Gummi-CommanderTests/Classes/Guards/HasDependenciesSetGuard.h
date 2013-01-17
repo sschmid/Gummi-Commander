@@ -7,10 +7,10 @@
 #import <Foundation/Foundation.h>
 #import "GCGuard.h"
 
-@class SomeEvent;
+@class FlagAndStringEvent;
 @class GIInjector;
 
-@interface DependencyGuard : NSObject <GCGuard>
-@property(nonatomic, strong) SomeEvent *event;
+@interface HasDependenciesSetGuard : NSObject <GCGuard>
+@property(nonatomic, strong) FlagAndStringEvent *event;
 @property(nonatomic, strong) GIInjector *injector;
 @end

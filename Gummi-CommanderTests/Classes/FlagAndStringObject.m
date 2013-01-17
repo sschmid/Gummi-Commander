@@ -4,14 +4,15 @@
 // contact@sschmid.com
 //
 
-#import "SomeEvent.h"
+#import "FlagAndStringObject.h"
 
-@implementation SomeEvent
+@implementation FlagAndStringObject
 
 - (id)init {
     self = [super init];
     if (self) {
-        self.string = [[NSString alloc] init];
+        self.flag = NO;
+        self.string = @"";
     }
 
     return self;

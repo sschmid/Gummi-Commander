@@ -6,6 +6,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class CommandChainingExample;
+
 @interface GCAppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 
