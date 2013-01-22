@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		77CA2834BAE9422D97391D0B /* libPods-Gummi-CommanderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */; };
 		8D4DF00F4DC749B920D552B8 /* Word4.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF112F0F5DA41B3DF7673 /* Word4.m */; };
+		8D4DF0478172DF287771EF06 /* SomeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFD35D3BEC89A25A27D6C /* SomeCommand.m */; };
 		8D4DF081F571EDE2F6E799C7 /* HasDependenciesSetGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFC31115C1216D20440B4 /* HasDependenciesSetGuard.m */; };
 		8D4DF08EA51D69205915840F /* Headline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFCCB124A7C0B12C5524E /* Headline.m */; };
 		8D4DF0B3084E66331919770E /* NoGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF1EA417D6B8B6C45E14D /* NoGuard.m */; };
@@ -29,6 +30,7 @@
 		8D4DF8858DB1627301EC4495 /* CommandChainSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFBFEBBA068AB1A03D8F5 /* CommandChainSpec.m */; };
 		8D4DF8D6FD2487415C1745F8 /* GreetingCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF73E312543435B57BDA8 /* GreetingCommand.m */; };
 		8D4DF8DDEDA78CDBEB8A6AF3 /* Append2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF590EADAC51C3F3FBC64 /* Append2Command.m */; };
+		8D4DF8E7398492FEBA2C933C /* SomeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF160E24CC5914B51D39B /* SomeEvent.m */; };
 		8D4DF91D6A660DB34C55BA6C /* GCGIExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF43CAB3AF6F98A41AE55 /* GCGIExtension.m */; };
 		8D4DF9B39873622D9C9B91EC /* GuardsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */; };
 		8D4DFA76E9EE0059C3B496FA /* GCGIAsyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF54C90DDFFC34EF74186 /* GCGIAsyncCommand.m */; };
@@ -55,7 +57,6 @@
 		8D4DFF05B9776764FD9D4157 /* Append2AsyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF64CAD83041CA028CECE /* Append2AsyncCommand.m */; };
 		8D4DFF33A8EBDA00EDC5DE97 /* GummiCommanderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFA6DCDBCDBFB315A154D /* GummiCommanderModule.m */; };
 		8D4DFF43E0097CF2B50A654D /* ServerResponseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF9366F5D86BA597C7B15 /* ServerResponseEvent.m */; };
-		8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */; };
 		8D4DFFB4179B8056A21837F7 /* LogASentenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DFDD51AA0EFA12C9D1C57 /* LogASentenceCommand.m */; };
 		8D4DFFF2EE5D29FD76CEE7C2 /* Append12Async3AndSetFlagAsyncSequenceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DF55565B7EB3075621AB9 /* Append12Async3AndSetFlagAsyncSequenceCommand.m */; };
 		CB21BDE316A5AE7400E957FE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB21BDE216A5AE7400E957FE /* QuartzCore.framework */; };
@@ -100,8 +101,8 @@
 		8D4DF0CBA15E9DD4D5356C53 /* WordSequence2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSequence2.m; sourceTree = "<group>"; };
 		8D4DF112F0F5DA41B3DF7673 /* Word4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word4.m; sourceTree = "<group>"; };
 		8D4DF13296B65F621CD25C19 /* Append1AsyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append1AsyncCommand.m; sourceTree = "<group>"; };
+		8D4DF160E24CC5914B51D39B /* SomeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeEvent.m; sourceTree = "<group>"; };
 		8D4DF1829A4D2C8BF6A99305 /* ServerResponseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseEvent.h; sourceTree = "<group>"; };
-		8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GummiCommanderSpec.m; sourceTree = "<group>"; };
 		8D4DF19778E48ED9C2450A21 /* GreetingsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingsModule.h; sourceTree = "<group>"; };
 		8D4DF1B1A709D4865B6F635E /* GummiCommanderModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GummiCommanderModule.h; sourceTree = "<group>"; };
 		8D4DF1DF8FC9DC8A2ADF17D9 /* ServerResponseGreater500Guard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerResponseGreater500Guard.h; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		8D4DF5CFADBC1E2E5F2C1C83 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		8D4DF64CAD83041CA028CECE /* Append2AsyncCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Append2AsyncCommand.m; sourceTree = "<group>"; };
 		8D4DF6B17E9341FF0F461F58 /* GCGISequenceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGISequenceCommand.h; sourceTree = "<group>"; };
+		8D4DF6CB06B07FFF895678D7 /* SomeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeCommand.h; sourceTree = "<group>"; };
 		8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGICommandMapSpec.m; sourceTree = "<group>"; };
 		8D4DF73BEFF1E7156BF116AE /* Word5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word5.h; sourceTree = "<group>"; };
 		8D4DF73DF1CB1A1C62D28CDF /* GCGIExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIExtension.h; sourceTree = "<group>"; };
@@ -177,7 +179,9 @@
 		8D4DFC78C93C9A2C7A726EC4 /* YesGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YesGuard.m; sourceTree = "<group>"; };
 		8D4DFCCB124A7C0B12C5524E /* Headline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Headline.m; sourceTree = "<group>"; };
 		8D4DFD1F75E7FAD71C3AC082 /* YesGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YesGuard.h; sourceTree = "<group>"; };
+		8D4DFD35D3BEC89A25A27D6C /* SomeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeCommand.m; sourceTree = "<group>"; };
 		8D4DFDA9A48B776EC67BCB1C /* Word3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word3.m; sourceTree = "<group>"; };
+		8D4DFDC371BD6D0DC677E6BA /* SomeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeEvent.h; sourceTree = "<group>"; };
 		8D4DFDD51AA0EFA12C9D1C57 /* LogASentenceCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogASentenceCommand.m; sourceTree = "<group>"; };
 		8D4DFE79CCB7E28BB6CC1A6A /* NoGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoGuard.h; sourceTree = "<group>"; };
 		8D4DFEACBF1B2C47E0AFAE63 /* GCGIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGIEvent.h; sourceTree = "<group>"; };
@@ -194,7 +198,7 @@
 		8D4DFF9A9B385114C11D7E03 /* GCMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMapping.m; sourceTree = "<group>"; };
 		8D4DFFC890C8D3BE81498F27 /* GCGICommandMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGICommandMap.m; sourceTree = "<group>"; };
 		B631FE3FF4934E218192DA6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB21BDE216A5AE7400E957FE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB21BDE216A5AE7400E957FE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB2E9AE4169B4E930061DD59 /* Gummi-Commander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gummi-Commander.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2E9AE8169B4E930061DD59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB2E9AEA169B4E930061DD59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -334,6 +338,8 @@
 			children = (
 				8D4DFC3ABA24DCC67BFF9F54 /* FlagAndStringEvent.h */,
 				8D4DFB8982E950DC7519F746 /* FlagAndStringEvent.m */,
+				8D4DF160E24CC5914B51D39B /* SomeEvent.m */,
+				8D4DFDC371BD6D0DC677E6BA /* SomeEvent.h */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -507,6 +513,8 @@
 				8D4DF3BE84C26C4439677DD4 /* SetFlagCommand.m */,
 				8D4DFEFB2E275C2EC1AE93FA /* Append1Command.h */,
 				8D4DFAE5C62D742A525D59CD /* Append1Command.m */,
+				8D4DFD35D3BEC89A25A27D6C /* SomeCommand.m */,
+				8D4DF6CB06B07FFF895678D7 /* SomeCommand.h */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -514,7 +522,6 @@
 		CB2E9AD9169B4E930061DD59 = {
 			isa = PBXGroup;
 			children = (
-				CB21BDE216A5AE7400E957FE /* QuartzCore.framework */,
 				8D4DF2857F11222F14999290 /* Examples */,
 				CB2E9AE7169B4E930061DD59 /* Frameworks */,
 				CB2E9AEE169B4E930061DD59 /* Gummi-Commander */,
@@ -544,6 +551,7 @@
 				CB2E9B06169B4E930061DD59 /* SenTestingKit.framework */,
 				45FBB2D6CA2742C580FE8653 /* libPods-Gummi-CommanderTests.a */,
 				B631FE3FF4934E218192DA6E /* libPods.a */,
+				CB21BDE216A5AE7400E957FE /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -577,7 +585,6 @@
 				8D4DF41E57893DEB39AD4146 /* Classes */,
 				8D4DF6DE3B56CCA74024F27C /* GCGICommandMapSpec.m */,
 				8D4DF4A5A0A551BF7BE6D49A /* GuardsSpec.m */,
-				8D4DF184C174066A07E60F51 /* GummiCommanderSpec.m */,
 				8D4DFBA64D7C3BA96FC0996D /* StressTest.m */,
 				8D4DFBFEBBA068AB1A03D8F5 /* CommandChainSpec.m */,
 			);
@@ -783,7 +790,6 @@
 				8D4DFCCA9C3529D3A0C93CF1 /* YesGuard.m in Sources */,
 				8D4DFE3C012290F9EBCF6087 /* GCGICommandMapSpec.m in Sources */,
 				8D4DF9B39873622D9C9B91EC /* GuardsSpec.m in Sources */,
-				8D4DFF64AF50343F7C8BE381 /* GummiCommanderSpec.m in Sources */,
 				8D4DFB95C4C80D2D8E580C4E /* StressTest.m in Sources */,
 				8D4DFB6B77D0F2554487A896 /* FlagAndStringObject.m in Sources */,
 				8D4DF8858DB1627301EC4495 /* CommandChainSpec.m in Sources */,
@@ -796,6 +802,8 @@
 				8D4DFC7692C26C6047B1FDC8 /* DoubleSequenceCommand.m in Sources */,
 				8D4DF19A57DCD41B35799AFA /* NoSuccessCommand.m in Sources */,
 				8D4DF7F195DCF0EC84A20A0E /* NoSuccessSequenceCommand.m in Sources */,
+				8D4DF8E7398492FEBA2C933C /* SomeEvent.m in Sources */,
+				8D4DF0478172DF287771EF06 /* SomeCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

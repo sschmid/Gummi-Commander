@@ -12,7 +12,7 @@
 inject(@"flagAndStringObject")
 
 - (void)execute {
-    [self performSelector:@selector(doSth) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(doSth) withObject:nil afterDelay:0.1];
 }
 
 - (void)doSth {

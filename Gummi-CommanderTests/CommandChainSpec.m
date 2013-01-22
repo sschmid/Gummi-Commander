@@ -81,18 +81,15 @@ SPEC_BEGIN(CommandChainSpec)
                 [commandMap mapCommand:[DoubleSequenceCommand class] toObject:[event class]];
                 [event dispatch];
 
-                [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(5)] equal:@"1_async2_async32_async1_async2_async3"];
+                [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"1_async2_async32_async1_async2_async3"];
             });
 
-            it(@"SHOULD-FAIL: sequence stops when no success, if set to YES", ^{
-
-                // This test should fail
-
+            it(@"sequence stops when no success, if set to YES", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
                 [commandMap mapCommand:[NoSuccessSequenceCommand class] toObject:[event class]];
                 [event dispatch];
 
-                [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(5)] equal:@"error1_async"];
+                [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"errorNoSuccess"];
             });
 
         });

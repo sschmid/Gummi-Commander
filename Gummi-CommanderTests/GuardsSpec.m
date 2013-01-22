@@ -20,8 +20,8 @@ SPEC_BEGIN(GuardsSpec)
                 [[g should] beKindOfClass:[YesGuard class]];
             });
 
-            it(@"can approve", ^{
-                [g approve];
+            it(@"approves", ^{
+                [[theValue([g approve]) should] beYes];
             });
 
         });

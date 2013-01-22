@@ -34,4 +34,9 @@ inject(@"event")
     [super execute];
 }
 
+- (void)didExecuteWithSuccess:(BOOL)success {
+    self.event.object.string = [self.event.object.string stringByAppendingString:@"NoSuccess"];
+    [super didExecuteWithSuccess:success];
+}
+
 @end
