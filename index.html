@@ -68,6 +68,7 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">GummiCommanderModule</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
 
 <span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">ApplicationExtension</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
+<span class="p">[</span><span class="n">injector</span> <span class="nl">addModule:</span><span class="p">[[</span><span class="n">TrackingExtension</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]];</span>
 
 <span class="c1">// Maybe add this extension later in the code,</span>
 <span class="c1">// right before the game starts</span>
@@ -81,13 +82,14 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 <li>Commands get created and executed when dispatching an event.</li>
 <li>Commands can inject the corresponding event, models and more...</li>
 <li>Commands get destroyed immediately after execution.</li>
-</ul><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">ServerResponseCommand</span>
+</ul><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">DropBombCommand</span>
 <span class="n">inject</span><span class="p">(</span><span class="s">@"event"</span><span class="p">,</span> <span class="s">@"model"</span><span class="p">)</span>
 
 <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">execute</span> <span class="p">{</span>
-    <span class="n">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">lastServerResponse</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">response</span><span class="p">;</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">bombs</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">spawnBombAtPosition:</span><span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">position</span><span class="p">];</span>
 <span class="p">}</span>
-
+<span class="p">...</span>
 <span class="k">@end</span>
 </pre></div>
 
@@ -119,7 +121,7 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 
 <p>A Sequence Command</p>
 
-<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">MySequenceCommand1</span>
+<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">MySequenceCommand</span>
 
 <span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
     <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
@@ -127,9 +129,9 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 
         <span class="n">self</span><span class="p">.</span><span class="n">stopWhenNoSuccess</span> <span class="o">=</span> <span class="n">NO</span><span class="p">;</span> <span class="c1">// Default</span>
 
-        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyAsync1Command</span> <span class="n">class</span><span class="p">]];</span>
-        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyCommand1</span> <span class="n">class</span><span class="p">]];</span>
-        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MySequenceCommand2</span> <span class="n">class</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyAsyncCommand</span> <span class="n">class</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyCommand</span> <span class="n">class</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">addCommand:</span><span class="p">[</span><span class="n">MyOtherSequenceCommand</span> <span class="n">class</span><span class="p">]];</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
@@ -186,11 +188,11 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 <li>Guards do only one thing: approve.</li>
 <li>Guards decide, whether a command gets executed or not.</li>
 <li>Only when all guards approve, a command gets executed.</li>
-</ul><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">ServerResponseGreater500Guard</span>
-<span class="n">inject</span><span class="p">(</span><span class="s">@"event"</span><span class="p">)</span>
+</ul><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">IsInGridGuard</span>
+<span class="n">inject</span><span class="p">(</span><span class="s">@"event"</span><span class="p">,</span> <span class="s">@"grid"</span><span class="p">)</span>
 
 <span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">approve</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">response</span> <span class="n">intValue</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">grid</span> <span class="nl">containsPosition:</span><span class="n">self</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">position</span><span class="p">];</span>    
 <span class="p">}</span>
 
 <span class="k">@end</span>
@@ -198,9 +200,9 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 
 <h4>You can add guards like this:</h4>
 
-<div class="highlight"><pre><span class="p">[[</span><span class="n">commandMap</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span>
-                <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
-             <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGuard</span> <span class="n">class</span><span class="p">]]];</span>
+<div class="highlight"><pre><span class="p">[[</span><span class="n">commandMap</span> <span class="nl">mapAction:</span><span class="p">[</span><span class="n">DropBombCommand</span> <span class="n">class</span><span class="p">]</span>
+                <span class="nl">toTrigger:</span><span class="p">[</span><span class="n">DropBombEvent</span> <span class="n">class</span><span class="p">]]</span>
+             <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">IsInGridGuard</span> <span class="n">class</span><span class="p">]]];</span>
 </pre></div>
 
 <h2>Extensions</h2>
@@ -213,16 +215,16 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
     <span class="p">[</span><span class="n">super</span> <span class="nl">configure:</span><span class="n">injector</span><span class="p">];</span>
 
     <span class="c1">// Map commands to events</span>
-    <span class="p">[[</span><span class="n">self</span> <span class="nl">mapCommand:</span><span class="p">[</span><span class="n">ServerResponseCommand</span> <span class="n">class</span><span class="p">]</span>
-              <span class="nl">toEvent:</span><span class="p">[</span><span class="n">ServerResponseEvent</span> <span class="n">class</span><span class="p">]]</span>
-           <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">ServerResponseGreater500Guard</span> <span class="n">class</span><span class="p">]]];</span>
+    <span class="p">[[</span><span class="n">self</span> <span class="nl">mapAction:</span><span class="p">[</span><span class="n">DropBombCommand</span> <span class="n">class</span><span class="p">]</span>
+              <span class="nl">toTrigger:</span><span class="p">[</span><span class="n">DropBombEvent</span> <span class="n">class</span><span class="p">]]</span>
+           <span class="nl">withGuards:</span><span class="err">@</span><span class="p">[[</span><span class="n">IsInGridGuard</span> <span class="n">class</span><span class="p">]]];</span>
 
     <span class="c1">// Set injection rules</span>
-    <span class="p">[</span><span class="n">self</span> <span class="nl">mapEagerSingleton:</span><span class="p">[</span><span class="n">Service</span> <span class="n">class</span><span class="p">]</span> <span class="nl">to:</span><span class="p">[</span><span class="n">Service</span> <span class="n">class</span><span class="p">]];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">mapEagerSingleton:</span><span class="p">[</span><span class="n">MyService</span> <span class="n">class</span><span class="p">]</span> <span class="nl">to:</span><span class="err">@</span><span class="n">protocol</span><span class="p">(</span><span class="n">RemoteService</span><span class="p">)];</span>
 <span class="p">}</span>
 
 <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">unload</span> <span class="p">{</span>
-    <span class="n">Service</span> <span class="o">*</span><span class="n">service</span> <span class="o">=</span> <span class="p">[</span><span class="n">_injector</span> <span class="nl">getObject:</span><span class="p">[</span><span class="n">Service</span> <span class="n">class</span><span class="p">]];</span>
+    <span class="n">Service</span> <span class="o">*</span><span class="n">service</span> <span class="o">=</span> <span class="p">[</span><span class="n">_injector</span> <span class="nl">getObject:</span><span class="err">@</span><span class="n">protocol</span><span class="p">(</span><span class="n">RemoteService</span><span class="p">)];</span>
     <span class="p">[</span><span class="n">service</span> <span class="n">close</span><span class="p">];</span>
 
     <span class="c1">// All mappings from the CommandMap and the Injector made</span>
