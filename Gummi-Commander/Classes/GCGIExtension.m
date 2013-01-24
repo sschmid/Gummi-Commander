@@ -24,36 +24,36 @@
     [super unload];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass {
-    return [self.commandMap mapCommand:commandClass toObject:objectClass];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger {
+    return [self.commandMap mapAction:action toTrigger:trigger];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority {
-    return [self.commandMap mapCommand:commandClass toObject:objectClass priority:priority];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger priority:(int)priority {
+    return [self.commandMap mapAction:action toTrigger:trigger priority:priority];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass removeMappingAfterExecution:(BOOL)remove {
-    return [self.commandMap mapCommand:commandClass toObject:objectClass removeMappingAfterExecution:remove];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger removeMappingAfterExecution:(BOOL)remove {
+    return [self.commandMap mapAction:action toTrigger:trigger removeMappingAfterExecution:remove];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    return [self.commandMap mapCommand:commandClass toObject:objectClass priority:priority removeMappingAfterExecution:remove];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
+    return [self.commandMap mapAction:action toTrigger:trigger priority:priority removeMappingAfterExecution:remove];
 }
 
-- (GCMapping *)mappingForCommand:(Class)commandClass mappedToObject:(Class)objectClass {
-    return [self.commandMap mappingForCommand:commandClass mappedToObject:objectClass];
+- (GCMapping *)mappingForAction:(id)action mappedToTrigger:(Class)trigger {
+    return [self.commandMap mappingForAction:action mappedToTrigger:trigger];
 }
 
-- (void)unMapCommand:(Class)commandClass fromObject:(Class)objectClass {
-    [self.commandMap unMapCommand:commandClass fromObject:objectClass];
+- (void)unMapAction:(id)action fromTrigger:(Class)trigger {
+    [self.commandMap unMapAction:action fromTrigger:trigger];
 }
 
 - (void)unMapAll {
     [self.commandMap unMapAll];
 }
 
-- (BOOL)isCommand:(Class)commandClass mappedToObject:(Class)objectClass {
-    return [self.commandMap isCommand:commandClass mappedToObject:objectClass];
+- (BOOL)isAction:(id)action mappedToTrigger:(Class)trigger {
+    return [self.commandMap isAction:action mappedToTrigger:trigger];
 }
 
 @end

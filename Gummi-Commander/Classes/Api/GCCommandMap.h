@@ -9,16 +9,16 @@
 
 @protocol GCCommandMap <NSObject>
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass;
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority;
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass removeMappingAfterExecution:(BOOL)remove;
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove;
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger;
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger priority:(int)priority;
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger removeMappingAfterExecution:(BOOL)remove;
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger priority:(int)priority removeMappingAfterExecution:(BOOL)remove;
 
-- (GCMapping *)mappingForCommand:(Class)commandClass mappedToObject:(Class)objectClass;
+- (GCMapping *)mappingForAction:(id)action mappedToTrigger:(Class)trigger;
 
-- (void)unMapCommand:(Class)commandClass fromObject:(Class)objectClass;
+- (void)unMapAction:(id)action fromTrigger:(Class)trigger;
 - (void)unMapAll;
 
-- (BOOL)isCommand:(Class)commandClass mappedToObject:(Class)objectClass;
+- (BOOL)isAction:(id)action mappedToTrigger:(Class)trigger;
 
 @end

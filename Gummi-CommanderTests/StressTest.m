@@ -57,7 +57,7 @@ SPEC_BEGIN(StressTest)
             context(@"with mapping", ^{
 
                 beforeEach(^{
-                    [commandMap mapCommand:[SomeCommand class] toObject:[SomeEvent class]];
+                    [commandMap mapAction:[SomeCommand class] toTrigger:[SomeEvent class]];
                 });
 
                 it(@"300 event dispatch with command", ^{

@@ -18,7 +18,7 @@
     [super configure:injector];
 
     // Map commands to events
-    [[self mapCommand:[ServerResponseCommand class] toObject:[ServerResponseEvent class]]
+    [[self mapAction:[ServerResponseCommand class] toTrigger:[ServerResponseEvent class]]
             withGuards:@[[ServerResponseGreater500Guard class]]];
 
     // Set injection rules

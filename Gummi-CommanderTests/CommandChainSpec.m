@@ -37,8 +37,8 @@ SPEC_BEGIN(CommandChainSpec)
 
             it(@"executes a command", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
-                [commandMap mapCommand:[Append1Command class] toObject:[event class]];
-                [commandMap mapCommand:[SetFlagCommand class] toObject:[event class]];
+                [commandMap mapAction:[Append1Command class] toTrigger:[event class]];
+                [commandMap mapAction:[SetFlagCommand class] toTrigger:[event class]];
 
                 [[theValue(event.object.flag) should] beNo];
                 [[event.object.string should] equal:@""];
@@ -52,7 +52,7 @@ SPEC_BEGIN(CommandChainSpec)
             it(@"executes an asyn command", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
                 [[GIInjector sharedInjector] map:event.object to:[event.object class]];
-                [commandMap mapCommand:[Append1AsyncCommand class] toObject:[event class]];
+                [commandMap mapAction:[Append1AsyncCommand class] toTrigger:[event class]];
                 [event dispatch];
 
                 [[event.object.string should] equal:@""];
@@ -61,7 +61,7 @@ SPEC_BEGIN(CommandChainSpec)
 
             it(@"executes a sequence command", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
-                [commandMap mapCommand:[Append12AndSetFlagSequenceCommand class] toObject:[event class]];
+                [commandMap mapAction:[Append12AndSetFlagSequenceCommand class] toTrigger:[event class]];
                 [event dispatch];
 
                 [[theValue(event.object.flag) should] beYes];
@@ -70,7 +70,7 @@ SPEC_BEGIN(CommandChainSpec)
 
             it(@"executes a sequence command with async commands added", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
-                [commandMap mapCommand:[Append12Async3AndSetFlagAsyncSequenceCommand class] toObject:[event class]];
+                [commandMap mapAction:[Append12Async3AndSetFlagAsyncSequenceCommand class] toTrigger:[event class]];
                 [event dispatch];
 
                 [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"1_async2_async3"];
@@ -78,7 +78,7 @@ SPEC_BEGIN(CommandChainSpec)
 
             it(@"executes a sequence command with sequence command in a sequence commands", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
-                [commandMap mapCommand:[DoubleSequenceCommand class] toObject:[event class]];
+                [commandMap mapAction:[DoubleSequenceCommand class] toTrigger:[event class]];
                 [event dispatch];
 
                 [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"1_async2_async32_async1_async2_async3"];
@@ -86,7 +86,7 @@ SPEC_BEGIN(CommandChainSpec)
 
             it(@"sequence stops when no success, if set to YES", ^{
                 FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
-                [commandMap mapCommand:[NoSuccessSequenceCommand class] toObject:[event class]];
+                [commandMap mapAction:[NoSuccessSequenceCommand class] toTrigger:[event class]];
                 [event dispatch];
 
                 [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"errorNoSuccess"];

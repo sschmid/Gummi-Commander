@@ -15,7 +15,7 @@
 - (void)configure:(GIInjector *)injector {
     [super configure:injector];
 
-    [self mapCommand:[GreetingCommand class] toObject:[GreetingEvent class]];
+    [self mapAction:[GreetingCommand class] toTrigger:[GreetingEvent class]];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "GCCommand.h"
 #import "GCGuard.h"
 #import "GDDispatcher.h"
+#import "GRReflection.h"
 
 @interface GCGICommandMap ()
 @property(nonatomic, strong) NSMutableDictionary *map;
@@ -25,40 +26,40 @@ inject(@"dispatcher", @"injector")
     return self;
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass {
-    return [self mapCommand:commandClass toObject:objectClass priority:0 removeMappingAfterExecution:NO];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger {
+    return [self mapAction:action toTrigger:trigger priority:0 removeMappingAfterExecution:NO];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority {
-    return [self mapCommand:commandClass toObject:objectClass priority:priority removeMappingAfterExecution:NO];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger priority:(int)priority {
+    return [self mapAction:action toTrigger:trigger priority:priority removeMappingAfterExecution:NO];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass removeMappingAfterExecution:(BOOL)remove {
-    return [self mapCommand:commandClass toObject:objectClass priority:0 removeMappingAfterExecution:remove];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger removeMappingAfterExecution:(BOOL)remove {
+    return [self mapAction:action toTrigger:trigger priority:0 removeMappingAfterExecution:remove];
 }
 
-- (GCMapping *)mapCommand:(Class)commandClass toObject:(Class)objectClass priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
-    [self.dispatcher addObserver:self forObject:objectClass withSelector:@selector(executeCommand:) priority:priority];
-    GCMapping *mapping = [[GCMapping alloc] initWithCommand:commandClass object:objectClass priority:priority remove:remove];
-    [self insertMapping:mapping intoMappingsForObject:[self getMappingsForObject:objectClass] withPriority:priority];
+- (GCMapping *)mapAction:(id)action toTrigger:(Class)trigger priority:(int)priority removeMappingAfterExecution:(BOOL)remove {
+    [self.dispatcher addObserver:self forObject:trigger withSelector:@selector(executeAction:) priority:priority];
+    GCMapping *mapping = [[GCMapping alloc] initWithAction:action trigger:trigger priority:priority remove:remove];
+    [self insertMapping:mapping intoMappingsForTrigger:[self getMappingsForTrigger:trigger] withPriority:priority];
     return mapping;
 }
 
-- (GCMapping *)mappingForCommand:(Class)commandClass mappedToObject:(Class)objectClass {
-    for (GCMapping *mapping in [self getMappingsForObject:objectClass])
-        if ([mapping.commandClass isEqual:commandClass])
+- (GCMapping *)mappingForAction:(id)action mappedToTrigger:(Class)trigger {
+    for (GCMapping *mapping in [self getMappingsForTrigger:trigger])
+        if ([mapping.action isEqual:action])
             return mapping;
 
     return nil;
 }
 
-- (void)unMapCommand:(Class)commandClass fromObject:(Class)objectClass {
-    NSMutableArray *mappingsForObject = [self getMappingsForObject:objectClass];
-    for (GCMapping *mapping in [mappingsForObject copy]) {
-        if ([mapping.commandClass isEqual:commandClass]) {
-            [mappingsForObject removeObject:mapping];
-            if (mappingsForObject.count == 0)
-                [self.dispatcher removeObserver:self fromObject:objectClass];
+- (void)unMapAction:(id)action fromTrigger:(Class)trigger {
+    NSMutableArray *mappingsForTrigger = [self getMappingsForTrigger:trigger];
+    for (GCMapping *mapping in [mappingsForTrigger copy]) {
+        if ([mapping.action isEqual:action]) {
+            [mappingsForTrigger removeObject:mapping];
+            if (mappingsForTrigger.count == 0)
+                [self.dispatcher removeObserver:self fromObject:trigger];
 
             return;
         }
@@ -70,9 +71,9 @@ inject(@"dispatcher", @"injector")
     [self.dispatcher removeObserver:self];
 }
 
-- (BOOL)isCommand:(Class)commandClass mappedToObject:(Class)objectClass {
-    for (GCMapping *mapping in [self getMappingsForObject:objectClass])
-        if ([mapping.commandClass isEqual:commandClass])
+- (BOOL)isAction:(id)action mappedToTrigger:(Class)trigger {
+    for (GCMapping *mapping in [self getMappingsForTrigger:trigger])
+        if ([mapping.action isEqual:action])
             return YES;
 
     return NO;
@@ -81,41 +82,48 @@ inject(@"dispatcher", @"injector")
 
 #pragma mark private
 
-- (void)insertMapping:(GCMapping *)mapping intoMappingsForObject:(NSMutableArray *)mappingsForObject withPriority:(int)priority {
+- (void)insertMapping:(GCMapping *)mapping intoMappingsForTrigger:(NSMutableArray *)mappingsForTrigger withPriority:(int)priority {
     GCMapping *existingMapping;
-    for (NSUInteger i = 0; i < mappingsForObject.count; i++) {
-        existingMapping = mappingsForObject[i];
+    for (NSUInteger i = 0; i < mappingsForTrigger.count; i++) {
+        existingMapping = mappingsForTrigger[i];
         if (existingMapping.priority < priority) {
-            [mappingsForObject insertObject:mapping atIndex:i];
+            [mappingsForTrigger insertObject:mapping atIndex:i];
 
             return;
         }
     }
 
-    [mappingsForObject addObject:mapping];
+    [mappingsForTrigger addObject:mapping];
 }
 
-- (NSMutableArray *)getMappingsForObject:(Class)object {
-    NSString *key = NSStringFromClass(object);
-    NSMutableArray *mappingsForObject = self.map[key];
-    if (!mappingsForObject) {
-        mappingsForObject = [[NSMutableArray alloc] init];
-        self.map[key] = mappingsForObject;
+- (NSMutableArray *)getMappingsForTrigger:(Class)trigger {
+    NSString *key = NSStringFromClass(trigger);
+    NSMutableArray *mappingsForTrigger = self.map[key];
+    if (!mappingsForTrigger) {
+        mappingsForTrigger = [[NSMutableArray alloc] init];
+        self.map[key] = mappingsForTrigger;
     }
 
-    return mappingsForObject;
+    return mappingsForTrigger;
 }
 
-- (void)executeCommand:(id)object {
-    [self.injector map:object to:[object class]];
-    for (GCMapping *mapping in [[self getMappingsForObject:[object class]] copy]) {
+- (void)executeAction:(id)trigger {
+    [self.injector map:trigger to:[trigger class]];
+    for (GCMapping *mapping in [[self getMappingsForTrigger:[trigger class]] copy]) {
         if ([self allGuardsApprove:mapping.guards]) {
-            [[self.injector getObject:mapping.commandClass] execute];
+
+            if ([GRReflection isClass:mapping.action]) {
+                [[self.injector getObject:mapping.action] execute];
+            } else if ([GRReflection isBlock:mapping.action]) {
+                void (^block)(GIInjector *injector) = mapping.action;
+                block(self.injector);
+            }
+            
             if (mapping.remove)
-                [self unMapCommand:mapping.commandClass fromObject:mapping.objectClass];
+                [self unMapAction:mapping.action fromTrigger:mapping.trigger];
         }
     }
-    [self.injector unMap:object from:[object class]];
+    [self.injector unMap:trigger from:[trigger class]];
 }
 
 - (BOOL)allGuardsApprove:(NSArray *)guards {
