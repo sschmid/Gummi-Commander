@@ -28,6 +28,7 @@ GIInjector *injector = [GIInjector sharedInjector];
 [injector addModule:[[GummiCommanderModule alloc] init]];
 
 [injector addModule:[[ApplicationExtension alloc] init]];
+[injector addModule:[[TrackingExtension alloc] init]];
 
 // Maybe add this extension later in the code,
 // right before the game starts
@@ -41,13 +42,14 @@ GIInjector *injector = [GIInjector sharedInjector];
 * Commands get destroyed immediately after execution.
 
 ```objective-c
-@implementation ServerResponseCommand
+@implementation DropBombCommand
 inject(@"event", @"model")
 
 - (void)execute {
-    self.model.lastServerResponse = self.event.response;
+    self.model.bombs--;
+    [self spawnBombAtPosition:self.event.position];
 }
-
+...
 @end
 ```
 
@@ -73,7 +75,7 @@ With `stopWhenNoSuccess` you can decide, if a Sequence Command should stop or ca
 A Sequence Command
 
 ```objective-c
-@implementation MySequenceCommand1
+@implementation MySequenceCommand
 
 - (id)init {
     self = [super init];
@@ -81,9 +83,9 @@ A Sequence Command
 
         self.stopWhenNoSuccess = NO; // Default
 
-        [self addCommand:[MyAsync1Command class]];
-        [self addCommand:[MyCommand1 class]];
-        [self addCommand:[MySequenceCommand2 class]];
+        [self addCommand:[MyAsyncCommand class]];
+        [self addCommand:[MyCommand class]];
+        [self addCommand:[MyOtherSequenceCommand class]];
     }
 
     return self;
@@ -142,11 +144,11 @@ myBlock = ^(GIInjector * injector) {
 * Only when all guards approve, a command gets executed.
 
 ```objective-c
-@implementation ServerResponseGreater500Guard
-inject(@"event")
+@implementation IsInGridGuard
+inject(@"event", @"grid")
 
 - (BOOL)approve {
-    return [self.event.response intValue] > 500;
+    return [self.grid containsPosition:self.event.position];    
 }
 
 @end
@@ -155,9 +157,9 @@ inject(@"event")
 #### You can add guards like this:
 
 ```objective-c
-[[commandMap mapAction:[ServerResponseCommand class]
-                toTrigger:[ServerResponseEvent class]]
-             withGuards:@[[ServerResponseGuard class]]];
+[[commandMap mapAction:[DropBombCommand class]
+                toTrigger:[DropBombEvent class]]
+             withGuards:@[[IsInGridGuard class]]];
 ```
 
 ## Extensions
@@ -170,16 +172,16 @@ Put related configuration logic into extensions and add or remove them at will
     [super configure:injector];
 
     // Map commands to events
-    [[self mapAction:[ServerResponseCommand class]
-              toTrigger:[ServerResponseEvent class]]
-           withGuards:@[[ServerResponseGreater500Guard class]]];
+    [[self mapAction:[DropBombCommand class]
+              toTrigger:[DropBombEvent class]]
+           withGuards:@[[IsInGridGuard class]]];
 
     // Set injection rules
-    [self mapEagerSingleton:[Service class] to:[Service class]];
+    [self mapEagerSingleton:[MyService class] to:@protocol(RemoteService)];
 }
 
 - (void)unload {
-    Service *service = [_injector getObject:[Service class]];
+    Service *service = [_injector getObject:@protocol(RemoteService)];
     [service close];
 
     // All mappings from the CommandMap and the Injector made
