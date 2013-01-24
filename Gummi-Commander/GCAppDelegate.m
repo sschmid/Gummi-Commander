@@ -20,11 +20,11 @@
 
     [self addIcon];
 
-//    [[GreetingsExample alloc] init];
+//    GreetingsExample *greetingsExample = [[GreetingsExample alloc] init];
 
-//    [[ServiceExample alloc] init];
+//    ServiceExample *serviceExample = [[ServiceExample alloc] init];
 
-    [[CommandChainingExample alloc] init];
+    CommandChainingExample *chainingExample = [[CommandChainingExample alloc] init];
 
     return YES;
 }
