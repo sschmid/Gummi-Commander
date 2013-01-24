@@ -13,6 +13,7 @@ Gummi Commander uses
 * Execute multiple commands by dispatching one event
 * Supports nested Async and Sequence Commands
 * Add mappings with priority
+* Map blocks
 * Prevent certain commands to execute by adding Guards
 * Inject the corresponding event and other objects of interest into commands
 
@@ -111,16 +112,28 @@ An Async Command
 When an instance of MyEvent gets dispatched, all mapped commands get executed
 
 ```objective-c
-[commandMap mapCommand:[MyCommand class] toEvent:[MyEvent class]];
+[commandMap mapAction:[MyCommand class] toTrigger:[MyEvent class]];
 
-[commandMap mapCommand:[MyOtherCommand class] toEvent:[MyEvent class]
-                          removeMappingAfterExecution:YES];
+[commandMap mapAction:[MyOtherCommand class] toTrigger:[MyEvent class]
+                           removeMappingAfterExecution:YES];
 
-[commandMap mapCommand:[ACommand class] toEvent:[MyEvent class]
-                                       priority: 5];
+[commandMap mapAction:[ACommand class] toTrigger:[MyEvent class]
+                                        priority: 5];
 
-[commandMap mapCommand:[AnOtherCommand class] toEvent:[MyEvent class]
-                                             priority: 10];
+[commandMap mapAction:[AnOtherCommand class] toTrigger:[MyEvent class]
+                                              priority: 10];
+```
+
+Instead of commands, you can also map blocks
+
+```objective-c
+void (^myBlock)(GIInjector *injector);
+myBlock = ^(GIInjector * injector) {
+    MyEvent *event = [injector getObject:[MyEvent class]];
+    ...
+};
+
+[commandMap mapAction:myBlock toTrigger:[FlagAndStringEvent class]];
 ```
 
 ## Guards
@@ -142,8 +155,8 @@ inject(@"event")
 #### You can add guards like this:
 
 ```objective-c
-[[commandMap mapCommand:[ServerResponseCommand class]
-                toEvent:[ServerResponseEvent class]]
+[[commandMap mapAction:[ServerResponseCommand class]
+                toTrigger:[ServerResponseEvent class]]
              withGuards:@[[ServerResponseGuard class]]];
 ```
 
@@ -157,8 +170,8 @@ Put related configuration logic into extensions and add or remove them at will
     [super configure:injector];
 
     // Map commands to events
-    [[self mapCommand:[ServerResponseCommand class]
-              toEvent:[ServerResponseEvent class]]
+    [[self mapAction:[ServerResponseCommand class]
+              toTrigger:[ServerResponseEvent class]]
            withGuards:@[[ServerResponseGreater500Guard class]]];
 
     // Set injection rules
