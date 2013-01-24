@@ -209,7 +209,7 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 
 <p>Put related configuration logic into extensions and add or remove them at will</p>
 
-<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">ServiceExtension</span>
+<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">GameExtension</span>
 
 <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">configure:</span><span class="p">(</span><span class="n">GIInjector</span> <span class="o">*</span><span class="p">)</span><span class="nv">injector</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">super</span> <span class="nl">configure:</span><span class="n">injector</span><span class="p">];</span>
