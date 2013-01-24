@@ -166,7 +166,7 @@ inject(@"event", @"grid")
 Put related configuration logic into extensions and add or remove them at will
 
 ```objective-c
-@implementation ServiceExtension
+@implementation GameExtension
 
 - (void)configure:(GIInjector *)injector {
     [super configure:injector];
