@@ -55,6 +55,7 @@
 <li>Supports nested Async and Sequence Commands</li>
 <li>Add mappings with priority</li>
 <li>Map blocks</li>
+<li>Auto map triggers</li>
 <li>Prevent certain commands to execute by adding Guards</li>
 <li>Inject the corresponding event and other objects of interest into commands</li>
 </ul><h2>How to use Gummi Commander</h2>
@@ -169,6 +170,11 @@ The provided <code>GummiCommanderModule</code> should be added first.</p>
 
 <span class="p">[</span><span class="n">commandMap</span> <span class="nl">mapAction:</span><span class="p">[</span><span class="n">AnOtherCommand</span> <span class="n">class</span><span class="p">]</span> <span class="nl">toTrigger:</span><span class="p">[</span><span class="n">MyEvent</span> <span class="n">class</span><span class="p">]</span>
                                               <span class="nl">priority:</span> <span class="mi">10</span><span class="p">];</span>
+
+<span class="c1">// Will automatically map SomeCommand to SomeEvent</span>
+<span class="c1">// Auto mapped triggers must follow the naming convention XyzEvent</span>
+<span class="c1">// Commands must follow the naming convention XyzCommand</span>
+<span class="p">[</span><span class="n">commandMap</span> <span class="nl">autoMapTrigger:</span><span class="p">[</span><span class="n">SomeEvent</span> <span class="n">class</span><span class="p">]];</span>
 </pre></div>
 
 <p>Instead of commands, you can also map blocks</p>
