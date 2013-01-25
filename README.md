@@ -14,6 +14,7 @@ Gummi Commander uses
 * Supports nested Async and Sequence Commands
 * Add mappings with priority
 * Map blocks
+* Auto map triggers
 * Prevent certain commands to execute by adding Guards
 * Inject the corresponding event and other objects of interest into commands
 
@@ -124,6 +125,11 @@ When an instance of MyEvent gets dispatched, all mapped commands get executed
 
 [commandMap mapAction:[AnOtherCommand class] toTrigger:[MyEvent class]
                                               priority: 10];
+
+// Will automatically map SomeCommand to SomeEvent
+// Auto mapped triggers must follow the naming convention XyzEvent
+// Commands must follow the naming convention XyzCommand
+[commandMap autoMapTrigger:[SomeEvent class]];
 ```
 
 Instead of commands, you can also map blocks
