@@ -7,5 +7,6 @@
 #import <Foundation/Foundation.h>
 #import "GCGIEvent.h"
 
-@interface SomeEvent : GCGIEvent 
+@interface SomeEvent : GCGIEvent
+@property(nonatomic, strong) NSString *string;
 @end

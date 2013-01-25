@@ -18,6 +18,8 @@
 #import "GDDispatcher.h"
 #import "FlagAndStringObject.h"
 #import "SetFlagCommand.h"
+#import "SomeEvent.h"
+#import "SomeCommand.h"
 
 SPEC_BEGIN(GCGICommandMapSpec)
 
@@ -251,6 +253,25 @@ SPEC_BEGIN(GCGICommandMapSpec)
 
                 });
 
+            });
+
+            it(@"auto maps commands to events", ^{
+                SomeEvent *someEvent = [[SomeEvent alloc] init];
+                [commandMap autoMapTrigger:[SomeEvent class]];
+                [commandMap.dispatcher dispatchObject:someEvent];
+                [[someEvent.string should] equal:@"some"];
+            });
+
+            it(@"auto map raises exception, when invalid name", ^{
+                [[theBlock(^{
+                    [commandMap autoMapTrigger:[NSObject class]];
+                }) should] raiseWithName:@"GCGICommandMapException"];
+            });
+
+            it(@"auto map raises exception, when no action found", ^{
+                [[theBlock(^{
+                    [commandMap autoMapTrigger:[FlagAndStringEvent class]];
+                }) should] raiseWithName:@"GCGICommandMapException"];
             });
 
         });

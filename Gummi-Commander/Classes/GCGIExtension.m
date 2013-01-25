@@ -40,6 +40,10 @@
     return [self.commandMap mapAction:action toTrigger:trigger priority:priority removeMappingAfterExecution:remove];
 }
 
+- (GCMapping *)autoMapTrigger:(Class)trigger {
+    return [self.commandMap autoMapTrigger:trigger];
+}
+
 - (GCMapping *)mappingForAction:(id)action mappedToTrigger:(Class)trigger {
     return [self.commandMap mappingForAction:action mappedToTrigger:trigger];
 }
