@@ -19,7 +19,7 @@ inject(@"injector")
 - (id)init {
     self = [super init];
     if (self) {
-        self.commands = [@[] mutableCopy];
+        self.commands = [[NSMutableArray alloc] init];
         self.commandIndex = 0;
     }
 
