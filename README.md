@@ -201,8 +201,8 @@ Put related configuration logic into extensions and add or remove them at will
 You find the source files you need in Gummi-Commander/Classes.
 
 You also need:
-* [Gummi Dispatcher] (https://github.com/sschmid/Gummi-Dispatcher) Observe and dispatch any objects
-* [Gummi Injection] (https://github.com/sschmid/Gummi-Injection) A lightweight dependency injection framework for Objective-C
+* [Gummi Dispatcher] (https://github.com/sschmid/Gummi-Dispatcher) - Observe and dispatch any objects
+* [Gummi Injection] (https://github.com/sschmid/Gummi-Injection) - A lightweight dependency injection framework for Objective-C
 
 ## CocoaPods
 Install [CocoaPods] (http://cocoapods.org) and add the Gummi Commander reference to your Podfile
