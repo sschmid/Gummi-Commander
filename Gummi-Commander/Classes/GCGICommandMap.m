@@ -51,8 +51,8 @@ inject(@"dispatcher", @"injector")
     NSRange startRange = [triggerName rangeOfString:@"Event"];
     if (startRange.location == NSNotFound)
         @throw [NSException exceptionWithName:[NSString stringWithFormat:@"%@Exception", NSStringFromClass([self class])]
-                                       reason:[NSString stringWithFormat:@"The trigger '%@' doesn't follow the naming convention. Auto mapped triggers must end with 'Event'", triggerName]
-                                     userInfo:nil];
+           reason:[NSString stringWithFormat:@"The trigger '%@' doesn't follow the naming convention. Auto mapped triggers must end with 'Event'", triggerName]
+         userInfo:nil];
 
     NSString *name = [triggerName substringToIndex:startRange.location];
     NSString *actionName = [name stringByAppendingString:@"Command"];
@@ -60,8 +60,8 @@ inject(@"dispatcher", @"injector")
     Class action = NSClassFromString(actionName);
     if (!action)
         @throw [NSException exceptionWithName:[NSString stringWithFormat:@"%@Exception", NSStringFromClass([self class])]
-                                       reason:[NSString stringWithFormat:@"Couldn't auto map '%@'. Class '%@' does not exist.", triggerName, actionName]
-                                     userInfo:nil];
+           reason:[NSString stringWithFormat:@"Couldn't auto map '%@'. Class '%@' does not exist.", triggerName, actionName]
+         userInfo:nil];
 
     return [self mapAction:action toTrigger:trigger];
 }
@@ -136,8 +136,8 @@ inject(@"dispatcher", @"injector")
             if ([GRReflection isClass:mapping.action]) {
                 [[self.injector getObject:mapping.action] execute];
             } else if ([GRReflection isBlock:mapping.action]) {
-                void (^block)(GIInjector *injector) = mapping.action;
-                block(self.injector);
+                GCGIBlockAction(blockAction) = mapping.action;
+                blockAction(self.injector);
             }
             
             if (mapping.remove)

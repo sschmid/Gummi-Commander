@@ -11,8 +11,7 @@
 @implementation GCGIEvent
 
 - (void)dispatch {
-    GDDispatcher *dispatcher = [[GIInjector sharedInjector] getObject:[GDDispatcher class]];
-    [dispatcher dispatchObject:self];
+    [getObject([GDDispatcher class]) dispatchObject:self];
 }
 
 @end

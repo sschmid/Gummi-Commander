@@ -82,7 +82,7 @@ SPEC_BEGIN(GCGICommandMapSpec)
 
             context(@"when block mapping added", ^{
 
-                __block void (^myBlock)(GIInjector *inj);
+                __block GCGIBlockAction(myBlock);
                 beforeEach(^{
                     myBlock = ^(GIInjector *inj) {
                         FlagAndStringEvent *event = [inj getObject:[FlagAndStringEvent class]];
