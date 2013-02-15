@@ -20,7 +20,6 @@ inject(@"injector")
     self = [super init];
     if (self) {
         self.commands = [[NSMutableArray alloc] init];
-        self.commandIndex = 0;
     }
 
     return self;
@@ -31,6 +30,7 @@ inject(@"injector")
 }
 
 - (void)execute {
+    self.commandIndex = 0;
     [self executeNextCommand];
 }
 
@@ -59,7 +59,6 @@ inject(@"injector")
     if (self.stopWhenNoSuccess && !success) {
         NSLog(@"'%@' did execute without success", NSStringFromClass([command class]));
         NSLog(@"Cancelling Sequence '%@'", NSStringFromClass([self class]));
-        [self.commands removeAllObjects];
         [self didExecuteWithSuccess:NO];
     } else {
         [self executeNextCommand];

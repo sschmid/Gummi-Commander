@@ -92,6 +92,29 @@ SPEC_BEGIN(CommandChainSpec)
                 [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"errorNoSuccess"];
             });
 
+            it(@"sequence can be executed multiple times", ^{
+                FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
+                [commandMap.injector map:event to:[FlagAndStringEvent class]];
+
+                Append12AndSetFlagSequenceCommand *command = getObject([Append12AndSetFlagSequenceCommand class]);
+                [command execute];
+                [command execute];
+
+                [[theValue(event.object.flag) should] beYes];
+                [[event.object.string should] equal:@"1212"];
+            });
+
+            it(@"sequence can be executed multiple times, even when no success", ^{
+                FlagAndStringEvent *event = [[FlagAndStringEvent alloc] init];
+                [commandMap.injector map:event to:[FlagAndStringEvent class]];
+
+                NoSuccessSequenceCommand *command = getObject([NoSuccessSequenceCommand class]);
+                [command execute];
+                [command execute];
+
+                [[expectFutureValue(event.object.string) shouldEventuallyBeforeTimingOutAfter(2)] equal:@"errorNoSuccesserrorNoSuccess"];
+            });
+
         });
 
         SPEC_END
