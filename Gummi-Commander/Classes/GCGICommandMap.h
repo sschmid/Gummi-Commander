@@ -7,7 +7,7 @@
 #import <Foundation/Foundation.h>
 #import "GCCommandMap.h"
 
-#define GCGIBlockAction(name) void (^name)(GIInjector *)
+#define GCGIBlockAction(name) void (^name)(GIInjector *injector)
 
 @class GDDispatcher;
 @class GIInjector;
